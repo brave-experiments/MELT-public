@@ -1,0 +1,12 @@
+[submodule "frameworks/MLC/tvm-unity"]
+	path = frameworks/MLC/tvm-unity
+	url = git@github.com:brave-experiments/tvm.git
+[submodule "frameworks/MLC/mlc-llm"]
+	path = frameworks/MLC/mlc-llm
+	url = git@github.com:brave-experiments/mlc-llm.git
+[submodule "frameworks/llama.cpp/llama.cpp"]
+	path = frameworks/llama.cpp/llama.cpp
+	url = git@github.com:ggerganov/llama.cpp.git
+[submodule "frameworks/llama.cpp/LLMFarm"]
+	path = frameworks/llama.cpp/LLMFarm
+	url = git@github.com:guinmoon/LLMFarm
