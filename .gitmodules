@@ -10,3 +10,6 @@
 [submodule "frameworks/llama.cpp/LLMFarm"]
 	path = frameworks/llama.cpp/LLMFarm
 	url = git@github.com:guinmoon/LLMFarm
+[submodule "batterylab"]
+	path = batterylab
+	url = git@github.com:brave-experiments/batterylab.git
