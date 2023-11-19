@@ -6,11 +6,27 @@ import argparse
 
 import pandas as pd
 
-from libs import powerlib
-
 
 # this is the last event in group of measurements; will also drive the timestamp
 EVENT_DRIVER = "current_VDDQ_VDD2_1V8AO"
+
+
+def compute_power_performance(df, current_col="current", voltage_col="voltage"):
+    # input is a df with columns: timestamp (sec), current (mA), voltage (V)
+
+    power = df[current_col] * df[voltage_col]  # in mW
+    time_diff = df.timestamp.diff().fillna(0) / 3600  # in hours
+
+    # energy
+    energy = power * time_diff  # in mWh
+    total_energy_mWh = energy.sum()  # in mWh
+
+    # discharge
+    discharge = df[current_col] * time_diff  # in mAh
+    total_discharge_mAh = discharge.sum()  # in mAh
+
+    return total_energy_mWh, total_discharge_mAh
+
 
 
 def load_energy_events(filepath):
@@ -69,15 +85,19 @@ def compute_detailed_performance_metrics(run, edf, mdf):
         stage = index.replace(".start", "")
         end_key = index.replace("start", "end")
 
-        # TODO: might crash if end match does not exist (never happened so far)
-        end = edf[edf.index == end_key].value.values[0]
+        end_event = edf[edf.index == end_key]
+        if len(end_event) != 1:
+            print(f"WARNING: Expecting one matching end_event for '{stage}' and discovered {len(end_event)}. Skipping...")
+            continue
+        else:
+            end = end_event.value.values[0]
 
         duration = end - start
 
         # power consumption
         start_time = start / 1_000_000_000  # to sec
         end_time =  end / 1_000_000_000  # to sec
-        monsoon_df_trimmed = mdf[(mdf.timestamp > start_time) & (mdf.timestamp < end_time)]
+        df_trimmed = mdf[(mdf.timestamp > start_time) & (mdf.timestamp < end_time)]
 
         entry = {
             "run": run,
@@ -87,7 +107,7 @@ def compute_detailed_performance_metrics(run, edf, mdf):
 
         relevant_power_events = ['VDD_GPU_SOC', 'VDD_CPU_CV', 'VIN_SYS_5V0', 'NC', 'VDDQ_VDD2_1V8AO']
         for power_event in relevant_power_events:
-            total_energy, total_discharge = powerlib.compute_power_performance(monsoon_df_trimmed, f"current_{power_event} (mA)", f"voltage_{power_event} (V)")
+            total_energy, total_discharge = compute_power_performance(df_trimmed, f"current_{power_event} (mA)", f"voltage_{power_event} (V)")
             entry[f"energy {power_event} (mWh)"] = total_energy
             entry[f"discharge {power_event} (mAh)"] = total_discharge
 
@@ -99,17 +119,18 @@ def compute_detailed_performance_metrics(run, edf, mdf):
 
 
 def main(args):
-    input_path = args.path
-    output = args.output
+    input_event_file = args.input_event_file
+    input_metrics_file = args.input_metrics_file
+    output_file = args.output_file
 
     # load data
-    edf = load_energy_events(os.path.join(input_path, "energy_events.txt"))
-    mdf = load_energy_metrics(os.path.join(input_path, "energy_metrics.log"))
+    edf = load_energy_events(input_event_file)
+    mdf = load_energy_metrics(input_metrics_file)
 
     # compute
     run = 0  # TODO: Are we going to run multiple times?
     odf = compute_detailed_performance_metrics(run, edf, mdf)
-    odf.to_csv(output, index=False)
+    odf.to_csv(output_file, index=False)
 
 
 # argument parser
@@ -117,13 +138,17 @@ def __parse_arguments(args):
 
     parser = argparse.ArgumentParser(description="Analyze energy events from jetson devices.")
 
-    parser.add_argument("-p", "--path",
+    parser.add_argument("-ief", "--input-event-file",
         required=True,
-        help="Input path where the two files (i.e., 'energy_events.txt' and 'energy_metrics.log') should be available.")
+        help="Input energy events file.")
+    
+    parser.add_argument("-imf", "--input-metrics-file",
+        required=True,
+        help="Input energy metrics file.")
 
-    parser.add_argument("-o", "--output",
-        default="results.csv",
-        help="Output file.")
+    parser.add_argument("-of", "--output-file",
+        required=True,
+        help="Output CSV file.")
 
     parsed = parser.parse_args(args)
     return parsed
