@@ -7,10 +7,6 @@ import argparse
 import pandas as pd
 
 
-# this is the last event in group of measurements; will also drive the timestamp
-EVENT_DRIVER = "current_VDDQ_VDD2_1V8AO"
-
-
 def compute_power_performance(df, current_col="current", voltage_col="voltage"):
     # input is a df with columns: timestamp (sec), current (mA), voltage (V)
 
@@ -38,7 +34,6 @@ def load_energy_events(filepath):
 def load_energy_metrics(filepath):
 
     data = []
-    last_entry_buffer = {}
     
     with open(filepath) as file:
         for line in file:
@@ -53,12 +48,11 @@ def load_energy_metrics(filepath):
             key = f"{event} ({metric})"
             value = float(values[2])
 
-            last_entry_buffer["timestamp"] = timestamp
-            last_entry_buffer[key] = value
-
-            if event == EVENT_DRIVER:
-                data.append(last_entry_buffer)
-                last_entry_buffer = {}
+            data.append({
+                "timestamp": timestamp,
+                "event": key,
+                key: value,
+            })
 
     df = pd.DataFrame(data)
 
@@ -70,6 +64,10 @@ def load_energy_metrics(filepath):
         if column.endswith("(mV)"):
             new_column = column.replace("(mV)", "(V)")
             df[new_column] = df[column] / 1_000
+    
+    # back-fill NaNs and drop pending NaNs (last rows)
+    df.fillna(method="bfill", inplace=True)
+    df.dropna(inplace=True)
 
     return df
 
@@ -108,7 +106,8 @@ def compute_detailed_performance_metrics(run, edf, mdf):
         # all columns starting with current, removing "current_" prefix and " (mA)" postfix, e.g., 'current_VDD_GPU_SOC (mA)' to 'VDD_GPU_SOC'
         relevant_power_events = [column.replace("current_", "").replace(" (mA)", "") for column in df_trimmed.columns if column.startswith("current_")]
         for power_event in relevant_power_events:
-            total_energy, total_discharge = compute_power_performance(df_trimmed, f"current_{power_event} (mA)", f"voltage_{power_event} (V)")
+            df_trimmed_current_events = df_trimmed[df_trimmed["event"] == f"current_{power_event} (mA)"]
+            total_energy, total_discharge = compute_power_performance(df_trimmed_current_events, f"current_{power_event} (mA)", f"voltage_{power_event} (V)")
             entry[f"energy {power_event} (mWh)"] = total_energy
             entry[f"discharge {power_event} (mAh)"] = total_discharge
 
