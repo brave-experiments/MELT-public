@@ -105,7 +105,8 @@ def compute_detailed_performance_metrics(run, edf, mdf):
             "duration (ns)": duration,
         }
 
-        relevant_power_events = ['VDD_GPU_SOC', 'VDD_CPU_CV', 'VIN_SYS_5V0', 'NC', 'VDDQ_VDD2_1V8AO']
+        # all columns starting with current, removing "current_" prefix and " (mA)" postfix, e.g., 'current_VDD_GPU_SOC (mA)' to 'VDD_GPU_SOC'
+        relevant_power_events = [column.replace("current_", "").replace(" (mA)", "") for column in df_trimmed.columns if column.startswith("current_")]
         for power_event in relevant_power_events:
             total_energy, total_discharge = compute_power_performance(df_trimmed, f"current_{power_event} (mA)", f"voltage_{power_event} (V)")
             entry[f"energy {power_event} (mWh)"] = total_energy
