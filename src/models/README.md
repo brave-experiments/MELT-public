@@ -25,8 +25,7 @@ options:
 Before you run the conversion script, you need to define the `MLC_HOME` or `LLAMA_CPP_HOME` env vars depending on the backend specified.
 
 ```
-python convert.py --help
-usage: convert.py [-h] -m MODELS [MODELS ...] -d OUTPUT_DIR -b {mlc,ggml} -q QUANTIZATION_MODE [-t {android,ios,metal}] --max-seq-length MAX_SEQ_LENGTH [-v]
+usage: convert.py [-h] -m MODELS [MODELS ...] -d OUTPUT_DIR -b {mlc,ggml} -q QUANTIZATION_MODE [-t {android,ios,metal}] --max-seq-length MAX_SEQ_LENGTH [--ignore-eos] [-v]
 
 options:
   -h, --help            show this help message and exit
@@ -37,7 +36,11 @@ options:
   -b {mlc,ggml}, --backend {mlc,ggml}
                         Backend to convert to.
   -q QUANTIZATION_MODE, --quantization-mode QUANTIZATION_MODE
+                        Quantization mode to use.
   -t {android,ios,metal}, --target {android,ios,metal}
+                        Target to compile for.
   --max-seq-length MAX_SEQ_LENGTH
+                        Maximum sequence length to use.
+  --ignore-eos          Ignore EOS token (changes model config).
   -v, --verbose
 ```
