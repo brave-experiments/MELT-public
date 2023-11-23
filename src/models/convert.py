@@ -11,7 +11,7 @@ LLAMA_CPP_HOME = os.environ.get('LLAMA_CPP_HOME')
 
 def parse_args():
     args = argparse.ArgumentParser()
-    args.add_argument('-m', '--models', nargs='+', required=True,
+    args.add_argument('-m', '--model', type=str, required=True,
                       help='Model name to download (should be in hf format.)')
     args.add_argument('-d', '--output-dir', type=str, required=True,
                       help='Directory to download the model to.')
@@ -163,24 +163,23 @@ def mlc_change_model_template_eos(chat_config_path):
 
 
 def main(args):
-    for model_dir in args.models:
-        if args.backend == 'mlc':
-            args.max_seq_length = mlc_get_max_length(args.config)
-            chat_config_path = convert_mlc(model_dir, args)
-            if chat_config_path and args.ignore_eos:
-                mlc_change_model_template_eos(chat_config_path)
-            if args.config:
-                mlc_translate_config_to_model_config(args.config, chat_config_path)
-        elif args.backend == 'ggml':
-            previous_eos = None
-            if args.ignore_eos:
-                previous_eos = llama_change_model_config_eos(model_dir, 2335)
-            convert_ggml(model_dir, args)
-            if args.ignore_eos:  # revert it back for indepotence
-                llama_change_model_config_eos(model_dir,
-                                              previous_eos)
-        else:
-            raise ValueError(f'Invalid mode: {args.mode}')
+    if args.backend == 'mlc':
+        args.max_seq_length = mlc_get_max_length(args.config)
+        chat_config_path = convert_mlc(args.model, args)
+        if chat_config_path and args.ignore_eos:
+            mlc_change_model_template_eos(chat_config_path)
+        if args.config:
+            mlc_translate_config_to_model_config(args.config, chat_config_path)
+    elif args.backend == 'ggml':
+        previous_eos = None
+        if args.ignore_eos:
+            previous_eos = llama_change_model_config_eos(args.model, 2335)
+        convert_ggml(args.model, args)
+        if args.ignore_eos:  # revert it back for indepotence
+            llama_change_model_config_eos(args.model,
+                                            previous_eos)
+    else:
+        raise ValueError(f'Invalid mode: {args.mode}')
 
 
 if __name__ == '__main__':
