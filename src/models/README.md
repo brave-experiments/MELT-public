@@ -25,11 +25,11 @@ options:
 Before you run the conversion script, you need to define the `MLC_HOME` or `LLAMA_CPP_HOME` env vars depending on the backend specified.
 
 ```
-usage: convert.py [-h] -m MODELS [MODELS ...] -d OUTPUT_DIR -b {mlc,ggml} -q QUANTIZATION_MODE [-t {android,ios,metal}] --max-seq-length MAX_SEQ_LENGTH [--ignore-eos] [-v]
+usage: convert.py [-h] -m MODEL -d OUTPUT_DIR -b {mlc,ggml} -q QUANTIZATION_MODE [-t {android,ios,metal}] -c CONFIG [--ignore-eos] [-v]
 
 options:
   -h, --help            show this help message and exit
-  -m MODELS [MODELS ...], --models MODELS [MODELS ...]
+  -m MODEL, --model MODEL
                         Model name to download (should be in hf format.)
   -d OUTPUT_DIR, --output-dir OUTPUT_DIR
                         Directory to download the model to.
@@ -39,8 +39,8 @@ options:
                         Quantization mode to use.
   -t {android,ios,metal}, --target {android,ios,metal}
                         Target to compile for.
-  --max-seq-length MAX_SEQ_LENGTH
-                        Maximum sequence length to use.
+  -c CONFIG, --config CONFIG
+                        Path to config file.
   --ignore-eos          Ignore EOS token (changes model config).
   -v, --verbose
 ```
