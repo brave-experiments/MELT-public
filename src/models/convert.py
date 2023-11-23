@@ -22,6 +22,8 @@ def parse_args():
     args.add_argument('-t', '--target', type=str,
                       choices=['android', 'ios', 'metal'],
                       help='Target to compile for.')
+    args.add_argument('-c', '--config', type=str, required=True,
+                      help='Path to config file.')
     args.add_argument('--max-seq-length', type=str, required=True,
                       help='Maximum sequence length to use.')
     args.add_argument('--ignore-eos', action='store_true',
@@ -98,7 +100,7 @@ def convert_ggml(model_dir, args):
         print(stderr.decode('utf-8'))
 
 
-def change_model_config_eos(model_dir,  eos_token_id=2336):
+def llama_change_model_config_eos(model_dir,  eos_token_id=2336):
     config_json = os.path.join(model_dir, 'config.json')
     with open(config_json, 'r') as f:
         config = json.load(f)
@@ -112,7 +114,7 @@ def change_model_config_eos(model_dir,  eos_token_id=2336):
     return previous_eos_token_id
 
 
-def change_mlc_model_template(chat_config_path):
+def mlc_change_model_template_eos(chat_config_path):
     with open(chat_config_path, 'r') as f:
         config = json.load(f)
 
@@ -129,14 +131,14 @@ def main(args):
         if args.backend == 'mlc':
             chat_config_path = convert_mlc(model_dir, args)
             if chat_config_path and args.ignore_eos:
-                change_mlc_model_template(chat_config_path)
+                mlc_change_model_template_eos(chat_config_path)
         elif args.backend == 'ggml':
             previous_eos = None
             if args.ignore_eos:
-                previous_eos = change_model_config_eos(model_dir, 2335)
+                previous_eos = llama_change_model_config_eos(model_dir, 2335)
             convert_ggml(model_dir, args)
             if args.ignore_eos:
-                change_model_config_eos(model_dir, previous_eos)  # revert it back for indepotence
+                llama_change_model_config_eos(model_dir, previous_eos)  # revert it back for indepotence
         else:
             raise ValueError(f'Invalid mode: {args.mode}')
 
