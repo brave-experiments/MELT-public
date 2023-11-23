@@ -51,13 +51,15 @@ def convert_ggml(model_dir, args):
     gguf_model = os.path.join(args.output_dir, model_name+".gguf")
     exec_path = os.path.join(LLAMA_CPP_HOME, 'convert.py')
     ignore_eos_flag = '--ignore-eos' if args.ignore_eos else ''
+    args_list = ["python", exec_path,
+        "--outfile", gguf_model,
+        model_dir,]
+    if ignore_eos_flag:
+        args_list.insert(-1, ignore_eos_flag)
     proc = subprocess.Popen(
-        ["python", exec_path,
-         "--outfile", gguf_model,
-         ignore_eos_flag,
-         model_dir,],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,)
+        args_list,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,)
     stdout, stderr = proc.communicate()
     if args.verbose:
         print(stdout.decode('utf-8'))
