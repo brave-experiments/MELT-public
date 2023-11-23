@@ -3,6 +3,7 @@ import json
 import os
 import re
 import subprocess
+import yaml
 
 MLC_HOME = os.environ.get('MLC_HOME')
 LLAMA_CPP_HOME = os.environ.get('LLAMA_CPP_HOME')
@@ -24,8 +25,6 @@ def parse_args():
                       help='Target to compile for.')
     args.add_argument('-c', '--config', type=str, required=True,
                       help='Path to config file.')
-    args.add_argument('--max-seq-length', type=str, required=True,
-                      help='Maximum sequence length to use.')
     args.add_argument('--ignore-eos', action='store_true',
                       help='Ignore EOS token (changes model config).')
     args.add_argument('-v', '--verbose', action='store_true',)
@@ -50,7 +49,7 @@ def convert_mlc(model_dir, args):
          "--quantization", args.quantization_mode,
          "--target", args.target,
          "--use-cache=0",
-         "--max-seq-len", args.max_seq_length],
+         "--max-seq-len", f"{args.max_seq_length}"],
          stdout=subprocess.PIPE,
          stderr=subprocess.PIPE,)
     stdout, stderr = proc.communicate()
@@ -114,6 +113,43 @@ def llama_change_model_config_eos(model_dir,  eos_token_id=2336):
     return previous_eos_token_id
 
 
+def mlc_translate_config_to_model_config(config_path, chat_config_path):
+    with open(chat_config_path, 'r') as f:
+        model_config = json.load(f)
+
+    with open(config_path, 'r') as f:
+        config = yaml.safe_load(f)
+
+    model_config['temperature'] = config['sampling'].get('temperature', model_config['temperature'])
+    model_config['repetition_penalty'] = \
+        config['sampling'].get('repetition_penalty', model_config['repetition_penalty'])
+    model_config['top_p'] = config['sampling'].get('top_p', model_config['top_p'])
+    # model_config[''] = config['sampling'].get('top_k', model_config[''])  # TODO: Resolve in MLC
+    # model_config[''] = config['sampling'].get('repeat_last_n', model_config[''])  # TODO: Resolve in MLC
+    # model_config[''] = config['sampling'].get('n_batch', model_config[''])  # TODO: Resolve in MLC
+
+    model_config['mean_gen_len'] = \
+        config['generation'].get('mean_gen_len', model_config['mean_gen_len'])
+    model_config['max_gen_len'] = \
+        config['generation'].get('max_gen_len', model_config['max_gen_len'])
+    model_config['max_window_size'] = \
+        config['generation'].get('max_window_size', model_config['max_window_size'])
+    model_config['vocab_size'] = \
+        config['generation'].get('vocab_size', model_config['vocab_size'])
+
+    with open(chat_config_path, 'w') as f:
+        json.dump(model_config, f)
+
+    return config
+
+
+def mlc_get_max_length(config_path):
+    with open(config_path, 'r') as f:
+        config = yaml.safe_load(f)
+
+    return config['generation'].get('max_gen_len', None)
+
+
 def mlc_change_model_template_eos(chat_config_path):
     with open(chat_config_path, 'r') as f:
         config = json.load(f)
@@ -129,16 +165,20 @@ def mlc_change_model_template_eos(chat_config_path):
 def main(args):
     for model_dir in args.models:
         if args.backend == 'mlc':
+            args.max_seq_length = mlc_get_max_length(args.config)
             chat_config_path = convert_mlc(model_dir, args)
             if chat_config_path and args.ignore_eos:
                 mlc_change_model_template_eos(chat_config_path)
+            if args.config:
+                mlc_translate_config_to_model_config(args.config, chat_config_path)
         elif args.backend == 'ggml':
             previous_eos = None
             if args.ignore_eos:
                 previous_eos = llama_change_model_config_eos(model_dir, 2335)
             convert_ggml(model_dir, args)
-            if args.ignore_eos:
-                llama_change_model_config_eos(model_dir, previous_eos)  # revert it back for indepotence
+            if args.ignore_eos:  # revert it back for indepotence
+                llama_change_model_config_eos(model_dir,
+                                              previous_eos)
         else:
             raise ValueError(f'Invalid mode: {args.mode}')
 
