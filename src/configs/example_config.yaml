@@ -12,5 +12,4 @@ generation:
   mean_gen_len: 32  # Applicable to mlc only
   max_gen_len: 32
   max_window_size: 4096
-  vocab_size: 32000
-
+  vocab_size: 32000  # Applicable to mlc only

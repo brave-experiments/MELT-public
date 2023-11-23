@@ -142,6 +142,31 @@ def mlc_translate_config_to_model_config(config_path, chat_config_path):
 
     return config
 
+def llama_translate_config_to_model_config(config_path, model_path):
+    with open(config_path, 'r') as f:
+        config = yaml.safe_load(f)
+
+    main_args = {
+        '-n': config['generation']['max_gen_len'],
+        '-c': config['generation']['max_window_size'],
+        '-b':  config['sampling']['n_batch'],
+        '--top-k': config['sampling']['top_k'],
+        '--top-p': config['sampling']['top_p'],
+        '--repeat-last-n': config['sampling']['repeat_last_n'],
+        '--repeat-penalty': config['sampling']['repetition_penalty'],
+        '--temp': config['sampling']['temperature'],
+    }
+
+    print("Arguments to pass to main.py:")
+    for arg, val in main_args.items():
+        print(f"\t{arg} {val} \\")
+    output_filename = os.path.join(model_path, 'llama_main_args.txt')
+    print(f"Persisted in {output_filename}")
+    with open(output_filename, 'w') as f:
+        for arg, val in main_args.items():
+            f.write(f"{arg} {val} \\\n")
+
+
 
 def mlc_get_max_length(config_path):
     with open(config_path, 'r') as f:
@@ -168,8 +193,7 @@ def main(args):
         chat_config_path = convert_mlc(args.model, args)
         if chat_config_path and args.ignore_eos:
             mlc_change_model_template_eos(chat_config_path)
-        if args.config:
-            mlc_translate_config_to_model_config(args.config, chat_config_path)
+        mlc_translate_config_to_model_config(args.config, chat_config_path)
     elif args.backend == 'ggml':
         previous_eos = None
         if args.ignore_eos:
@@ -177,7 +201,8 @@ def main(args):
         convert_ggml(args.model, args)
         if args.ignore_eos:  # revert it back for indepotence
             llama_change_model_config_eos(args.model,
-                                            previous_eos)
+                                          previous_eos)
+        llama_translate_config_to_model_config(args.config, args.output_dir)
     else:
         raise ValueError(f'Invalid mode: {args.mode}')
 
