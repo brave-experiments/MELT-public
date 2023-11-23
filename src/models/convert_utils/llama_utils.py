@@ -33,6 +33,10 @@ def llama_translate_config_to_model_config(config_path, model_path):
         '--repeat-last-n': config['sampling']['repeat_last_n'],
         '--repeat-penalty': config['sampling']['repetition_penalty'],
         '--temp': config['sampling']['temperature'],
+        '-p': config['prompt'].get('text', ''),
+        '--in-prefix': config['prompt'].get('in_prefix', ''),
+        '--in-suffix': config['prompt'].get('in_suffix', ''),
+        '-r': config['prompt'].get('reverse', ''),
     }
 
     print("Arguments to pass to main.py:")
