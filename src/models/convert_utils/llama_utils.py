@@ -41,25 +41,34 @@ def llama_translate_config_to_model_config(config_path, model_path):
 
     print("Arguments to pass to main.py:")
     for arg, val in main_args.items():
-        print(f"\t{arg} {val} \\")
+        if val != '':
+            print(f"\t{arg} {val} \\")
     output_filename = os.path.join(model_path, 'llama_main_args.txt')
     print(f"Persisted in {output_filename}")
     with open(output_filename, 'w') as f:
         for arg, val in main_args.items():
-            f.write(f"{arg} {val} \\\n")
+            if val != '':
+                f.write(f"{arg} {val} \\\n")
 
 
 def convert_ggml(model_dir, args):
     model_name = os.path.basename(model_dir)
     os.makedirs(args.output_dir, exist_ok=True)
     gguf_model = os.path.join(args.output_dir, model_name+".gguf")
-    exec_path = os.path.join(LLAMA_CPP_HOME, 'convert.py')
-    ignore_eos_flag = '--ignore-eos' if args.ignore_eos else ''
-    args_list = ["python", exec_path,
-        "--outfile", gguf_model,
-        model_dir,]
-    if ignore_eos_flag:
-        args_list.insert(-1, ignore_eos_flag)
+    if 'starcoder' in model_name:
+        exec_path = os.path.join(LLAMA_CPP_HOME, 'convert-starcoder-hf-to-gguf.py')
+        args_list = ["python", exec_path,
+                     model_dir,
+                     "0",
+                    "--outfile", gguf_model]
+    else:
+        exec_path = os.path.join(LLAMA_CPP_HOME, 'convert.py')
+        ignore_eos_flag = '--ignore-eos' if args.ignore_eos else ''
+        args_list = ["python", exec_path,
+                     "--outfile", gguf_model,
+                     model_dir,]
+        if ignore_eos_flag:
+            args_list.insert(-1, ignore_eos_flag)
 
     print(f"Running cmd: {' '.join(args_list)}")
     proc = subprocess.Popen(
