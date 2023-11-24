@@ -15,7 +15,7 @@ generation:
   max_window_size: 16384
   vocab_size: 32000  # Applicable to mlc only
 prompt:  # Used in llama.cpp, taken from mlc
-  text: "<s>"
-  in_prefix: "[INST]"
-  in_suffix: "[/INST]"
-  reverse: "[INST]"
+  text: "\"<s>\""
+  in_prefix: "\"[INST]\""
+  in_suffix: "\"[/INST]\""
+  reverse: "\"[INST]\""

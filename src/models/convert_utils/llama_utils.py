@@ -79,7 +79,7 @@ def convert_ggml(model_dir, args):
     args_list = [exec_path,
          gguf_model,
          gguf_quant_model,
-         args.quantization_mode,],
+         args.quantization_mode,]
 
     print(f"Running cmd: {' '.join(args_list)}")
     proc = subprocess.Popen(
