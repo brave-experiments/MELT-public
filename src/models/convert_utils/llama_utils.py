@@ -41,12 +41,14 @@ def llama_translate_config_to_model_config(config_path, model_path):
 
     print("Arguments to pass to main.py:")
     for arg, val in main_args.items():
-        print(f"\t{arg} {val} \\")
+        if val != '':
+            print(f"\t{arg} {val} \\")
     output_filename = os.path.join(model_path, 'llama_main_args.txt')
     print(f"Persisted in {output_filename}")
     with open(output_filename, 'w') as f:
         for arg, val in main_args.items():
-            f.write(f"{arg} {val} \\\n")
+            if val != '':
+                f.write(f"{arg} {val} \\\n")
 
 
 def convert_ggml(model_dir, args):
