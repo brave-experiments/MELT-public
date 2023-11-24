@@ -58,16 +58,19 @@ def mlc_translate_config_to_model_config(config_path, chat_config_path):
 
 def convert_mlc(model_dir, args):
     exec_path = os.path.join(MLC_HOME, "build.py")
+    args_list = ["python", exec_path,
+                 "--model", model_dir,
+                 "--artifact-path", args.output_dir,
+                 "--quantization", args.quantization_mode,
+                 "--target", args.target,
+                 "--use-cache=0",
+                 "--max-seq-len", f"{args.max_seq_length}"]
+
+    print(f"Running cmd: {' '.join(args_list)}")
     proc = subprocess.Popen(
-        ["python", exec_path,
-         "--model", model_dir,
-         "--artifact-path", args.output_dir,
-         "--quantization", args.quantization_mode,
-         "--target", args.target,
-         "--use-cache=0",
-         "--max-seq-len", f"{args.max_seq_length}"],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,)
+        args_list,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,)
     stdout, stderr = proc.communicate()
     regex = "Finish exporting chat config to (.*)"
     match = re.search(regex, stdout.decode('utf-8'))

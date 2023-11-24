@@ -60,6 +60,8 @@ def convert_ggml(model_dir, args):
         model_dir,]
     if ignore_eos_flag:
         args_list.insert(-1, ignore_eos_flag)
+
+    print(f"Running cmd: {' '.join(args_list)}")
     proc = subprocess.Popen(
         args_list,
         stdout=subprocess.PIPE,
@@ -72,13 +74,16 @@ def convert_ggml(model_dir, args):
     name, extension = gguf_model.split('.')
     gguf_quant_model = f"{name}-{args.quantization_mode}.{extension}"
     exec_path = os.path.join(LLAMA_CPP_HOME, 'build', 'bin', 'quantize')
-    proc = subprocess.Popen(
-        [exec_path,
+    args_list = [exec_path,
          gguf_model,
          gguf_quant_model,
          args.quantization_mode,],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,)
+
+    print(f"Running cmd: {' '.join(args_list)}")
+    proc = subprocess.Popen(
+        args_list,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,)
     stdout, stderr = proc.communicate()
     if args.verbose:
         print(stdout.decode('utf-8'))
