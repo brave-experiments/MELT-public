@@ -71,7 +71,9 @@ def convert_ggml(model_dir, args):
         print(stdout.decode('utf-8'))
         print(stderr.decode('utf-8'))
 
-    name, extension = gguf_model.split('.')
+    tokens = gguf_model.split('.')
+    name = '.'.join(tokens[:-1])
+    extension = tokens[-1]
     gguf_quant_model = f"{name}-{args.quantization_mode}.{extension}"
     exec_path = os.path.join(LLAMA_CPP_HOME, 'build', 'bin', 'quantize')
     args_list = [exec_path,
