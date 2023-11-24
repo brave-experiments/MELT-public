@@ -1,6 +1,6 @@
 ---
 
-model: llama-2-7b-chat-hf
+model: mistral-7b-instruct-hf
 sampling:
   temperature: 0.7
   repetition_penalty: 1.0
@@ -10,11 +10,11 @@ sampling:
   n_batch: 512  # Applicable to llama.cpp only
 generation:
   mean_gen_len: 128  # Applicable to mlc only
-  max_gen_len: 256
-  max_window_size: 4096
+  max_gen_len: 16384
+  max_window_size: 16384
   vocab_size: 32000  # Applicable to mlc only
 prompt:  # Used in llama.cpp, taken from mlc
-  text: "<<SYS>>\\n\\nYou are a helpful, respectful and honest assistant.\\n<</SYS>>\\n\\n"
+  text: "<s>"
   in_prefix: "[INST]"
   in_suffix: "[/INST]"
   reverse: "[INST]"
