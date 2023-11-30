@@ -57,6 +57,7 @@ def mlc_translate_config_to_model_config(config_path, chat_config_path):
 
 
 def convert_mlc(model_dir, args):
+    model_name = os.path.basename(model_dir).lower()
     exec_path = os.path.join(MLC_HOME, "build.py")
     args_list = ["python", exec_path,
                  "--model", model_dir,
@@ -65,6 +66,9 @@ def convert_mlc(model_dir, args):
                  "--target", args.target,
                  "--use-cache=0",
                  "--max-seq-len", f"{args.max_seq_length}"]
+
+    if 'tinyllama' in model_name:
+        args_list.append("--use-safetensors")
 
     print(f"Running cmd: {' '.join(args_list)}")
     proc = subprocess.Popen(
