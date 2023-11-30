@@ -52,9 +52,10 @@ def llama_translate_config_to_model_config(config_path, model_path):
 
 
 def convert_ggml(model_dir, args):
-    model_name = os.path.basename(model_dir)
+    model_name = os.path.basename(model_dir).lower()
     os.makedirs(args.output_dir, exist_ok=True)
     gguf_model = os.path.join(args.output_dir, model_name+".gguf")
+    ignore_eos_flag = '--ignore-eos' if args.ignore_eos else ''
     if 'starcoder' in model_name:
         exec_path = os.path.join(LLAMA_CPP_HOME, 'convert-starcoder-hf-to-gguf.py')
         args_list = ["python", exec_path,
@@ -63,12 +64,12 @@ def convert_ggml(model_dir, args):
                     "--outfile", gguf_model]
     else:
         exec_path = os.path.join(LLAMA_CPP_HOME, 'convert.py')
-        ignore_eos_flag = '--ignore-eos' if args.ignore_eos else ''
         args_list = ["python", exec_path,
                      "--outfile", gguf_model,
                      model_dir,]
-        if ignore_eos_flag:
-            args_list.insert(-1, ignore_eos_flag)
+
+    if ignore_eos_flag:
+        args_list.insert(-1, ignore_eos_flag)
 
     print(f"Running cmd: {' '.join(args_list)}")
     proc = subprocess.Popen(
