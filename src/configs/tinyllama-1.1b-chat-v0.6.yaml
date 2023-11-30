@@ -1,0 +1,21 @@
+---
+
+model: TinyLlama-1.1B-Chat-v0.6
+url: https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v0.6
+sampling:
+  temperature: 0.7
+  repetition_penalty: 1.0
+  top_p: 0.95
+  top_k: 40  # Applicable to llama.cpp only
+  repeat_last_n: 64  # Applicable to llama.cpp only
+  n_batch: 512  # Applicable to llama.cpp only
+generation:
+  mean_gen_len: 128  # Applicable to mlc only
+  max_gen_len: 2048
+  max_window_size: 2048
+  vocab_size: 32003  # Applicable to mlc only
+prompt:  # Used in llama.cpp, taken from mlc
+  text: "\"<|im_start|>system you are a helpful assistant<|im_end|>\"" 
+  in_prefix: "\"|im_start|>user\""
+  in_suffix: "\"|im_end|\""
+  reverse: "\"<|im_end|>assistant\""
