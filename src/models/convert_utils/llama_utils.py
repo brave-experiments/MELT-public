@@ -55,18 +55,23 @@ def convert_ggml(model_dir, args):
     model_name = os.path.basename(model_dir).lower()
     os.makedirs(args.output_dir, exist_ok=True)
     gguf_model = os.path.join(args.output_dir, model_name+".gguf")
+    exec_path = os.path.join(LLAMA_CPP_HOME, 'convert.py')
     ignore_eos_flag = '--ignore-eos' if args.ignore_eos else ''
-    if 'starcoder' in model_name:
+    if 'tinyllama' in model_name:
+        model_filename = os.path.join(model_dir, 'model.safetensors')
+        args_list = ["python", exec_path,
+                    "--outfile", gguf_model,
+                     model_filename]
+    elif 'starcoder' in model_name:
         exec_path = os.path.join(LLAMA_CPP_HOME, 'convert-starcoder-hf-to-gguf.py')
         args_list = ["python", exec_path,
                      model_dir,
                      "0",
                     "--outfile", gguf_model]
     else:
-        exec_path = os.path.join(LLAMA_CPP_HOME, 'convert.py')
         args_list = ["python", exec_path,
                      "--outfile", gguf_model,
-                     model_dir,]
+                     model_dir]
 
     if ignore_eos_flag:
         args_list.insert(-1, ignore_eos_flag)
