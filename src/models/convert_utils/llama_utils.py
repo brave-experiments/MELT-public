@@ -20,7 +20,7 @@ def llama_change_model_config_eos(model_dir,  eos_token_id=2336):
     return previous_eos_token_id
 
 
-def llama_translate_config_to_model_config(config_path, model_path):
+def llama_translate_config_to_model_config(config_path, model_path, ignore_eos=False):
     with open(config_path, 'r') as f:
         config = yaml.safe_load(f)
 
@@ -33,16 +33,24 @@ def llama_translate_config_to_model_config(config_path, model_path):
         '--repeat-last-n': config['sampling']['repeat_last_n'],
         '--repeat-penalty': config['sampling']['repetition_penalty'],
         '--temp': config['sampling']['temperature'],
+        '-e': '',
         '-p': config['prompt'].get('text', ''),
-        '--in-prefix': config['prompt'].get('in_prefix', ''),
-        '--in-suffix': config['prompt'].get('in_suffix', ''),
-        '-r': config['prompt'].get('reverse', ''),
+        '--in-prefix': config['prompt'].get('in_prefix', None),
+        '--in-suffix': config['prompt'].get('in_suffix', None),
+        '-r': config['prompt'].get('reverse', None),
     }
+
+    if ignore_eos:
+        main_args['--ignore-eos'] = ''
 
     print("Arguments to pass to main.py:")
     for arg, val in main_args.items():
-        if val != '':
-            print(f"\t{arg} {val} \\")
+        if val is not None:
+            if val != '':
+                print(f"\t{arg} {val} \\")
+            else:
+                print(f"\t{arg} \\")
+
     output_filename = os.path.join(model_path, 'llama_main_args.txt')
     print(f"Persisted in {output_filename}")
     with open(output_filename, 'w') as f:
@@ -52,23 +60,25 @@ def llama_translate_config_to_model_config(config_path, model_path):
 
 
 def convert_ggml(model_dir, args):
-    model_name = os.path.basename(model_dir)
+    model_name = os.path.basename(model_dir).lower()
     os.makedirs(args.output_dir, exist_ok=True)
     gguf_model = os.path.join(args.output_dir, model_name+".gguf")
-    if 'starcoder' in model_name:
+    exec_path = os.path.join(LLAMA_CPP_HOME, 'convert.py')
+    if 'tinyllama' in model_name:
+        model_filename = os.path.join(model_dir, 'model.safetensors')
+        args_list = ["python", exec_path,
+                    "--outfile", gguf_model,
+                     model_filename]
+    elif 'starcoder' in model_name:
         exec_path = os.path.join(LLAMA_CPP_HOME, 'convert-starcoder-hf-to-gguf.py')
         args_list = ["python", exec_path,
                      model_dir,
                      "0",
                     "--outfile", gguf_model]
     else:
-        exec_path = os.path.join(LLAMA_CPP_HOME, 'convert.py')
-        ignore_eos_flag = '--ignore-eos' if args.ignore_eos else ''
         args_list = ["python", exec_path,
                      "--outfile", gguf_model,
-                     model_dir,]
-        if ignore_eos_flag:
-            args_list.insert(-1, ignore_eos_flag)
+                     model_dir]
 
     print(f"Running cmd: {' '.join(args_list)}")
     proc = subprocess.Popen(

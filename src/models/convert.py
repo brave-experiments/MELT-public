@@ -63,7 +63,8 @@ def main(args):
         if args.ignore_eos:  # revert it back for indepotence
             llama_change_model_config_eos(args.model,
                                           previous_eos)
-        llama_translate_config_to_model_config(args.config, args.output_dir)
+        llama_translate_config_to_model_config(args.config, args.output_dir,
+                                               ignore_eos=args.ignore_eos)
     else:
         raise ValueError(f'Invalid mode: {args.mode}')
 
