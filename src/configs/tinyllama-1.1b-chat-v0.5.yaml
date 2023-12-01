@@ -13,9 +13,9 @@ generation:
   mean_gen_len: 128  # Applicable to mlc only
   max_gen_len: 2048
   max_window_size: 2048
-  vocab_size: 32000  # Applicable to mlc only
+  vocab_size: 32003  # Applicable to mlc only
 prompt:  # Used in llama.cpp, taken from mlc
-  text: "\"<<SYS>>\\n\\nYou are a helpful, respectful and honest assistant.\\n<</SYS>>\\n\\n\""
-  in_prefix: "\"[INST]\""
-  in_suffix: "\"[/INST]\""
-  reverse: "\"[INST]\""
+  text: "\"<|im_start|>system A conversation between a user and an LLM-based AI assistant. The assistant gives helpful and honest answers.<|im_end|> \\n\""
+  in_prefix: "\"<|im_start|>user\\n\""
+  in_suffix: "\"<|im_end|>\\n<|im_start|>assistant\\n\""
+  reverse: "\"<|im_end|>assistant\""
