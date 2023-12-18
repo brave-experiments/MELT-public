@@ -1,5 +1,6 @@
 import json
 import os
+import requests
 import subprocess
 import yaml
 
@@ -109,3 +110,17 @@ def convert_ggml(model_dir, args):
     if args.verbose:
         print(stdout.decode('utf-8'))
         print(stderr.decode('utf-8'))
+
+
+def llama_download_gguf_zephyr(quantization_mode, output_dir):
+    url_prefix = "https://huggingface.co/TheBloke/stablelm-zephyr-3b-GGUF/resolve/main"
+    url_suffix = f"stablelm-zephyr-3b.{quantization_mode.upper()}.gguf"
+    the_url = '/'.join([url_prefix, url_suffix])
+    outfile = os.path.join(output_dir, url_suffix)
+
+    if not os.path.isfile(outfile):
+        with open(outfile, 'wb') as f:
+            r = requests.get(the_url, stream=True, allow_redirects=True)
+            f.write(r.content)
+    else:
+        print("File exists. Skipping download.")

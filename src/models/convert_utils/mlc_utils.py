@@ -50,6 +50,9 @@ def mlc_translate_config_to_model_config(config_path, chat_config_path):
     model_config['vocab_size'] = \
         config['generation'].get('vocab_size', model_config['vocab_size'])
 
+    model_config['conv_template'] = \
+        config['prompt'].get('conv_template', model_config['conv_template'])
+
     with open(chat_config_path, 'w') as f:
         json.dump(model_config, f)
 
@@ -67,7 +70,7 @@ def convert_mlc(model_dir, args):
                  "--use-cache=0",
                  "--max-seq-len", f"{args.max_seq_length}"]
 
-    if 'tinyllama' in model_name:
+    if ('tinyllama' in model_name) or ('stablelm-zephyr' in model_name):
         args_list.append("--use-safetensors")
 
     print(f"Running cmd: {' '.join(args_list)}")
