@@ -29,7 +29,7 @@ def parse_args():
     args.add_argument('-t', '--target', type=str,
                       choices=['android', 'ios', 'metal'],
                       help='Target to compile for.')
-    args.add_argument('-c', '--config', type=str, required=True,
+    args.add_argument('-c', '--config', type=str, required=False,
                       help='Path to config file.')
     args.add_argument('--ignore-eos', action='store_true',
                       help='Ignore EOS token (changes model config).')
@@ -42,10 +42,16 @@ def validate_args(args):
         if not MLC_HOME:
             raise ValueError(
                 'MLC_HOME is not set. Please set it to the root of your TVM installation.')
+        if not args.config:
+            raise ValueError(
+                'MLC requires a config file to be specified.')
     elif args.backend == 'ggml':
         if not LLAMA_CPP_HOME:
             raise ValueError(
                 'LLAMA_CPP_HOME is not set. Please set it to the root of your LLAMA_CPP installation.')
+        if not args.config:
+            raise ValueError(
+                'MLC requires a config file to be specified.')
     elif args.backend == 'awq':
         try:
             from convert_utils.awq_utils import (

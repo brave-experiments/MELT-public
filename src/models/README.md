@@ -47,5 +47,4 @@ options:
 
 ## Desiderata
 
-* For awq mode, you can skip the config by giving a random filename.
 * For zephyr-3b, quantised weight when running convert are downloaded from TheBloke repository.
