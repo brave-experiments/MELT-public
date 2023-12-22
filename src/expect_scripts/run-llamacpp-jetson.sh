@@ -106,7 +106,7 @@ foreach line [split $extra_args_str \n] {
     if {[string length $trimmed_line] == 0} {
         continue
     }
-    
+
     # Process and append the arguments
     set command [append_args $command $trimmed_line]
 }
