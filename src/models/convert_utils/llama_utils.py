@@ -39,6 +39,7 @@ def llama_translate_config_to_model_config(config_path, model_path, ignore_eos=F
         '--in-prefix': config['prompt'].get('in_prefix', None),
         '--in-suffix': config['prompt'].get('in_suffix', None),
         '-r': config['prompt'].get('reverse', None),
+        '--chatml': config['prompt'].get('chatml', None),
     }
 
     if ignore_eos:
@@ -56,7 +57,7 @@ def llama_translate_config_to_model_config(config_path, model_path, ignore_eos=F
     print(f"Persisted in {output_filename}")
     with open(output_filename, 'w') as f:
         for arg, val in main_args.items():
-            if val != '':
+            if val is not None:
                 f.write(f"{arg} {val} \\\n")
 
 
