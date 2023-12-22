@@ -59,8 +59,11 @@ close $fd
 puts $extra_args_str
 
 # get expect prompt
+set expect_prompt ">"
 regexp {in-prefix\s+"([^\"]+)"} $extra_args_str match expect_prompt
-set expect_prompt [string map {"[" "\\[" "]" "\\]"} $expect_prompt]
+set expect_prompt [string map {"\\n" ""} $expect_prompt]
+puts $expect_prompt
+
 
 # init variables, this init states are proxy to model loading
 set start_time [clock milliseconds]
