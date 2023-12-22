@@ -15,7 +15,6 @@ from convert_utils.mlc_utils import (
     MLC_HOME
 )
 
-
 def parse_args():
     args = argparse.ArgumentParser()
     args.add_argument('-m', '--model', type=str, required=True,
@@ -23,14 +22,14 @@ def parse_args():
     args.add_argument('-d', '--output-dir', type=str, required=True,
                       help='Directory to download the model to.')
     args.add_argument('-b', '--backend', type=str, required=True,
-                      choices=['mlc', 'ggml'],
+                      choices=['mlc', 'ggml', 'awq'],
                       help='Backend to convert to.')
     args.add_argument('-q', '--quantization-mode', type=str, required=True,
                       help='Quantization mode to use.')
     args.add_argument('-t', '--target', type=str,
                       choices=['android', 'ios', 'metal'],
                       help='Target to compile for.')
-    args.add_argument('-c', '--config', type=str, required=True,
+    args.add_argument('-c', '--config', type=str, required=False,
                       help='Path to config file.')
     args.add_argument('--ignore-eos', action='store_true',
                       help='Ignore EOS token (changes model config).')
@@ -43,10 +42,25 @@ def validate_args(args):
         if not MLC_HOME:
             raise ValueError(
                 'MLC_HOME is not set. Please set it to the root of your TVM installation.')
+        if not args.config:
+            raise ValueError(
+                'MLC requires a config file to be specified.')
     elif args.backend == 'ggml':
         if not LLAMA_CPP_HOME:
             raise ValueError(
                 'LLAMA_CPP_HOME is not set. Please set it to the root of your LLAMA_CPP installation.')
+        if not args.config:
+            raise ValueError(
+                'MLC requires a config file to be specified.')
+    elif args.backend == 'awq':
+        try:
+            from convert_utils.awq_utils import (
+                decode_quant_method,
+                quantize_awq
+            )
+        except ModuleNotFoundError as e:
+            print('Please install awq on an nvidia-machine to use the awq backend.')
+            exit(1)
 
 
 def main(args):
@@ -70,6 +84,13 @@ def main(args):
             llama_download_gguf_zephyr(args.quantization_mode, args.output_dir)
         llama_translate_config_to_model_config(args.config, args.output_dir,
                                                ignore_eos=args.ignore_eos)
+    elif args.backend == 'awq':
+        from convert_utils.awq_utils import (
+                decode_quant_method,
+                quantize_awq
+        )
+        quant_config = decode_quant_method(args.quantization_mode)
+        quantize_awq(args.model, args.output_dir, quant_config)
     else:
         raise ValueError(f'Invalid mode: {args.mode}')
 

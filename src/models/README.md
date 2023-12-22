@@ -25,7 +25,7 @@ options:
 Before you run the conversion script, you need to define the `MLC_HOME` or `LLAMA_CPP_HOME` env vars depending on the backend specified.
 
 ```
-usage: convert.py [-h] -m MODEL -d OUTPUT_DIR -b {mlc,ggml} -q QUANTIZATION_MODE [-t {android,ios,metal}] -c CONFIG [--ignore-eos] [-v]
+usage: convert.py [-h] -m MODEL -d OUTPUT_DIR -b {mlc,ggml,awq} -q QUANTIZATION_MODE [-t {android,ios,metal}] -c CONFIG [--ignore-eos] [-v]
 
 options:
   -h, --help            show this help message and exit
@@ -33,7 +33,7 @@ options:
                         Model name to download (should be in hf format.)
   -d OUTPUT_DIR, --output-dir OUTPUT_DIR
                         Directory to download the model to.
-  -b {mlc,ggml}, --backend {mlc,ggml}
+  -b {mlc,ggml,awq}, --backend {mlc,ggml,awq}
                         Backend to convert to.
   -q QUANTIZATION_MODE, --quantization-mode QUANTIZATION_MODE
                         Quantization mode to use.
@@ -44,3 +44,7 @@ options:
   --ignore-eos          Ignore EOS token (changes model config).
   -v, --verbose
 ```
+
+## Desiderata
+
+* For zephyr-3b, quantised weight when running convert are downloaded from TheBloke repository.
