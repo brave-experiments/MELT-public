@@ -29,7 +29,7 @@ def parse_args():
     args.add_argument('-q', '--quantization-mode', type=str, required=True,
                       help='Quantization mode to use.')
     args.add_argument('-t', '--target', type=str,
-                      choices=['android', 'ios', 'metal'],
+                      choices=['android', 'iphone', 'metal'],
                       help='Target to compile for.')
     args.add_argument('-c', '--config', type=str, required=False,
                       help='Path to config file.')
