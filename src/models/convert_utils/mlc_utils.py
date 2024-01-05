@@ -67,7 +67,6 @@ def convert_mlc(model_dir, args):
                  "--artifact-path", args.output_dir,
                  "--quantization", args.quantization_mode,
                  "--target", args.target,
-                 "--use-cache=0",
                  "--max-seq-len", f"{args.max_seq_length}"]
 
     if ('tinyllama' in model_name) or ('stablelm-zephyr' in model_name):
