@@ -112,6 +112,13 @@ def convert_ggml(model_dir, args):
         print(stdout.decode('utf-8'))
         print(stderr.decode('utf-8'))
 
+def convert_yaml_to_json_config(yamlconfig, jsonconfig):
+    print(f"Converting yaml config from {yamlconfig} to json config {jsonconfig}")
+    with open(yamlconfig, 'r') as f:
+        config = yaml.safe_load(f)
+
+    with open(jsonconfig, 'w') as f:
+        json.dump(config, f)
 
 def llama_download_gguf_zephyr(quantization_mode, output_dir):
     url_prefix = "https://huggingface.co/TheBloke/stablelm-zephyr-3b-GGUF/resolve/main"

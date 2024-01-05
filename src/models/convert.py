@@ -1,10 +1,12 @@
 import argparse
+import os
 
 from convert_utils.llama_utils import (
     llama_change_model_config_eos,
     llama_translate_config_to_model_config,
     convert_ggml,
     llama_download_gguf_zephyr,
+    convert_yaml_to_json_config,
     LLAMA_CPP_HOME
 )
 from convert_utils.mlc_utils import (
@@ -84,6 +86,7 @@ def main(args):
             llama_download_gguf_zephyr(args.quantization_mode, args.output_dir)
         llama_translate_config_to_model_config(args.config, args.output_dir,
                                                ignore_eos=args.ignore_eos)
+        convert_yaml_to_json_config(args.config, os.path.join(args.output_dir, 'model_config.json'))
     elif args.backend == 'awq':
         from convert_utils.awq_utils import (
                 decode_quant_method,
