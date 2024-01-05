@@ -1,3 +1,4 @@
+import glob
 import json
 import os
 import re
@@ -46,7 +47,7 @@ def mlc_translate_config_to_model_config(config_path, chat_config_path):
     model_config['max_gen_len'] = \
         config['generation'].get('max_gen_len', model_config['max_gen_len'])
     model_config['max_window_size'] = \
-        config['generation'].get('max_window_size', model_config['max_window_size'])
+        config['generation'].get('max_window_size', model_config.get('max_window_size', None))
     model_config['vocab_size'] = \
         config['generation'].get('vocab_size', model_config['vocab_size'])
 
@@ -80,7 +81,7 @@ def convert_mlc(model_dir, args):
     stdout, stderr = proc.communicate()
     regex = "Finish exporting chat config to (.*)"
     match = re.search(regex, stdout.decode('utf-8'))
-    chat_config_path = None
+    chat_config_path = glob.glob(os.path.join(args.output_dir, '**', 'params', 'mlc-chat-config.json'))[0]
     if match:
         chat_config_path = match.group(1)
     if args.verbose:
