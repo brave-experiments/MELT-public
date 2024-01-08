@@ -23,6 +23,7 @@ def main(args):
         target_path = os.path.join(args.download_dir, model_dir_name)
         model_path = snapshot_download(repo_id=model,
                                        local_dir=target_path,
+                                       cache_dir=os.environ.get('TRANSFORMERS_CACHE', None),
                                        force_download=args.force,
                                        token=args.token)
         print(f"-> Model {model} downloaded to {args.download_dir}/{model_path}.")
