@@ -46,8 +46,9 @@ def mlc_translate_config_to_model_config(config_path, chat_config_path):
         config['generation'].get('mean_gen_len', model_config['mean_gen_len'])
     model_config['max_gen_len'] = \
         config['generation'].get('max_gen_len', model_config['max_gen_len'])
-    model_config['max_window_size'] = \
-        config['generation'].get('max_window_size', model_config.get('max_window_size', None))
+    if 'max_window_size' in model_config:
+        model_config['max_window_size'] = \
+            config['generation'].get('max_window_size', model_config['max_window_size'])
     model_config['vocab_size'] = \
         config['generation'].get('vocab_size', model_config['vocab_size'])
 
