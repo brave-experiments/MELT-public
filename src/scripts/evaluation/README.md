@@ -22,7 +22,7 @@ git clone https://github.com/EleutherAI/lm-evaluation-harness
 pushd lm-evaluation-harness
 pip install -e .[gptq]
 popd
-pip install -r eval_requirements.txt
+pip install -r eval_requirements.txt # These requirements have been tested against python 3.9
 ```
 
 3. Run evaluations
