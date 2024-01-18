@@ -82,7 +82,8 @@ def convert_mlc(model_dir, args):
     stdout, stderr = proc.communicate()
     regex = "Finish exporting chat config to (.*)"
     match = re.search(regex, stdout.decode('utf-8'))
-    chat_config_path = glob.glob(os.path.join(args.output_dir, '**', 'params', 'mlc-chat-config.json'))[0]
+    chat_config = os.path.join(args.output_dir, '**', 'params', 'mlc-chat-config.json')
+    chat_config_path = glob.glob(chat_config)[0]
     if match:
         chat_config_path = match.group(1)
     if args.verbose:

@@ -10,9 +10,9 @@
 
 LLAMA_CPP_HOME=${LLAMA_CPP_HOME:-"$PWD/../../frameworks/llama.cpp/llama.cpp"}
 MLC_HOME=${MLC_HOME:-"$PWD/../../frameworks/MLC/mlc-llm"}
-MODELS_PATH=${MODELS_PATH:-"../../frameworks/MLC/mlc-llm/dist/models"}
+MODELS_PATH=${MODELS_PATH:-"../../melt_models"}
 CONFIGS_PATH=${CONFIGS_PATH:-"../configs/"}
-OUTPUT_PATH=${OUTPUT_PATH:-"/tmp/llm-models-converted"}
+OUTPUT_PATH=${OUTPUT_PATH:-"../../melt_models_converted"}
 
 ## LLAMA_CPP
 
