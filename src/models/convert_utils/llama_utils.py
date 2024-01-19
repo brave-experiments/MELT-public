@@ -77,6 +77,11 @@ def convert_ggml(model_dir, args):
                      model_dir,
                      "0",
                     "--outfile", gguf_model]
+    elif 'zephyr-3b' in model_name:
+        exec_path = os.path.join(LLAMA_CPP_HOME, 'convert-hf-to-gguf.py')
+        args_list = ["python", exec_path,
+                    "--outfile", gguf_model,
+                     model_dir,]
     else:
         args_list = ["python", exec_path,
                      "--outfile", gguf_model,
@@ -119,16 +124,3 @@ def convert_yaml_to_json_config(yamlconfig, jsonconfig):
 
     with open(jsonconfig, 'w') as f:
         json.dump(config, f)
-
-def llama_download_gguf_zephyr(quantization_mode, output_dir):
-    url_prefix = "https://huggingface.co/TheBloke/stablelm-zephyr-3b-GGUF/resolve/main"
-    url_suffix = f"stablelm-zephyr-3b.{quantization_mode.upper()}.gguf"
-    the_url = '/'.join([url_prefix, url_suffix])
-    outfile = os.path.join(output_dir, url_suffix)
-
-    if not os.path.isfile(outfile):
-        with open(outfile, 'wb') as f:
-            r = requests.get(the_url, stream=True, allow_redirects=True)
-            f.write(r.content)
-    else:
-        print("File exists. Skipping download.")
