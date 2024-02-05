@@ -62,7 +62,7 @@ def llama_translate_config_to_model_config(config_path, model_path, ignore_eos=F
 
 
 def convert_ggml(model_dir, args):
-    model_name = os.path.basename(model_dir).lower()
+    model_name = os.path.basename(model_dir)
     os.makedirs(args.output_dir, exist_ok=True)
     gguf_model = os.path.join(args.output_dir, model_name+".gguf")
     exec_path = os.path.join(LLAMA_CPP_HOME, 'convert.py')
