@@ -1,0 +1,181 @@
+\begin{tabular}{lllll}
+\toprule
+ &  &  &  & accuracy \\
+model & quantization & size\_in\_memory & dataset &  \\
+\midrule
+\multirow[t]{24}{*}{Llama-2-13b} & \multirow[t]{6}{*}{AWQ} & \multirow[t]{6}{*}{7.080000} & arc\_easy & 0.789600 \\
+ &  &  & hellaswag & 0.598100 \\
+ &  &  & truthfulqa & 0.304800 \\
+ &  &  & truthfulqa\_mc\_1 & 0.252100 \\
+ &  &  & truthfulqa\_mc\_2 & 0.357500 \\
+ &  &  & winogrande & 0.729300 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{6}{*}{GPTQ} & \multirow[t]{6}{*}{7.090000} & arc\_easy & 0.787000 \\
+ &  &  & hellaswag & 0.595200 \\
+ &  &  & truthfulqa & 0.306400 \\
+ &  &  & truthfulqa\_mc\_1 & 0.252100 \\
+ &  &  & truthfulqa\_mc\_2 & 0.360700 \\
+ &  &  & winogrande & 0.721400 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{6}{*}{None} & \multirow[t]{6}{*}{25.030000} & arc\_easy & 0.794600 \\
+ &  &  & hellaswag & 0.600600 \\
+ &  &  & truthfulqa & 0.314300 \\
+ &  &  & truthfulqa\_mc\_1 & 0.259500 \\
+ &  &  & truthfulqa\_mc\_2 & 0.369000 \\
+ &  &  & winogrande & 0.722200 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{6}{*}{q4\_k} & \multirow[t]{6}{*}{7.330000} & arc\_easy & 0.789100 \\
+ &  &  & hellaswag & 0.601100 \\
+ &  &  & truthfulqa & 0.305600 \\
+ &  &  & truthfulqa\_mc\_1 & 0.248500 \\
+ &  &  & truthfulqa\_mc\_2 & 0.362700 \\
+ &  &  & winogrande & 0.722200 \\
+\cline{1-5} \cline{2-5} \cline{3-5}
+\multirow[t]{38}{*}{Llama-2-7b} & \multirow[t]{6}{*}{AWQ} & \multirow[t]{6}{*}{3.820000} & arc\_easy & 0.751700 \\
+ &  &  & hellaswag & 0.564800 \\
+ &  &  & truthfulqa & 0.326900 \\
+ &  &  & truthfulqa\_mc\_1 & 0.260700 \\
+ &  &  & truthfulqa\_mc\_2 & 0.393200 \\
+ &  &  & winogrande & 0.696900 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{6}{*}{GPTQ} & \multirow[t]{6}{*}{3.820000} & arc\_easy & 0.749200 \\
+ &  &  & hellaswag & 0.560300 \\
+ &  &  & truthfulqa & 0.318700 \\
+ &  &  & truthfulqa\_mc\_1 & 0.246000 \\
+ &  &  & truthfulqa\_mc\_2 & 0.391400 \\
+ &  &  & winogrande & 0.683500 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{8}{*}{None} & \multirow[t]{8}{*}{12.550000} & arc\_challenge & 0.459000 \\
+ &  &  & arc\_easy & 2.271700 \\
+ &  &  & hellaswag & 1.343400 \\
+ &  &  & truthfulqa & 0.320900 \\
+ &  &  & truthfulqa\_mc & 0.332900 \\
+ &  &  & truthfulqa\_mc\_1 & 0.252100 \\
+ &  &  & truthfulqa\_mc\_2 & 0.389700 \\
+ &  &  & winogrande & 2.080300 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{6}{*}{q3\_k} & \multirow[t]{6}{*}{3.070000} & arc\_easy & 0.746600 \\
+ &  &  & hellaswag & 0.560800 \\
+ &  &  & truthfulqa & 0.340700 \\
+ &  &  & truthfulqa\_mc\_1 & 0.269300 \\
+ &  &  & truthfulqa\_mc\_2 & 0.412200 \\
+ &  &  & winogrande & 0.676400 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{6}{*}{q4\_0} & \multirow[t]{6}{*}{3.560000} & arc\_easy & 0.755900 \\
+ &  &  & hellaswag & 0.566800 \\
+ &  &  & truthfulqa & 0.322100 \\
+ &  &  & truthfulqa\_mc\_1 & 0.257000 \\
+ &  &  & truthfulqa\_mc\_2 & 0.387300 \\
+ &  &  & winogrande & 0.687500 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{6}{*}{q4\_k} & \multirow[t]{6}{*}{3.800000} & arc\_easy & 0.754200 \\
+ &  &  & hellaswag & 0.566800 \\
+ &  &  & truthfulqa & 0.328000 \\
+ &  &  & truthfulqa\_mc\_1 & 0.257000 \\
+ &  &  & truthfulqa\_mc\_2 & 0.399100 \\
+ &  &  & winogrande & 0.689800 \\
+\cline{1-5} \cline{2-5} \cline{3-5}
+\multirow[t]{38}{*}{Mistral-7b-v0.1} & \multirow[t]{6}{*}{AWQ} & \multirow[t]{6}{*}{4.470000} & arc\_easy & 0.802200 \\
+ &  &  & hellaswag & 0.606500 \\
+ &  &  & truthfulqa & 0.340800 \\
+ &  &  & truthfulqa\_mc\_1 & 0.269300 \\
+ &  &  & truthfulqa\_mc\_2 & 0.412300 \\
+ &  &  & winogrande & 0.745100 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{6}{*}{GPTQ} & \multirow[t]{6}{*}{4.470000} & arc\_easy & 0.790800 \\
+ &  &  & hellaswag & 0.585200 \\
+ &  &  & truthfulqa & 0.345200 \\
+ &  &  & truthfulqa\_mc\_1 & 0.272900 \\
+ &  &  & truthfulqa\_mc\_2 & 0.417500 \\
+ &  &  & winogrande & 0.712700 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{8}{*}{None} & \multirow[t]{8}{*}{13.490000} & arc\_challenge & 0.555000 \\
+ &  &  & arc\_easy & 1.608900 \\
+ &  &  & hellaswag & 1.425700 \\
+ &  &  & truthfulqa & 0.353900 \\
+ &  &  & truthfulqa\_mc & None \\
+ &  &  & truthfulqa\_mc\_1 & 0.281500 \\
+ &  &  & truthfulqa\_mc\_2 & 0.426400 \\
+ &  &  & winogrande & 1.491000 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{6}{*}{q3\_k} & \multirow[t]{6}{*}{3.280000} & arc\_easy & 0.790400 \\
+ &  &  & hellaswag & 0.605400 \\
+ &  &  & truthfulqa & 0.336800 \\
+ &  &  & truthfulqa\_mc\_1 & 0.261900 \\
+ &  &  & truthfulqa\_mc\_2 & 0.411700 \\
+ &  &  & winogrande & 0.731600 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{6}{*}{q4\_0} & \multirow[t]{6}{*}{3.830000} & arc\_easy & 0.806400 \\
+ &  &  & hellaswag & 0.615600 \\
+ &  &  & truthfulqa & 0.344200 \\
+ &  &  & truthfulqa\_mc\_1 & 0.270500 \\
+ &  &  & truthfulqa\_mc\_2 & 0.417900 \\
+ &  &  & winogrande & 0.741900 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{6}{*}{q4\_k} & \multirow[t]{6}{*}{4.070000} & arc\_easy & 0.796700 \\
+ &  &  & hellaswag & 0.612300 \\
+ &  &  & truthfulqa & 0.354700 \\
+ &  &  & truthfulqa\_mc\_1 & 0.282700 \\
+ &  &  & truthfulqa\_mc\_2 & 0.426800 \\
+ &  &  & winogrande & 0.746600 \\
+\cline{1-5} \cline{2-5} \cline{3-5}
+\multirow[t]{24}{*}{TinyLlama-1.1B-v0.5} & \multirow[t]{6}{*}{None} & \multirow[t]{6}{*}{4.100000} & arc\_easy & 1.164100 \\
+ &  &  & hellaswag & 0.911600 \\
+ &  &  & truthfulqa & 0.600800 \\
+ &  &  & truthfulqa\_mc\_1 & 0.444300 \\
+ &  &  & truthfulqa\_mc\_2 & 0.757400 \\
+ &  &  & winogrande & 1.188600 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{6}{*}{q3\_k} & \multirow[t]{6}{*}{0.520000} & arc\_easy & 0.559800 \\
+ &  &  & hellaswag & 0.441600 \\
+ &  &  & truthfulqa & 0.291900 \\
+ &  &  & truthfulqa\_mc\_1 & 0.208100 \\
+ &  &  & truthfulqa\_mc\_2 & 0.375700 \\
+ &  &  & winogrande & 0.588000 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{6}{*}{q4\_0} & \multirow[t]{6}{*}{0.600000} & arc\_easy & 0.569900 \\
+ &  &  & hellaswag & 0.448700 \\
+ &  &  & truthfulqa & 0.322100 \\
+ &  &  & truthfulqa\_mc\_1 & 0.242400 \\
+ &  &  & truthfulqa\_mc\_2 & 0.401800 \\
+ &  &  & winogrande & 0.577000 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{6}{*}{q4\_k} & \multirow[t]{6}{*}{0.630000} & arc\_easy & 0.569900 \\
+ &  &  & hellaswag & 0.444500 \\
+ &  &  & truthfulqa & 0.292300 \\
+ &  &  & truthfulqa\_mc\_1 & 0.215400 \\
+ &  &  & truthfulqa\_mc\_2 & 0.369200 \\
+ &  &  & winogrande & 0.582500 \\
+\cline{1-5} \cline{2-5} \cline{3-5}
+\multirow[t]{25}{*}{Zephyr-3b} & \multirow[t]{5}{*}{GPTQ} & \multirow[t]{5}{*}{1.760000} & arc\_easy & 0.674700 \\
+ &  &  & truthfulqa & 0.400200 \\
+ &  &  & truthfulqa\_mc\_1 & 0.328000 \\
+ &  &  & truthfulqa\_mc\_2 & 0.472400 \\
+ &  &  & winogrande & 0.627500 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{5}{*}{None} & \multirow[t]{5}{*}{5.370000} & arc\_easy & 0.670000 \\
+ &  &  & truthfulqa & 0.297900 \\
+ &  &  & truthfulqa\_mc\_1 & 0.299900 \\
+ &  &  & truthfulqa\_mc\_2 & 0.457500 \\
+ &  &  & winogrande & 0.637700 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{5}{*}{q3\_k} & \multirow[t]{5}{*}{1.290000} & arc\_easy & 0.655700 \\
+ &  &  & truthfulqa & 0.291900 \\
+ &  &  & truthfulqa\_mc\_1 & 0.292500 \\
+ &  &  & truthfulqa\_mc\_2 & 0.435000 \\
+ &  &  & winogrande & 0.638500 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{5}{*}{q4\_0} & \multirow[t]{5}{*}{1.500000} & arc\_easy & 0.657000 \\
+ &  &  & truthfulqa & 0.322100 \\
+ &  &  & truthfulqa\_mc\_1 & 0.303500 \\
+ &  &  & truthfulqa\_mc\_2 & 0.464900 \\
+ &  &  & winogrande & 0.639300 \\
+\cline{2-5} \cline{3-5}
+ & \multirow[t]{5}{*}{q4\_k} & \multirow[t]{5}{*}{1.590000} & arc\_easy & 0.654500 \\
+ &  &  & truthfulqa & 0.292300 \\
+ &  &  & truthfulqa\_mc\_1 & 0.308400 \\
+ &  &  & truthfulqa\_mc\_2 & 0.455700 \\
+ &  &  & winogrande & 0.627500 \\
+\cline{1-5} \cline{2-5} \cline{3-5}
+\bottomrule
+\end{tabular}

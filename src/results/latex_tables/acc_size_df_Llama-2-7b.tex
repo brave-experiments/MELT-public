@@ -1,0 +1,51 @@
+\begin{tabular}{llll}
+\toprule
+ &  &  & accuracy \\
+quantization & size\_in\_memory & dataset &  \\
+\midrule
+\multirow[t]{6}{*}{AWQ} & \multirow[t]{6}{*}{3.82} & arc\_easy & 0.75 \\
+ &  & hellaswag & 0.56 \\
+ &  & truthfulqa & 0.33 \\
+ &  & truthfulqa\_mc\_1 & 0.26 \\
+ &  & truthfulqa\_mc\_2 & 0.39 \\
+ &  & winogrande & 0.70 \\
+\cline{1-4} \cline{2-4}
+\multirow[t]{6}{*}{GPTQ} & \multirow[t]{6}{*}{3.82} & arc\_easy & 0.75 \\
+ &  & hellaswag & 0.56 \\
+ &  & truthfulqa & 0.32 \\
+ &  & truthfulqa\_mc\_1 & 0.25 \\
+ &  & truthfulqa\_mc\_2 & 0.39 \\
+ &  & winogrande & 0.68 \\
+\cline{1-4} \cline{2-4}
+\multirow[t]{8}{*}{None} & \multirow[t]{8}{*}{12.55} & arc\_challenge & 0.46 \\
+ &  & arc\_easy & 2.27 \\
+ &  & hellaswag & 1.34 \\
+ &  & truthfulqa & 0.32 \\
+ &  & truthfulqa\_mc & 0.33 \\
+ &  & truthfulqa\_mc\_1 & 0.25 \\
+ &  & truthfulqa\_mc\_2 & 0.39 \\
+ &  & winogrande & 2.08 \\
+\cline{1-4} \cline{2-4}
+\multirow[t]{6}{*}{q3\_k} & \multirow[t]{6}{*}{3.07} & arc\_easy & 0.75 \\
+ &  & hellaswag & 0.56 \\
+ &  & truthfulqa & 0.34 \\
+ &  & truthfulqa\_mc\_1 & 0.27 \\
+ &  & truthfulqa\_mc\_2 & 0.41 \\
+ &  & winogrande & 0.68 \\
+\cline{1-4} \cline{2-4}
+\multirow[t]{6}{*}{q4\_0} & \multirow[t]{6}{*}{3.56} & arc\_easy & 0.76 \\
+ &  & hellaswag & 0.57 \\
+ &  & truthfulqa & 0.32 \\
+ &  & truthfulqa\_mc\_1 & 0.26 \\
+ &  & truthfulqa\_mc\_2 & 0.39 \\
+ &  & winogrande & 0.69 \\
+\cline{1-4} \cline{2-4}
+\multirow[t]{6}{*}{q4\_k} & \multirow[t]{6}{*}{3.80} & arc\_easy & 0.75 \\
+ &  & hellaswag & 0.57 \\
+ &  & truthfulqa & 0.33 \\
+ &  & truthfulqa\_mc\_1 & 0.26 \\
+ &  & truthfulqa\_mc\_2 & 0.40 \\
+ &  & winogrande & 0.69 \\
+\cline{1-4} \cline{2-4}
+\bottomrule
+\end{tabular}

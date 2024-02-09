@@ -1,0 +1,35 @@
+\begin{tabular}{llll}
+\toprule
+ &  &  & accuracy \\
+quantization & size\_in\_memory & dataset &  \\
+\midrule
+\multirow[t]{6}{*}{AWQ} & \multirow[t]{6}{*}{7.08} & arc\_easy & 0.79 \\
+ &  & hellaswag & 0.60 \\
+ &  & truthfulqa & 0.30 \\
+ &  & truthfulqa\_mc\_1 & 0.25 \\
+ &  & truthfulqa\_mc\_2 & 0.36 \\
+ &  & winogrande & 0.73 \\
+\cline{1-4} \cline{2-4}
+\multirow[t]{6}{*}{GPTQ} & \multirow[t]{6}{*}{7.09} & arc\_easy & 0.79 \\
+ &  & hellaswag & 0.60 \\
+ &  & truthfulqa & 0.31 \\
+ &  & truthfulqa\_mc\_1 & 0.25 \\
+ &  & truthfulqa\_mc\_2 & 0.36 \\
+ &  & winogrande & 0.72 \\
+\cline{1-4} \cline{2-4}
+\multirow[t]{6}{*}{None} & \multirow[t]{6}{*}{25.03} & arc\_easy & 0.79 \\
+ &  & hellaswag & 0.60 \\
+ &  & truthfulqa & 0.31 \\
+ &  & truthfulqa\_mc\_1 & 0.26 \\
+ &  & truthfulqa\_mc\_2 & 0.37 \\
+ &  & winogrande & 0.72 \\
+\cline{1-4} \cline{2-4}
+\multirow[t]{6}{*}{q4\_k} & \multirow[t]{6}{*}{7.33} & arc\_easy & 0.79 \\
+ &  & hellaswag & 0.60 \\
+ &  & truthfulqa & 0.31 \\
+ &  & truthfulqa\_mc\_1 & 0.25 \\
+ &  & truthfulqa\_mc\_2 & 0.36 \\
+ &  & winogrande & 0.72 \\
+\cline{1-4} \cline{2-4}
+\bottomrule
+\end{tabular}
