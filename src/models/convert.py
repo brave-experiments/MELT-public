@@ -32,6 +32,8 @@ def parse_args():
                       help='Target to compile for.')
     args.add_argument('-c', '--config', type=str, required=False,
                       help='Path to config file.')
+    args.add_argument('--only-config', action='store_true',
+                      help='Produce only the config file')
     args.add_argument('--ignore-eos', action='store_true',
                       help='Ignore EOS token (changes model config).')
     args.add_argument('-v', '--verbose', action='store_true',)
@@ -66,19 +68,22 @@ def validate_args(args):
 
 def main(args):
     if args.backend == 'mlc':
+        if args.only_config:
+            raise NotImplementedError('Only config is only supported for ggml.')
         args.max_seq_length = mlc_get_max_length(args.config)
         chat_config_path = convert_mlc(args.model, args)
         if chat_config_path and args.ignore_eos:
             mlc_change_model_template_eos(chat_config_path)
         mlc_translate_config_to_model_config(args.config, chat_config_path)
     elif args.backend == 'ggml':
-        previous_eos = None
-        if args.ignore_eos:
-            previous_eos = llama_change_model_config_eos(args.model, 2335)
-        convert_ggml(args.model, args)
+        if not args.only_config:
+            previous_eos = None
+            if args.ignore_eos:
+                previous_eos = llama_change_model_config_eos(args.model, 2335)
+            convert_ggml(args.model, args)
         if args.ignore_eos:  # revert it back for indepotence
             llama_change_model_config_eos(args.model,
-                                            previous_eos)
+                                          previous_eos)
         llama_translate_config_to_model_config(args.config, args.output_dir,
                                                ignore_eos=args.ignore_eos)
         convert_yaml_to_json_config(args.config, os.path.join(args.output_dir, 'model_config.json'))
