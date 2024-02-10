@@ -12,6 +12,7 @@ sampling:
 generation:
   mean_gen_len: 128  # Applicable to mlc only
   max_gen_len: 16384
+  max_window_size: 16384
   vocab_size: 32000  # Applicable to mlc only
 prompt:  # Used in llama.cpp, taken from mlc
   text: "\"<s>\""
