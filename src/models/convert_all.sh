@@ -16,36 +16,36 @@ OUTPUT_PATH=${OUTPUT_PATH:-"../../melt_models_converted"}
 
 ## LLAMA_CPP
 
-for QUANT in q3_k q4_k; do
+for QUANT in q4_0 q3_k q4_k f32; do
     LLAMA_CPP_HOME=$LLAMA_CPP_HOME python convert.py --model ${MODELS_PATH}/TinyLlama_TinyLlama-1.1B-Chat-v0.5 -b ggml -q $QUANT -t metal -v -d $OUTPUT_PATH/TinyLlama_TinyLlama-1.1B-Chat-v0.5 -c ${CONFIGS_PATH}/tinyllama-1.1b-chat-v0.5.yaml
     LLAMA_CPP_HOME=$LLAMA_CPP_HOME python convert.py --model ${MODELS_PATH}/stabilityai_stablelm-zephyr-3b -b ggml -q $QUANT -t metal -v -d $OUTPUT_PATH/stabilityai_stablelm-zephyr-3b -c ${CONFIGS_PATH}/stablelm-zephyr-3b.yaml
     LLAMA_CPP_HOME=$LLAMA_CPP_HOME python convert.py --model ${MODELS_PATH}/mistralai_Mistral-7B-Instruct-v0.1 -b ggml -q $QUANT -t metal -v -d $OUTPUT_PATH/mistralai_Mistral-7B-Instruct-v0.1 -c ${CONFIGS_PATH}/mistral-7b-instruct-v0.1.yaml
-    LLAMA_CPP_HOME=$LLAMA_CPP_HOME python convert.py --model ${MODELS_PATH}/Llama-2-7b-chat-hf -b ggml -q $QUANT -t metal -v -d $OUTPUT_PATH/Llama-2-7b-chat-hf -c ${CONFIGS_PATH}/llama-2-7b-chat-hf.yaml
-    LLAMA_CPP_HOME=$LLAMA_CPP_HOME python convert.py --model ${MODELS_PATH}/Llama-2-13b-chat-hf -b ggml -q $QUANT -t metal -v -d $OUTPUT_PATH/Llama-2-13b-chat-hf -c ${CONFIGS_PATH}/llama-2-13b-chat-hf.yaml
+    LLAMA_CPP_HOME=$LLAMA_CPP_HOME python convert.py --model ${MODELS_PATH}/meta-llama_Llama-2-7b-chat-hf -b ggml -q $QUANT -t metal -v -d $OUTPUT_PATH/meta-llama_Llama-2-7b-chat-hf -c ${CONFIGS_PATH}/llama-2-7b-chat-hf.yaml
+    LLAMA_CPP_HOME=$LLAMA_CPP_HOME python convert.py --model ${MODELS_PATH}/Llama-2-13b-chat-hf -b ggml -q $QUANT -t metal -v -d $OUTPUT_PATH/meta-llama_Llama-2-13b-chat-hf -c ${CONFIGS_PATH}/llama-2-13b-chat-hf.yaml
     LLAMA_CPP_HOME=$LLAMA_CPP_HOME python convert.py --model ${MODELS_PATH}/starcoder -b ggml -q $QUANT -t metal -v -d $OUTPUT_PATH/starcoder -c ${CONFIGS_PATH}/starcoder-bigcode.yaml
 done
 
 ## MLC_LLM
 
 for QUANT in q3f16_1 q4f16_1 q0f32; do
-    for BACKEND in metal iphone android cuda; do
+   for BACKEND in metal iphone android cuda; do
 
-    if [ $BACKEND = 'cuda' ]; then
-        EXTRA_COMPILE_ARGS="--use-cuda-graph --use-flash-attn-mqa"
-    else
-        EXTRA_COMPILE_ARGS=""
-    fi
+   if [ $BACKEND = 'cuda' ]; then
+       EXTRA_COMPILE_ARGS="--use-cuda-graph --use-flash-attn-mqa"
+   else
+       EXTRA_COMPILE_ARGS=""
+   fi
 
-    MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/TinyLlama_TinyLlama-1.1B-Chat-v0.5 -b mlc -q $QUANT -t $BACKEND -v -d $OUTPUT_PATH/TinyLlama_TinyLlama-1.1B-Chat-v0.5 -c ${CONFIGS_PATH}/tinyllama-1.1b-chat-v0.5.yaml $EXTRA_COMPILE_ARGS
-    if [ $QUANT = "q0f32"];then
-        MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/stabilityai_stablelm-zephyr-3b -b mlc -q q0f16 -t $BACKEND -v -d $OUTPUT_PATH/stabilityai_stablelm-zephyr-3b -c ${CONFIGS_PATH}/stablelm-zephyr-3b.yaml $EXTRA_COMPILE_ARGS
-    else
-        MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/stabilityai_stablelm-zephyr-3b -b mlc -q $QUANT -t $BACKEND -v -d $OUTPUT_PATH/stabilityai_stablelm-zephyr-3b -c ${CONFIGS_PATH}/stablelm-zephyr-3b.yaml $EXTRA_COMPILE_ARGS
-    fi
-        MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/mistralai_Mistral-7B-Instruct-v0.1 -b mlc -q $QUANT -t $BACKEND -v -d $OUTPUT_PATH/mistralai_Mistral-7B-Instruct-v0.1 -c ${CONFIGS_PATH}/mistral-7b-instruct-v0.1.yaml $EXTRA_COMPILE_ARGS
-    MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/Llama-2-7b-chat-hf -b mlc -q $QUANT -t $BACKEND -v -d $OUTPUT_PATH/Llama-2-7b-chat-hf -c ${CONFIGS_PATH}/llama-2-7b-chat-hf.yaml $EXTRA_COMPILE_ARGS
-    MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/Llama-2-13b-chat-hf -b mlc -q $QUANT -t $BACKEND -v -d $OUTPUT_PATH/Llama-2-13b-chat-hf -c ${CONFIGS_PATH}/llama-2-13b-chat-hf.yaml $EXTRA_COMPILE_ARGS
-    MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/starcoder -b mlc -q $QUANT -t $BACKEND -v -d $OUTPUT_PATH/starcoder -c ${CONFIGS_PATH}/starcoder-bigcode.yaml $EXTRA_COMPILE_ARGS
+   MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/TinyLlama_TinyLlama-1.1B-Chat-v0.5 -b mlc -q $QUANT -t $BACKEND -v -d $OUTPUT_PATH/TinyLlama_TinyLlama-1.1B-Chat-v0.5 -c ${CONFIGS_PATH}/tinyllama-1.1b-chat-v0.5.yaml $EXTRA_COMPILE_ARGS
+   if [ $QUANT = "q0f32"];then
+       MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/stabilityai_stablelm-zephyr-3b -b mlc -q q0f16 -t $BACKEND -v -d $OUTPUT_PATH/stabilityai_stablelm-zephyr-3b -c ${CONFIGS_PATH}/stablelm-zephyr-3b.yaml $EXTRA_COMPILE_ARGS
+   else
+       MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/stabilityai_stablelm-zephyr-3b -b mlc -q $QUANT -t $BACKEND -v -d $OUTPUT_PATH/stabilityai_stablelm-zephyr-3b -c ${CONFIGS_PATH}/stablelm-zephyr-3b.yaml $EXTRA_COMPILE_ARGS
+   fi
+       MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/mistralai_Mistral-7B-Instruct-v0.1 -b mlc -q $QUANT -t $BACKEND -v -d $OUTPUT_PATH/mistralai_Mistral-7B-Instruct-v0.1 -c ${CONFIGS_PATH}/mistral-7b-instruct-v0.1.yaml $EXTRA_COMPILE_ARGS
+   MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/Llama-2-7b-chat-hf -b mlc -q $QUANT -t $BACKEND -v -d $OUTPUT_PATH/Llama-2-7b-chat-hf -c ${CONFIGS_PATH}/llama-2-7b-chat-hf.yaml $EXTRA_COMPILE_ARGS
+   MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/Llama-2-13b-chat-hf -b mlc -q $QUANT -t $BACKEND -v -d $OUTPUT_PATH/Llama-2-13b-chat-hf -c ${CONFIGS_PATH}/llama-2-13b-chat-hf.yaml $EXTRA_COMPILE_ARGS
+   MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/starcoder -b mlc -q $QUANT -t $BACKEND -v -d $OUTPUT_PATH/starcoder -c ${CONFIGS_PATH}/starcoder-bigcode.yaml $EXTRA_COMPILE_ARGS
 
-    done
+   done
 done
