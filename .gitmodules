@@ -13,3 +13,6 @@
 [submodule "frameworks/llama.cpp/LLMFarmEval"]
 	path = frameworks/llama.cpp/LLMFarmEval
 	url = git@github.com:brave-experiments/LLMFarmEval
+[submodule "jetsonlab"]
+	path = jetsonlab
+	url = git@github.com:brave-experiments/jetsonlab.git
