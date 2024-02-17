@@ -15,7 +15,7 @@ generation:
   max_window_size: 16384
   vocab_size: 32000  # Applicable to mlc only
 prompt:  # Used in llama.cpp, taken from mlc
-  text: "\"<s>\""
+  text: "\"<s>Always assist with care, respect, and truth. Respond with utmost utility yet securely. Avoid harmful, unethical, prejudiced, or negative content. Ensure replies promote fairness and positivity.\\n\""
   in_prefix: "\"[INST]\""
   in_suffix: "\"[/INST]\""
   reverse: "\"[INST]\""
