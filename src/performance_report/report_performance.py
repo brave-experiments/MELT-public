@@ -5,6 +5,7 @@ import os
 import argparse
 import glob
 import re
+import json
 
 import pandas as pd
 
@@ -203,8 +204,6 @@ def compute_llamacpp_performance_metrics(filepath_csv, filepath_txt, iteration, 
 
 def compute_mlc_performance_metrics(filepath_csv, filepath_txt, iteration, conversation, mdf):
 
-    # TODO: refactor to support an MLC .txt file
-
     # this is the measurements equivalent file for LlamaCpp (but in csv format)
     df = load_ts_data(filepath_csv)
 
@@ -216,13 +215,20 @@ def compute_mlc_performance_metrics(filepath_csv, filepath_txt, iteration, conve
     load_model_list = []
 
     # Read all relevant timings
-    TOTAL_STATS_LINES_PER_PROMPT = 5
-    llama_cpp_stats = []
-    regex = "llama_print_timings:.*"
-    for line in txt_lines:
-        if re.match(regex, line):
-            llama_cpp_stats.append(line)
-    first_idx = (len(llama_cpp_stats) // TOTAL_STATS_LINES_PER_PROMPT - (len(df) - 1)) * TOTAL_STATS_LINES_PER_PROMPT
+    TOTAL_STATS_LINES_PER_PROMPT = 12
+
+    # find idx of all /stats jsons
+    json_idxs = []
+    for idx, line in enumerate(txt_lines):
+        if "[INST]: /stats" in line:
+            json_idxs.append(idx + 1)
+    
+    # parse jsons
+    mlc_stats = []
+    for idx in json_idxs:
+        json_str = "".join(txt_lines[idx:idx+TOTAL_STATS_LINES_PER_PROMPT])
+        stats = json.loads(json_str)
+        mlc_stats.append(stats)
 
     for start_time, row in df.iterrows():
 
@@ -254,21 +260,28 @@ def compute_mlc_performance_metrics(filepath_csv, filepath_txt, iteration, conve
         else:
             # get prompt index
             prompt_idx = df.index.get_loc(start_time) - 1  # 1st is always 'load_model' event
-            real_idx = first_idx + prompt_idx * TOTAL_STATS_LINES_PER_PROMPT
 
             # get relevant metrics from txt file
-            stats = llama_cpp_stats[real_idx:real_idx+TOTAL_STATS_LINES_PER_PROMPT]
+            # TODO: its fixed to 0 because of a bug in the data collection
+            stats = mlc_stats[0]
 
             # example stats:
-            # llama_print_timings:        load time =     525.17 ms
-            # llama_print_timings:      sample time =       4.28 ms /    21 runs   (    0.20 ms per token,  4909.98 tokens per second)
-            # llama_print_timings: prompt eval time =    2501.52 ms /    51 tokens (   49.05 ms per token,    20.39 tokens per second)
-            # llama_print_timings:        eval time =    1041.43 ms /    20 runs   (   52.07 ms per token,    19.20 tokens per second)
-            # llama_print_timings:       total time =   11653.83 ms
+            # {
+            # 	"prefill": {
+            # 		"throughput": "283.4 tok/s",
+            # 		"total tokens": "47 tok",
+            # 		"total time": "0.2 s"
+            # 	},
+            # 	"decode": {
+            # 		"throughput": "22.7 tok/s",
+            # 		"total tokens": "255 tok",
+            # 		"total time": "11.3 s"
+            # 	}
+            # }
             original_session_tokens = -1  # TODO check
-            input_tokens = int(__get_value_from_string(stats[2], "tokens (", "/"))  # 51 tokens
-            output_tokens = int(__get_value_from_string(stats[3], "runs", "/"))  # 20 tokens
-            tps = float(__get_value_from_string(stats[2], "tokens per second", ","))  # 20.39 tokens per second
+            input_tokens = int(stats["prefill"]["total tokens"].replace("tok", ""))
+            output_tokens = int(stats["decode"]["total tokens"].replace("tok", ""))
+            tps = float(stats["decode"]["throughput"].replace("tok/s", ""))
 
             entry = {
                 "iteration": iteration,
