@@ -97,7 +97,113 @@ def load_ts_data(filepath):
     return df
 
 
+def check_app_type(filepath):
+
+    # if first line has substring "main" then it is LlamaCpp. If it has "mlc" then it is MLC.
+    with open (filepath, encoding='utf-8') as file:
+        first_line = file.readline()
+        if "main" in first_line:
+            return "llamacpp"
+
+        elif "mlc" in first_line:
+            return "mlc"
+
+        else:
+            sys.exit(f"Error: Could not infer application type from '{filepath}'.")
+
+
 def compute_llamacpp_performance_metrics(filepath_csv, filepath_txt, iteration, conversation, mdf):
+
+    # this is the measurements equivalent file for LlamaCpp (but in csv format)
+    df = load_ts_data(filepath_csv)
+
+    # load txt
+    with open(filepath_txt, encoding='utf-8') as f:
+        txt_lines = f.readlines()
+
+    records_list = []
+    load_model_list = []
+
+    # Read all relevant timings
+    TOTAL_STATS_LINES_PER_PROMPT = 5
+    llama_cpp_stats = []
+    regex = "llama_print_timings:.*"
+    for line in txt_lines:
+        if re.match(regex, line):
+            llama_cpp_stats.append(line)
+    first_idx = (len(llama_cpp_stats) // TOTAL_STATS_LINES_PER_PROMPT - (len(df) - 1)) * TOTAL_STATS_LINES_PER_PROMPT
+
+    for start_time, row in df.iterrows():
+
+        # properties
+        duration = row.duration
+        end_time = start_time + duration
+
+        # power consumption
+        df_trimmed = mdf[(mdf.timestamp > start_time) & (mdf.timestamp < end_time)]
+
+        # all columns starting with current, removing "current_" prefix and " (mA)" postfix, e.g., 'current_VDD_GPU_SOC (mA)' to 'VDD_GPU_SOC'
+        relevant_power_events = [column.replace("current_", "").replace(" (mA)", "") for column in df_trimmed.columns if column.startswith("current_")]
+
+        if row.state == "load_model":
+            entry = {
+                "iteration": iteration,
+                "conversation": conversation,
+                "duration (sec)": duration,
+            }
+
+            for power_event in relevant_power_events:
+                df_trimmed_current_events = df_trimmed[df_trimmed["event"] == f"current_{power_event} (mA)"]
+                total_energy, total_discharge = compute_power_performance(df_trimmed_current_events, f"current_{power_event} (mA)", f"voltage_{power_event} (V)")
+                entry[f"energy {power_event} (mWh)"] = total_energy
+                entry[f"discharge {power_event} (mAh)"] = total_discharge
+
+            load_model_list.append(entry)
+
+        else:
+            # get prompt index
+            prompt_idx = df.index.get_loc(start_time) - 1  # 1st is always 'load_model' event
+            real_idx = first_idx + prompt_idx * TOTAL_STATS_LINES_PER_PROMPT
+
+            # get relevant metrics from txt file
+            stats = llama_cpp_stats[real_idx:real_idx+TOTAL_STATS_LINES_PER_PROMPT]
+
+            # example stats:
+            # llama_print_timings:        load time =     525.17 ms
+            # llama_print_timings:      sample time =       4.28 ms /    21 runs   (    0.20 ms per token,  4909.98 tokens per second)
+            # llama_print_timings: prompt eval time =    2501.52 ms /    51 tokens (   49.05 ms per token,    20.39 tokens per second)
+            # llama_print_timings:        eval time =    1041.43 ms /    20 runs   (   52.07 ms per token,    19.20 tokens per second)
+            # llama_print_timings:       total time =   11653.83 ms
+            original_session_tokens = -1  # TODO check
+            input_tokens = int(__get_value_from_string(stats[2], "tokens (", "/"))  # 51 tokens
+            output_tokens = int(__get_value_from_string(stats[3], "runs", "/"))  # 20 tokens
+            tps = float(__get_value_from_string(stats[2], "tokens per second", ","))  # 20.39 tokens per second
+
+            entry = {
+                "iteration": iteration,
+                "conversation": conversation,
+                "prompt": prompt_idx,
+                "duration (sec)": duration,
+                "original_session_tokens": original_session_tokens,
+                "input_tokens": input_tokens,
+                "output_tokens": output_tokens,
+                "tps": tps,
+            }
+
+            for power_event in relevant_power_events:
+                df_trimmed_current_events = df_trimmed[df_trimmed["event"] == f"current_{power_event} (mA)"]
+                total_energy, total_discharge = compute_power_performance(df_trimmed_current_events, f"current_{power_event} (mA)", f"voltage_{power_event} (V)")
+                entry[f"energy_pt {power_event} (mWh)"] = total_energy / output_tokens
+                entry[f"discharge_pt {power_event} (mAh)"] = total_discharge / output_tokens
+
+            records_list.append(entry)
+
+    return pd.DataFrame.from_records(load_model_list), pd.DataFrame.from_records(records_list)
+
+
+def compute_mlc_performance_metrics(filepath_csv, filepath_txt, iteration, conversation, mdf):
+
+    # TODO: refactor to support an MLC .txt file
 
     # this is the measurements equivalent file for LlamaCpp (but in csv format)
     df = load_ts_data(filepath_csv)
@@ -270,8 +376,6 @@ def main(args):
 
         energy = load_energy_metrics(filepath_log)
 
-        # TODO: I am assuming LlamaCpp for now (MLC will come later)
-
         # per csv file (regardless iteration/conversation)
         for filepath_csv in glob.glob(os.path.join(path, "melt_measurements", f"measurements_iter{iteration}_conv[0-9]*.csv")):
             # infer iteration/conversation number from filepath
@@ -279,7 +383,14 @@ def main(args):
 
             # compute the model and inf metrics
             filepath_txt = filepath_csv.replace("measurements_", "llm_output_").replace(".csv", ".txt")
-            model_perf_metrics, inf_perf_metrics = compute_llamacpp_performance_metrics(filepath_csv, filepath_txt, iteration, conversation, energy)
+            
+            # check if LlamaCpp or MLC
+            if check_app_type(filepath_txt) == "llamacpp":
+                model_perf_metrics, inf_perf_metrics = compute_llamacpp_performance_metrics(filepath_csv, filepath_txt, iteration, conversation, energy)
+
+            elif check_app_type(filepath_txt) == "mlc":
+                model_perf_metrics, inf_perf_metrics = compute_mlc_performance_metrics(filepath_csv, filepath_txt, iteration, conversation, energy)
+
             model_perf_metrics_list.append(model_perf_metrics)
             inf_perf_metrics_list.append(inf_perf_metrics)
 
