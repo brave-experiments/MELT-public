@@ -220,7 +220,7 @@ def compute_mlc_performance_metrics(filepath_csv, filepath_txt, iteration, conve
     # find idx of all /stats jsons
     json_idxs = []
     for idx, line in enumerate(txt_lines):
-        if "[INST]: /stats" in line:
+        if ": /stats" in line:
             json_idxs.append(idx + 1)
     
     # parse jsons
@@ -262,7 +262,7 @@ def compute_mlc_performance_metrics(filepath_csv, filepath_txt, iteration, conve
             prompt_idx = df.index.get_loc(start_time) - 1  # 1st is always 'load_model' event
 
             # get relevant metrics from txt file
-            # TODO: its fixed to 0 because of a bug in the data collection
+            # TODO: its fixed to 0 because of a bug in the data collection. Change it to prompt_idx when fixed.
             stats = mlc_stats[0]
 
             # example stats:
