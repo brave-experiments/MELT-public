@@ -50,14 +50,14 @@ def load_energy_events(filepath):
 def load_energy_metrics(filepath):
 
     data = []
-    
+
     with open(filepath, encoding='utf-8') as file:
         for line in file:
-            
+
             values = line.split(" ")
             if len(values) != 4:
                 continue
-            
+
             timestamp = int(values[0])
             event = values[1][:-1]  # -1 to remove ':'
             metric = values[3][:-1]  # -1 to remove '\n'
@@ -80,7 +80,7 @@ def load_energy_metrics(filepath):
         if column.endswith("(mV)"):
             new_column = column.replace("(mV)", "(V)")
             df[new_column] = df[column] / 1_000
-    
+
     # back-fill NaNs and drop pending NaNs (last rows)
     df.bfill(inplace=True)
     df.dropna(inplace=True)
@@ -222,7 +222,7 @@ def compute_mlc_performance_metrics(filepath_csv, filepath_txt, iteration, conve
     for idx, line in enumerate(txt_lines):
         if ": /stats" in line:
             json_idxs.append(idx + 1)
-    
+
     # parse jsons
     mlc_stats = []
     for idx in json_idxs:
@@ -310,7 +310,7 @@ def compute_detailed_performance_metrics(filepath, iteration, conversation, mdf,
     df = pd.read_csv(filepath, index_col=0, names=['value'], sep=csv_sep)
 
     data = []
-    
+
     df_start = df[df.index.str.endswith("start")]
     for index, row in df_start.iterrows():
 
@@ -348,7 +348,7 @@ def compute_detailed_performance_metrics(filepath, iteration, conversation, mdf,
             entry[f"discharge {power_event} (mAh)"] = total_discharge
 
         data.append(entry)
-    
+
     # save
     odf = pd.DataFrame(data)
     return odf
@@ -373,7 +373,7 @@ def __get_conv_from_filename(filename):
 
 
 def main(args):
-    
+
     # get arguments
     path = args.path
 
@@ -382,7 +382,7 @@ def main(args):
     detailed_metrics_list = []
 
     # per iteration (run)
-    for filepath_log in glob.glob(os.path.join(path, "energy_iter[0-9]*.log")):
+    for filepath_log in sorted(glob.glob(os.path.join(path, "energy_iter[0-9]*.log"))):
 
         # infer iteration number from filepath
         iteration = __get_iter_from_filename(filepath_log)
@@ -390,13 +390,13 @@ def main(args):
         energy = load_energy_metrics(filepath_log)
 
         # per csv file (regardless iteration/conversation)
-        for filepath_csv in glob.glob(os.path.join(path, "melt_measurements", f"measurements_iter{iteration}_conv[0-9]*.csv")):
+        for filepath_csv in sorted(glob.glob(os.path.join(path, "melt_measurements", f"measurements_iter{iteration}_conv[0-9]*.csv"))):
             # infer iteration/conversation number from filepath
             conversation = __get_conv_from_filename(filepath_csv)
 
             # compute the model and inf metrics
             filepath_txt = filepath_csv.replace("measurements_", "llm_output_").replace(".csv", ".txt")
-            
+
             # check if LlamaCpp or MLC
             if check_app_type(filepath_txt) == "llamacpp":
                 model_perf_metrics, inf_perf_metrics = compute_llamacpp_performance_metrics(filepath_csv, filepath_txt, iteration, conversation, energy)
