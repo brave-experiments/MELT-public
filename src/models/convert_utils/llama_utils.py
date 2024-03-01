@@ -77,7 +77,7 @@ def convert_ggml(model_dir, args):
                      model_dir,
                      "0",
                     "--outfile", gguf_model]
-    elif 'zephyr-3b' in model_name:
+    elif 'zephyr-3b' in model_name or 'gemma' in model_name:
         exec_path = os.path.join(LLAMA_CPP_HOME, 'convert-hf-to-gguf.py')
         args_list = ["python", exec_path,
                     "--outfile", gguf_model,
