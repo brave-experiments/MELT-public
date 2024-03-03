@@ -14,6 +14,6 @@ generation:
   vocab_size: 256000  # Applicable to mlc only
 prompt:  # Used in llama.cpp, taken from mlc
   text: ""
-  in_prefix: "<start_of_turn>user\n"
-  in_suffix: "<end_of_turn>\n"
-  reverse: "<start_of_turn>model"
+  in_prefix: "\"<start_of_turn>user\\n\""
+  in_suffix: "\"<end_of_turn>\\n\""
+  reverse: "\"<start_of_turn>model\""
