@@ -37,7 +37,7 @@ for QUANT in q3f16_1 q4f16_1 q0f32; do
    fi
 
    MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/TinyLlama_TinyLlama-1.1B-Chat-v0.5 -b mlc -q $QUANT -t $BACKEND -v -d $OUTPUT_PATH/TinyLlama_TinyLlama-1.1B-Chat-v0.5 -c ${CONFIGS_PATH}/tinyllama-1.1b-chat-v0.5.yaml $EXTRA_COMPILE_ARGS
-   if [ $QUANT = "q0f32"];then
+   if [ $QUANT = "q0f32" ];then
        MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/stabilityai_stablelm-zephyr-3b -b mlc -q q0f16 -t $BACKEND -v -d $OUTPUT_PATH/stabilityai_stablelm-zephyr-3b -c ${CONFIGS_PATH}/stablelm-zephyr-3b.yaml $EXTRA_COMPILE_ARGS
    else
        MLC_HOME=$MLC_HOME python convert.py --model ${MODELS_PATH}/stabilityai_stablelm-zephyr-3b -b mlc -q $QUANT -t $BACKEND -v -d $OUTPUT_PATH/stabilityai_stablelm-zephyr-3b -c ${CONFIGS_PATH}/stablelm-zephyr-3b.yaml $EXTRA_COMPILE_ARGS
