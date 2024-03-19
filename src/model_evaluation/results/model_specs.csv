@@ -24,3 +24,11 @@ Zephyr-3b,q3_k,1.39,1.29,2800000,3.89
 Zephyr-3b,q4_k,1.71,1.59,2800000,4.21
 Zephyr-3b,q4_0,1.61,1.50,2800000,4.11
 Zephyr-3b,GPTQ,1.84,1.76,2800000,None
+gemma-7b,None,17.07,17.07,8540000,None
+gemma-7b,q3_k,4.06,4.06,8540000,None
+gemma-7b,q4_k,4.96,4.96,8540000,None
+gemma-7b,q4_0,4.66,4.66,8540000,None
+gemma-2b,None,4.95,4.95,2510000,None
+gemma-2b,q3_k,1.28,1.28,2510000,None
+gemma-2b,q4_k,1.51,1.51,2510000,None
+gemma-2b,q4_0,1.44,1.44,2510000,None
