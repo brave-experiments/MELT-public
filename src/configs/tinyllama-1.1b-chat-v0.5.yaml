@@ -15,5 +15,6 @@ generation:
   max_window_size: 2048
   vocab_size: 32003  # Applicable to mlc only
 prompt:  # Used in llama.cpp, taken from mlc
+  conv_template: "chatml"
   text: "\"A conversation between a user and an LLM-based AI assistant. The assistant gives helpful and honest answers.\""
   chatml: ''

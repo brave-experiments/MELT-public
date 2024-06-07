@@ -13,6 +13,7 @@ generation:
   max_window_size: 4096
   vocab_size: 256000  # Applicable to mlc only
 prompt:  # Used in llama.cpp, taken from mlc
+  conv_template: "gemma_instruction"
   text: "\"\""
   in_prefix: "\"<start_of_turn>user\\n\""
   in_suffix: "\"<end_of_turn>\\n\""

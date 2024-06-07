@@ -15,6 +15,7 @@ generation:
   max_window_size: 4096
   vocab_size: 32000  # Applicable to mlc only
 prompt:  # Used in llama.cpp, taken from mlc
+  conv_template: "llama-2"
   text: "\"<<SYS>>\\n\\nYou are a helpful, respectful and honest assistant.\\n<</SYS>>\\n\\n\""
   in_prefix: "\"[INST]\""
   in_suffix: "\"[/INST]\""
