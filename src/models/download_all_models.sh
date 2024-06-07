@@ -18,10 +18,8 @@ MODELS=(
     "mistralai/Mistral-7B-Instruct-v0.1"
     "meta-llama/Llama-2-7b-chat-hf"
     "meta-llama/Llama-2-13b-chat-hf"
-    "bigcode/starcoder"
     "google/gemma-2b-it"
     "google/gemma-7b-it"
-    "microsoft/phi-2"
 )
 
 for MODEL in ${MODELS[@]}; do
