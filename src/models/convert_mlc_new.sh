@@ -4,17 +4,15 @@ MODELS_DIR=${MODELS_DIR:-"../../melt_models"}
 OUTPUT_ROOT_DIR=${OUTPUT_ROOT_DIR:-"${MODELS_DIR}_converted_new"}
 
 MODELS=(
-    microsoft_phi-2
     google_gemma-2b-it
     google_gemma-7b-it
     meta-llama_Llama-2-7b-chat-hf
 )
 
 CONV_TEMPLATES=(
-    phi-2
     gemma_instruction
-    gemma_instruction
-    llama-2
+   gemma_instruction
+   llama-2
 )
 
 QUANTS=(

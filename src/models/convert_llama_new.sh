@@ -6,7 +6,6 @@ OUTPUT_ROOT_DIR=${OUTPUT_ROOT_DIR:-"${MODELS_DIR}_converted_new"}
 LLAMA_CPP_HOME=${LLAMA_CPP_HOME:-"../../frameworks/llama.cpp/llama.cpp"}
 
 MODELS=(
-    microsoft_phi-2
     google_gemma-2b-it
     google_gemma-7b-it
 )
@@ -14,6 +13,7 @@ MODELS=(
 QUANTS=(
     q3_k
     q4_k
+    q4_0
 )
 
 model_counter=0
