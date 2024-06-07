@@ -72,7 +72,9 @@ def normalize_calls(calls_df):
         'Device': 'string',
         'Duration (us)': 'microseconds',
         'Name': 'string',
-        'Argument Shapes': 'string'
+        'Argument Shapes': 'string',
+        'Duration(us)': 'microseconds',
+        'ArgumentShapes': 'string'
     }
     for col in calls_df.columns:
         # print(col, calls_df[col].dtype)
