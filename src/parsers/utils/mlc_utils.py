@@ -16,18 +16,26 @@ def parse_logfile(log_file, verbose=False):
         lines = f.readlines()
 
     ops_metrics = []
-    regex = r"(.*)Report from function (.+):$"
+    regex = r"(.*)Report from function (.+)\[(\d+)/(\d+)\]:$"
 
     idx = 0
     while idx < len(lines):
         line = lines[idx]
         match = re.match(regex, line)
         if match:
-            _, func_name = match.groups()
-            try:
-                ops_metrics.append((func_name, parse_json(lines[idx + 1])))
-            except JSONDecodeError:
-                print(f"Invalid line: {lines[idx + 1]}")
+            _, func_name, chunk, total_chunks = match.groups()
+            chunk, total_chunks = int(chunk), int(total_chunks)
+            print(chunk, total_chunks)
+            if chunk == 0:
+                buffer = lines[idx + 1].strip()
+            elif chunk < total_chunks:
+                buffer += lines[idx + 1].strip()
+            elif chunk == total_chunks:
+                buffer += lines[idx + 1].strip()
+                try:
+                    ops_metrics.append((func_name, parse_json(buffer)))
+                except JSONDecodeError:
+                    print(f"Invalid line: {buffer}")
             idx += 1
         idx += 1
 
@@ -64,7 +72,9 @@ def normalize_calls(calls_df):
         'Device': 'string',
         'Duration (us)': 'microseconds',
         'Name': 'string',
-        'Argument Shapes': 'string'
+        'Argument Shapes': 'string',
+        'Duration(us)': 'microseconds',
+        'ArgumentShapes': 'string'
     }
     for col in calls_df.columns:
         # print(col, calls_df[col].dtype)

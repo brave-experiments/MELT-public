@@ -69,7 +69,8 @@ def convert_mlc(model_dir, args):
                  "--artifact-path", args.output_dir,
                  "--quantization", args.quantization_mode,
                  "--target", args.target,
-                 "--max-seq-len", f"{args.max_seq_length}"]
+                 "--max-seq-len", f"{args.max_seq_length}",
+                 args.extra_args,]
 
     if ('tinyllama' in model_name.lower()) or ('stablelm-zephyr' in model_name.lower()):
         args_list.append("--use-safetensors")

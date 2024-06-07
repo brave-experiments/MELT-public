@@ -1,6 +1,6 @@
 import json
 import os
-import requests
+import shutil
 import subprocess
 import yaml
 
@@ -77,7 +77,7 @@ def convert_ggml(model_dir, args):
                      model_dir,
                      "0",
                     "--outfile", gguf_model]
-    elif 'zephyr-3b' in model_name:
+    elif 'zephyr-3b' in model_name or (model_name in ["google_gemma-2b-it", "google_gemma-7b-it"]):
         exec_path = os.path.join(LLAMA_CPP_HOME, 'convert-hf-to-gguf.py')
         args_list = ["python", exec_path,
                     "--outfile", gguf_model,
@@ -87,15 +87,20 @@ def convert_ggml(model_dir, args):
                      "--outfile", gguf_model,
                      model_dir]
 
-    print(f"Running cmd: {' '.join(args_list)}")
-    proc = subprocess.Popen(
-        args_list,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,)
-    stdout, stderr = proc.communicate()
-    if args.verbose:
-        print(stdout.decode('utf-8'))
-        print(stderr.decode('utf-8'))
+    if model_name in ['google_gemma-2b', 'google_gemma-7b']:
+        variant = model_name.split('-')[-1]
+        print(f"Copying gemma gguf model to {gguf_model}")
+        shutil.copyfile(os.path.join(model_dir, f'gemma-{variant}.gguf'), gguf_model)
+    else:
+        print(f"Running cmd: {' '.join(args_list)}")
+        proc = subprocess.Popen(
+            args_list,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,)
+        stdout, stderr = proc.communicate()
+        if args.verbose:
+            print(stdout.decode('utf-8'))
+            print(stderr.decode('utf-8'))
 
     tokens = gguf_model.split('.')
     name = '.'.join(tokens[:-1])

@@ -38,7 +38,11 @@ def parse_args():
                       help='Ignore EOS token (changes model config).')
     args.add_argument('-v', '--verbose', action='store_true',)
 
-    return args.parse_args()
+    args, extra_args = args.parse_known_args()
+    args.extra_args = ' '.join(extra_args)
+
+    return args
+
 
 def validate_args(args):
     if args.backend == 'mlc':
