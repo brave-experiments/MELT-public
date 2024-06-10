@@ -1,3 +1,8 @@
+# Note:   Parse the detailed logs from per_op profiling of MLC and llama.cpp backends.
+#         These are only generated when the respective flag in enabled when building the
+#         respective backend.
+# Author: Stefanos Laskaridis (stefanos@brave.com)
+
 
 import os
 import pandas as pd
@@ -10,20 +15,14 @@ from utils.utils import (
 
 
 def main(args):
-    if args.mode == 'file':
-        if args.backend == 'mlc':
-            calls_dfs, device_metrics_dfs, config_dfs = parse_file(args.input,
-                                                                   args.backend,
-                                                                   args.verbose)
-        elif args.backend == 'llama.cpp':
-            weights_df, calls_summary_dfs, calls_dfs = parse_file(args.input, args.backend, args.verbose)
-
-    elif args.mode == 'logcat':
-        raise NotImplementedError
-    elif args.mode == 'ios':
-        raise NotImplementedError
-    else:
-        raise ValueError('Invalid mode: {}'.format(args.mode))
+    if args.backend == 'mlc':
+        calls_dfs, device_metrics_dfs, config_dfs = parse_file(args.input,
+                                                                args.backend,
+                                                                args.verbose)
+    elif args.backend == 'llama.cpp':
+        weights_df, calls_summary_dfs, calls_dfs = parse_file(args.input,
+                                                              args.backend,
+                                                              args.verbose)
 
     if args.merge:
         if args.backend == 'mlc':
@@ -58,7 +57,6 @@ def main(args):
                 df_merged_detailed = merge_ops(calls_dfs, ['Name'],
                                                drop_cols=["Argument Shapes", "node_num"])
                 df_merged_summary = merge_ops(calls_summary_dfs, ['Name'])
-
 
     if args.output:
         os.makedirs(args.output, exist_ok=True)

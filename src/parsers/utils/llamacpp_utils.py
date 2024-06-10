@@ -1,6 +1,9 @@
-import re
+# Note:   Utility functions for parsing and merging the logs from the llama.cpp backend.
+# Author: Stefanos Laskaridis (stefanos@brave.com)
 
+import re
 import pandas as pd
+
 
 def parse_logfile(log_file, verbose=False):
     with open(log_file, 'r') as f:

@@ -1,12 +1,13 @@
-import argparse
+# Note:   Utility functions for parsing and merging the logs from the MLC and llama.cpp backends.
+# Author: Stefanos Laskaridis (stefanos@brave.com)
 
+import argparse
 from .mlc_utils import parse_logfile as mlc_parse_logfile
 from .llamacpp_utils import parse_logfile as llamacpp_parse_logfile
 
 
 def parse_args():
     args = argparse.ArgumentParser()
-    args.add_argument('-m', '--mode', type=str, choices=['file', 'logcat', 'ios'], required=True)
     args.add_argument('-b', '--backend', type=str, choices=['mlc', 'llama.cpp'], required=True)
     args.add_argument('-i', '--input', type=str)
     args.add_argument('-o', '--output', type=str)

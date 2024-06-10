@@ -1,3 +1,6 @@
+# Note:   Utility functions for parsing and merging the logs from the MLC backend.
+# Author: Stefanos Laskaridis (stefanos@brave.com)
+
 import re
 import json
 from json.decoder import JSONDecodeError
