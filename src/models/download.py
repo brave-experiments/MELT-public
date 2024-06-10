@@ -1,3 +1,6 @@
+# Note:   Script to easily download models from the Hugging Face Hub.
+# Author: Stefanos Laskaridis (stefanos@brave.com)
+
 import argparse
 import os
 from huggingface_hub import snapshot_download

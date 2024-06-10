@@ -1,27 +1,42 @@
+# Note:   Util functions for converting models to gguf format.
+# Author: Stefanos Laskaridis (stefanos@brave.com)
+
 import json
 import os
 import shutil
 import subprocess
 import yaml
 
+
 LLAMA_CPP_HOME = os.environ.get('LLAMA_CPP_HOME')
 
 
 def llama_change_model_config_eos(model_dir,  eos_token_id=2336):
+    """
+    Change the EOS token in the model config file.
+    :param model_dir: The path to the model directory.
+    :param eos_token_id: The new EOS token id (a random one that is seldom or never used).
+    """
     config_json = os.path.join(model_dir, 'config.json')
-    with open(config_json, 'r') as f:
+    with open(config_json, 'r', encoding='utf-8') as f:
         config = json.load(f)
 
     previous_eos_token_id = config.get('eos_token_id', None)
     config['eos_token_id'] = eos_token_id
 
-    with open(config_json, 'w') as f:
+    with open(config_json, 'w', encoding='utf-8') as f:
         json.dump(config, f)
 
     return previous_eos_token_id
 
 
 def llama_translate_config_to_model_config(config_path, model_path, ignore_eos=False):
+    """
+    Translates the model config file (from MELT/configs/) to the llama.cpp used format.
+    :param config_path: The path to the config file.
+    :param model_path: The path to the model directory.
+    :param ignore_eos: Whether to ignore the EOS token.
+    """
     with open(config_path, 'r') as f:
         config = yaml.safe_load(f)
 
@@ -62,6 +77,11 @@ def llama_translate_config_to_model_config(config_path, model_path, ignore_eos=F
 
 
 def convert_ggml(model_dir, args):
+    """
+    Convert a model to gguf format.
+    :param model_dir: The path to the model directory.
+    :param args: The arguments to pass to the conversion script.
+    """
     model_name = os.path.basename(model_dir)
     os.makedirs(args.output_dir, exist_ok=True)
     gguf_model = os.path.join(args.output_dir, model_name+".gguf")
@@ -123,6 +143,11 @@ def convert_ggml(model_dir, args):
         print(stderr.decode('utf-8'))
 
 def convert_yaml_to_json_config(yamlconfig, jsonconfig):
+    """
+    Convert a yaml config to a json config. This is consumed by LLMFarmEval.
+    :param yamlconfig: The path to the yaml config file.
+    :param jsonconfig: The path to the json config file.
+    """
     print(f"Converting yaml config from {yamlconfig} to json config {jsonconfig}")
     with open(yamlconfig, 'r') as f:
         config = yaml.safe_load(f)

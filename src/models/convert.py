@@ -1,3 +1,6 @@
+# Note:   Script to convert and quantise models for different backends.
+# Author: Stefanos Laskaridis (stefanos@brave.com)
+
 import argparse
 import os
 
@@ -77,7 +80,7 @@ def main(args):
         args.max_seq_length = mlc_get_max_length(args.config)
         chat_config_path = convert_mlc(args.model, args)
         if chat_config_path and args.ignore_eos:
-            mlc_change_model_template_eos(chat_config_path)
+            mlc_change_model_template_eos(chat_config_path)  # Requires custom backend
         mlc_translate_config_to_model_config(args.config, chat_config_path)
     elif args.backend == 'ggml':
         if not args.only_config:
@@ -85,13 +88,13 @@ def main(args):
             if args.ignore_eos:
                 previous_eos = llama_change_model_config_eos(args.model, 2335)
             convert_ggml(args.model, args)
-        if args.ignore_eos:  # revert it back for indepotence
+        if args.ignore_eos:  # revert it back for idempotence
             llama_change_model_config_eos(args.model,
                                           previous_eos)
         llama_translate_config_to_model_config(args.config, args.output_dir,
                                                ignore_eos=args.ignore_eos)
         convert_yaml_to_json_config(args.config, os.path.join(args.output_dir, 'model_config.json'))
-    elif args.backend == 'awq':
+    elif args.backend == 'awq':  # This was uttimately not used in paper, unless TheBloke repo did not include model.
         from convert_utils.awq_utils import (
                 decode_quant_method,
                 quantize_awq

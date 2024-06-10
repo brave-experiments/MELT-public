@@ -1,3 +1,6 @@
+# Note:   Util functions for converting models to MLC format.
+# Author: Stefanos Laskaridis (stefanos@brave.com)
+
 import glob
 import json
 import os
@@ -9,6 +12,9 @@ MLC_HOME = os.environ.get('MLC_HOME')
 
 
 def mlc_get_max_length(config_path):
+    """
+    Acquire the maximum generation length from the config file.
+    """
     with open(config_path, 'r') as f:
         config = yaml.safe_load(f)
 
@@ -16,6 +22,10 @@ def mlc_get_max_length(config_path):
 
 
 def mlc_change_model_template_eos(chat_config_path):
+    """
+    Change the EOS token in the model config file. This needs a custom build backend.
+    :param chat_config_path: The path to the chat config file.
+    """
     with open(chat_config_path, 'r') as f:
         config = json.load(f)
 
@@ -28,6 +38,10 @@ def mlc_change_model_template_eos(chat_config_path):
 
 
 def mlc_translate_config_to_model_config(config_path, chat_config_path):
+    """
+    Translates the model config file (from MELT/configs/) to the MLC config format.
+    """
+
     with open(chat_config_path, 'r') as f:
         model_config = json.load(f)
 
@@ -38,9 +52,6 @@ def mlc_translate_config_to_model_config(config_path, chat_config_path):
     model_config['repetition_penalty'] = \
         config['sampling'].get('repetition_penalty', model_config['repetition_penalty'])
     model_config['top_p'] = config['sampling'].get('top_p', model_config['top_p'])
-    # model_config[''] = config['sampling'].get('top_k', model_config[''])  # TODO: Resolve in MLC
-    # model_config[''] = config['sampling'].get('repeat_last_n', model_config[''])  # TODO: Resolve in MLC
-    # model_config[''] = config['sampling'].get('n_batch', model_config[''])  # TODO: Resolve in MLC
 
     model_config['mean_gen_len'] = \
         config['generation'].get('mean_gen_len', model_config['mean_gen_len'])
@@ -62,6 +73,11 @@ def mlc_translate_config_to_model_config(config_path, chat_config_path):
 
 
 def convert_mlc(model_dir, args):
+    """
+    Convert a model to the MLC format.
+    :param model_dir: The path to the model directory.
+    :param args: The arguments passed to the script.
+    """
     model_name = os.path.basename(model_dir)
     exec_path = os.path.join(MLC_HOME, "build.py")
     args_list = ["python", exec_path,
