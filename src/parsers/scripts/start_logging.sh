@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Note:   Script to clear previous logs and start logging on Android device.
+# Author: Stefanos Laskaridis
+
+
 ADB_RUNNER=${ADB_RUNNER:-adb}
 OUTFILE_ROOT=${OUTFILE_ROOT:-"logs/"}
 NOW=$(date +"%Y%m%d%H%M%S")
