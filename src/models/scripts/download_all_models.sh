@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Note:   Script to easily download all models from HF.
+# Author: Stefanos Laskaridis (stefanos@brave.com)
+
 # Models
 # 1. TinyLlama
 # 2. Zephyr 3b
@@ -22,6 +25,8 @@ MODELS=(
     "google/gemma-7b-it"
 )
 
+pushd ../
 for MODEL in ${MODELS[@]}; do
     python ${DOWNLOAD_SCRIPT_PATH}/download.py -m ${MODEL} -d ${OUTPUT_PATH} -t ${HUGGINGFACE_TOKEN}
 done
+popd
