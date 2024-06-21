@@ -10,11 +10,11 @@
 # 4. Llama 7b
 # 5. Llama 13b
 
-LLAMA_CPP_HOME=${LLAMA_CPP_HOME:-"$PWD/../../frameworks/llama.cpp/llama.cpp"}
-MLC_HOME=${MLC_HOME:-"$PWD/../../frameworks/MLC/mlc-llm"}
-MODELS_PATH=${MODELS_PATH:-"../../melt_models"}
-CONFIGS_PATH=${CONFIGS_PATH:-"../configs/"}
-OUTPUT_PATH=${OUTPUT_PATH:-"../../melt_models_converted"}
+LLAMA_CPP_HOME=${LLAMA_CPP_HOME:-"$PWD/../../../frameworks/llama.cpp/llama.cpp"}
+MLC_HOME=${MLC_HOME:-"$PWD/../../../frameworks/MLC/mlc-llm"}
+MODELS_PATH=${MODELS_PATH:-"$PWD/../../../melt_models"}
+CONFIGS_PATH=${CONFIGS_PATH:-"$PWD/../../configs/"}
+OUTPUT_PATH=${OUTPUT_PATH:-"$PWD/../../../melt_models_converted"}
 
 
 function convert_llama_cpp {
@@ -28,6 +28,8 @@ function convert_llama_cpp {
 }
 
 function convert_mlc {
+    echo "WARNING: This will only work on the before_gemma version of MLC. Otherwise, the model conversion will fail."
+    echo "You can use the script ./convert_new.sh instead."
     for QUANT in q3f16_1 q4f16_1 q0f32; do
        for BACKEND in metal iphone android cuda; do
             if [ $BACKEND = 'cuda' ]; then
@@ -50,6 +52,6 @@ function convert_mlc {
 }
 
 pushd ../
-convert_llama_cpp()
-convert_mlc()
+convert_llama_cpp
+convert_mlc
 popd
