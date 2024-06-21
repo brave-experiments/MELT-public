@@ -8,6 +8,16 @@ With these scripts, we are able to automate the download and conversion of vario
 **Caveat**: In later versions of MLC-LLM, the conversion script is not the recommended way of converting models to MLC format (indicated in issues).
 If running the latest version, please use the `convert_mlc_new.sh` script instead.
 
+
+# How to run?
+
+Before you run the downloader, it might be necessary that you define your HF API token so that you are able to download the weights (e.g. Llama-2).
+Also, remember to install python requirements:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Shortcut scripts
 
 ```bash
@@ -18,9 +28,19 @@ scripts/
 └── replace_link_with_model.sh  # Util script to resolve links and copy in place
 ```
 
-# How to run?
+### Legacy vs. new
 
-Before you run the downloader, it might be necessary that you define your HF API token so that you are able to download the weights (e.g. Llama-2).
+In our experiments, we had to deal with an evolving codebase. For this reason, we have tagged two version in the MLC codebase, `before_gemma` and `after_gemma`.
+Conversion works as follows:
+
+| Version      | Conversion script |
+| ---          | ---               |
+| before_gemma | convert_legacy.sh |
+| after_gemma  | convert_new.sh    |
+
+Before you run the conversion script, you need to define the `MLC_HOME` or `LLAMA_CPP_HOME` env vars depending on the backend specified.
+
+## Conversion scripts
 
 ```bash
 python download.py --help
@@ -35,8 +55,6 @@ options:
   -f, --force           Overwrite existing files.
   -t TOKEN, --token TOKEN
 ```
-
-Before you run the conversion script, you need to define the `MLC_HOME` or `LLAMA_CPP_HOME` env vars depending on the backend specified.
 
 ```bash
 python convert.py --help
