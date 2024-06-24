@@ -21,4 +21,3 @@ for MODEL in ${MODELS[@]}; do
         (lm_eval --model hf --model_args pretrained=$MODEL --tasks $TASK --batch_size auto |& tee eval_${MODEL}_${TASK}.log) &
     done
 done
-~

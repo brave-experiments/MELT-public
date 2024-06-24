@@ -9,10 +9,10 @@ astor==0.8.1
 async-timeout==4.0.3
 attributedict==0.3.0
 attrs==23.2.0
-auto-gptq @ git+https://github.com/PanQiWei/AutoGPTQ@d2662b18bb91e1864b29e4e05862712382b8a076
+# auto-gptq @ git+https://github.com/PanQiWei/AutoGPTQ@d2662b18bb91e1864b29e4e05862712382b8a076
 autoawq==0.1.8
 base58==2.1.1
-black==21.12b0
+black
 blessings==1.7
 blinker==1.7.0
 Brotli==1.1.0
@@ -172,7 +172,7 @@ tornado==6.4
 tox==4.11.4
 tqdm==4.66.1
 tqdm-multiprocess==0.0.11
-transformers==4.36.2
+transformers==4.38
 triton==2.1.0
 typepy==1.3.2
 typing_extensions==4.9.0
