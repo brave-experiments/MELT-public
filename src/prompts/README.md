@@ -10,3 +10,11 @@ This directory contains the conversational data used to interact later on with t
 ├── input_sustained.json  # The conversation used for sustained inference experiments
 ├── notebooks  # Notebooks for extracting and analysing the src dataset
 ```
+
+## How to run
+
+```bash
+pip install -r requirements.txt
+cd notebooks/
+jupyter notebook
+```

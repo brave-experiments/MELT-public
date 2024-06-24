@@ -1,0 +1,7 @@
+datasets
+notebook
+nltk
+pandas
+numpy
+matplotlib
+seaborn
