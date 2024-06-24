@@ -3,7 +3,7 @@
 # Note:   Script to evaluate the performance of the llama.cpp models with lm-eval suite and llama-cpp-python server.
 # Author: Stefanos Laskaridis
 
-MODEL_DIR=${MODEL_DIR:-"../melt_models_converted"}
+MODEL_DIR=${MODEL_DIR:-"../../../melt_models_converted"}
 
 TASKS=("winogrande" "arc_easy" "arc_challenge" "truthfulqa" "hellaswag")
 MODELS=(
