@@ -10,11 +10,11 @@
 # 4. Llama 7b
 # 5. Llama 13b
 
-LLAMA_CPP_HOME=${LLAMA_CPP_HOME:-"$PWD/../../../frameworks/llama.cpp/llama.cpp"}
-MLC_HOME=${MLC_HOME:-"$PWD/../../../frameworks/MLC/mlc-llm"}
-MODELS_PATH=${MODELS_PATH:-"$PWD/../../../melt_models"}
-CONFIGS_PATH=${CONFIGS_PATH:-"$PWD/../../configs/"}
-OUTPUT_PATH=${OUTPUT_PATH:-"$PWD/../../../melt_models_converted"}
+LLAMA_CPP_HOME=${LLAMA_CPP_HOME:-"../../frameworks/llama.cpp/llama.cpp"}
+MLC_HOME=${MLC_HOME:-"../../frameworks/MLC/mlc-llm"}
+MODELS_PATH=${MODELS_PATH:-"../../melt_models"}
+CONFIGS_PATH=${CONFIGS_PATH:-"../configs/"}
+OUTPUT_PATH=${OUTPUT_PATH:-"../../melt_models_converted"}
 
 
 function convert_llama_cpp {

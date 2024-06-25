@@ -3,10 +3,10 @@
 # Note:   Script to easily convert all models (MLC does not use convert.py).
 # Author: Stefanos Laskaridis (stefanos@brave.com)
 
-MODELS_DIR=${MODELS_DIR:-"../../../melt_models"}
-CONFIGS_PATH=${CONFIGS_PATH:-"../../configs"}
+MODELS_DIR=${MODELS_DIR:-"../../melt_models"}
+CONFIGS_PATH=${CONFIGS_PATH:-"../configs"}
 OUTPUT_ROOT_DIR=${OUTPUT_ROOT_DIR:-"${MODELS_DIR}_converted_new"}
-LLAMA_CPP_HOME=${LLAMA_CPP_HOME:-"../../../frameworks/llama.cpp/llama.cpp"}
+LLAMA_CPP_HOME=${LLAMA_CPP_HOME:-"../../frameworks/llama.cpp/llama.cpp"}
 
 
 function convert_llama_cpp() {
@@ -30,14 +30,18 @@ function convert_llama_cpp() {
 
 function convert_mlc() {
     MODELS=(
+        TinyLlama_TinyLlama-1.1B-Chat-v0.5
         google_gemma-2b-it
         google_gemma-7b-it
         meta-llama_Llama-2-7b-chat-hf
+        meta-llama_Llama-2-13b-chat-hf
     )
 
     CONV_TEMPLATES=(
+        chatml
         gemma_instruction
         gemma_instruction
+        llama-2
         llama-2
     )
 
