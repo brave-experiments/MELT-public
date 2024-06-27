@@ -51,7 +51,7 @@ Additional documentation on how to run is provided in each of the subdirectories
 ## Authors/Maintainers
 
 * Stefanos Laskaridis (@stevelaskaridis)
-* Minos Katevas (@minoskt)
+* Kleomenis Katevas (@minoskt)
 * Lorenzo Minto (@LorenzoMinto)
 
 ## Citation
