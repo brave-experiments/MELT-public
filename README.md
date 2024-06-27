@@ -61,7 +61,7 @@ If you found this repo useful, please cite our paper "MELTing point: Mobile Eval
 ```
 @article{laskaridis2024melting,
   title={MELTing point: Mobile Evaluation of Language Transformers},
-  author={Laskaridis, Stefanos and Kateveas, Kleomenis and Minto, Lorenzo and Haddadi, Hamed},
+  author={Laskaridis, Stefanos and Katevas, Kleomenis and Minto, Lorenzo and Haddadi, Hamed},
   journal={arXiv preprint arXiv:2403.12844},
   year={2024}
 }
