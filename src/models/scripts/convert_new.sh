@@ -23,7 +23,8 @@ function convert_llama_cpp() {
     for MODEL in ${MODELS[@]};do
         for QUANT in ${QUANTS[@]};do
             echo Converting model $MODEL-$QUANT to $CONVERTED_MODEL_DIR
-            LLAMA_CPP_HOME=$LLAMA_CPP_HOME python convert.py --model ${MODELS_DIR}/${MODEL} -b ggml -q $QUANT -t metal -v -d $OUTPUT_ROOT_DIR/${MODEL} -c ${CONFIGS_PATH}/${MODEL}.yaml
+            CONF_NAME=$(echo $MODEL | awk -F'_' '{print tolower($NF)}')
+            LLAMA_CPP_HOME=$LLAMA_CPP_HOME python convert.py --model ${MODELS_DIR}/${MODEL} -b ggml -q $QUANT -t metal -v -d $OUTPUT_ROOT_DIR/${MODEL} -c ${CONFIGS_PATH}/${CONF_NAME}.yaml
         done
     done
 }
@@ -64,6 +65,7 @@ function convert_mlc() {
             CONVERTED_MODEL_DIR="$OUTPUT_ROOT_DIR/$MODEL-$QUANT"
             echo Converting model $MODEL-$QUANT with conv_template $CONV_TEMPLATE to $CONVERTED_MODEL_DIR
             # 1. Generate model config
+            echo "Running command: mlc_chat gen_config $MODELS_DIR/$MODEL --conv-template $CONV_TEMPLATE --quantization $QUANT -o $OUTPUT_ROOT_DIR/$MODEL-$QUANT"
             mlc_chat gen_config $MODELS_DIR/$MODEL --conv-template $CONV_TEMPLATE --quantization $QUANT -o $OUTPUT_ROOT_DIR/$MODEL-$QUANT
             for BACKEND in ${BACKENDS[@]};do
                 if [ $BACKEND = "metal" ];then
@@ -72,8 +74,10 @@ function convert_mlc() {
                     EXTENSION="tar"
                 fi
                 # 2. Compile model
+                echo "Running command: mlc_chat compile $CONVERTED_MODEL_DIR/mlc-chat-config.json  --device $BACKEND  --quantization $QUANT -o $CONVERTED_MODEL_DIR/$MODEL-$QUANT-$BACKEND.$EXTENSION"
                 mlc_chat compile $CONVERTED_MODEL_DIR/mlc-chat-config.json  --device $BACKEND  --quantization $QUANT -o $CONVERTED_MODEL_DIR/$MODEL-$QUANT-$BACKEND.$EXTENSION
             # 3. Convert model weights
+            echo "Running command: mlc_chat convert_weight $MODELS_DIR/$MODEL/config.json --device ${BACKENDS[0]}  --quantization $QUANT -o $CONVERTED_MODEL_DIR"
             mlc_chat convert_weight $MODELS_DIR/$MODEL/config.json --device ${BACKENDS[0]}  --quantization $QUANT -o $CONVERTED_MODEL_DIR
             done
         done
