@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Note:   Script to acquire MLC logs from Android device.
+# Author: Stefanos Laskaridis (stefanos@brave.com)
+
+
 ADB_RUNNER=${ADB_RUNNER:-adb}
 DEVICE_ID=${DEVICE_ID:-$($ADB_RUNNER devices | grep -v List | cut -f 1 | head -n 1)}
 LOGFILE_ROOT=${LOGFILE_ROOT:-"/data/local/tmp/"}

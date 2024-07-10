@@ -1,7 +1,5 @@
----
-
-model: model_alias
-url: https://huggingface.co/org/model_name
+model: google_gemma-2b-it
+url: https://huggingface.co/google/gemma-2b-it
 sampling:
   temperature: 0.7
   repetition_penalty: 1.0
@@ -13,10 +11,10 @@ generation:
   mean_gen_len: 128  # Applicable to mlc only
   max_gen_len: 256
   max_window_size: 4096
-  vocab_size: 32000  # Applicable to mlc only
+  vocab_size: 256000  # Applicable to mlc only
 prompt:  # Used in llama.cpp, taken from mlc
-  conv_template: "template key from frameworks/MLC/mlc-llm/cpp/conv_templates.cc"
-  text: "Your prompt text here"
-  in_prefix: "<prefix>"
-  in_suffix: "<suffix>"
-  reverse: "<reverse_prompt>"
+  conv_template: "gemma_instruction"
+  text: "\"\""
+  in_prefix: "\"<start_of_turn>user\\n\""
+  in_suffix: "\"<end_of_turn>\\n\""
+  reverse: "\"<start_of_turn>model\""

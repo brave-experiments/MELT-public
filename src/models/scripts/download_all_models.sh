@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Note:   Script to easily download all models from HF.
+# Author: Stefanos Laskaridis (stefanos@brave.com)
+
 # Models
 # 1. TinyLlama
 # 2. Zephyr 3b
@@ -18,12 +21,12 @@ MODELS=(
     "mistralai/Mistral-7B-Instruct-v0.1"
     "meta-llama/Llama-2-7b-chat-hf"
     "meta-llama/Llama-2-13b-chat-hf"
-    "bigcode/starcoder"
     "google/gemma-2b-it"
     "google/gemma-7b-it"
-    "microsoft/phi-2"
 )
 
+pushd ../
 for MODEL in ${MODELS[@]}; do
     python ${DOWNLOAD_SCRIPT_PATH}/download.py -m ${MODEL} -d ${OUTPUT_PATH} -t ${HUGGINGFACE_TOKEN}
 done
+popd

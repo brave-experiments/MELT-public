@@ -1,5 +1,5 @@
-model: google_gemma-2b-it
-url: https://huggingface.co/google/gemma-2b-it
+model: google_gemma-7b-it
+url: https://huggingface.co/google/gemma-7b-it
 sampling:
   temperature: 0.7
   repetition_penalty: 1.0
@@ -13,6 +13,7 @@ generation:
   max_window_size: 4096
   vocab_size: 256000  # Applicable to mlc only
 prompt:  # Used in llama.cpp, taken from mlc
+  conv_template: "gemma_instruction"
   text: "\"\""
   in_prefix: "\"<start_of_turn>user\\n\""
   in_suffix: "\"<end_of_turn>\\n\""

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Note:   Script to replace softlinks with models.
+# Author: Stefanos Laskaridis (stefanos@brave.com)
+
 TARGET_DIR=$1
 
 pushd $TARGET_DIR
