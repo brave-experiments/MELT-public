@@ -5,7 +5,7 @@
 
 MODELS_DIR=${MODELS_DIR:-"../../melt_models"}
 CONFIGS_PATH=${CONFIGS_PATH:-"../configs"}
-OUTPUT_ROOT_DIR=${OUTPUT_ROOT_DIR:-"${MODELS_DIR}_converted_new"}
+OUTPUT_ROOT_DIR=${OUTPUT_ROOT_DIR:-"${MODELS_DIR}_converted"}
 LLAMA_CPP_HOME=${LLAMA_CPP_HOME:-"../../frameworks/llama.cpp/llama.cpp"}
 
 
