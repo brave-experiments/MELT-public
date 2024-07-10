@@ -2,11 +2,12 @@
 # Author: Stefanos Laskaridis (stefanos@brave.com)
 
 import re
+
 import pandas as pd
 
 
 def parse_logfile(log_file, verbose=False):
-    with open(log_file, 'r') as f:
+    with open(log_file, "r") as f:
         lines = f.readlines()
 
     weights_pattern = r"llama_model_loader:\s+-\s+tensor\s+(\d+):\s+(\S+)\s+(\S+)\s+\[\s+(\d+),\s+(\d+),\s+(\d+),\s+(\d+)\s+\]"
@@ -17,7 +18,7 @@ def parse_logfile(log_file, verbose=False):
     totals_regex = re.compile(totals_pattern)
     totals_delimiter = "=" * 40
 
-    per_op_delimiter_pattern = r'n_nodes = (\d+)'
+    per_op_delimiter_pattern = r"n_nodes = (\d+)"
     per_op_delimiter_regex = re.compile(per_op_delimiter_pattern)
     per_op_pattern = r"\s*-\s*(\d+): \[\s*(\d+),\s*(\d+),\s*(\d+)\]\s+([\S+]+)\s+\(\s*(\d+)\) cpu\s*=\s*(\d+\.?\d+)\s*/\s*(\d+\.?\d+) ms, \s*wall\s*=\s*(\d+\.?\d+)\s*/\s*(\d+\.?\d+) ms\s*"
     per_op_regex = re.compile(per_op_pattern)
@@ -35,11 +36,13 @@ def parse_logfile(log_file, verbose=False):
                 tensor_name = match.groups()[1]
                 tensor_qtype = match.groups()[2]
                 dimensions = [int(match.groups()[i]) for i in range(3, 7)]
-                weights_details.append({
-                    'Name': tensor_name,
-                    'Quantization': tensor_qtype,
-                    'Dimensions': dimensions
-                })
+                weights_details.append(
+                    {
+                        "Name": tensor_name,
+                        "Quantization": tensor_qtype,
+                        "Dimensions": dimensions,
+                    }
+                )
 
         if match := re.match(totals_regex, line):
             while line.strip() != totals_delimiter and idx < len(lines):
@@ -47,10 +50,9 @@ def parse_logfile(log_file, verbose=False):
                 if match is None:
                     raise ValueError(f"Invalid line: {line}")
                 op, duration_ms = match.groups()
-                current_token_op_summary_latencies.append({
-                    'Name': op,
-                    'Duration (ms)': float(duration_ms)
-                })
+                current_token_op_summary_latencies.append(
+                    {"Name": op, "Duration (ms)": float(duration_ms)}
+                )
                 idx += 1
                 line = lines[idx]
         elif match := re.match(per_op_delimiter_regex, line):
@@ -67,13 +69,15 @@ def parse_logfile(log_file, verbose=False):
                 op = match.group(5)
                 cpu_time_ms = float(match.group(7))
 
-                current_token_op_detailed_latencies.append({
-                    'Name': op,
-                    'Duration (ms)': cpu_time_ms,
-                    'Wall time (ms)': wall_time,
-                    'Argument Shapes': dimensions,
-                    'node_num': node_num
-                })
+                current_token_op_detailed_latencies.append(
+                    {
+                        "Name": op,
+                        "Duration (ms)": cpu_time_ms,
+                        "Wall time (ms)": wall_time,
+                        "Argument Shapes": dimensions,
+                        "node_num": node_num,
+                    }
+                )
             idx += jdx
         else:
             idx += 1

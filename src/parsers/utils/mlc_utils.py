@@ -1,8 +1,8 @@
 # Note:   Utility functions for parsing and merging the logs from the MLC backend.
 # Author: Stefanos Laskaridis (stefanos@brave.com)
 
-import re
 import json
+import re
 from json.decoder import JSONDecodeError
 
 import pandas as pd
@@ -15,7 +15,7 @@ def parse_json(json_string):
 
 
 def parse_logfile(log_file, verbose=False):
-    with open(log_file, 'r') as f:
+    with open(log_file, "r") as f:
         lines = f.readlines()
 
     ops_metrics = []
@@ -47,9 +47,9 @@ def parse_logfile(log_file, verbose=False):
     device_metrics_dfs = {}
     config_dfs = {}
     for op, metrics_dict in ops_metrics:
-        calls_df = pd.DataFrame(metrics_dict['calls'])
-        device_metrics_df = pd.DataFrame(metrics_dict['device_metrics'])
-        config_df = pd.DataFrame(parse_config(metrics_dict['configuration']))
+        calls_df = pd.DataFrame(metrics_dict["calls"])
+        device_metrics_df = pd.DataFrame(metrics_dict["device_metrics"])
+        config_df = pd.DataFrame(parse_config(metrics_dict["configuration"]))
 
         calls_df = normalize_calls(calls_df)
         device_metrics_df = normalize_calls(device_metrics_df.transpose())
@@ -60,7 +60,7 @@ def parse_logfile(log_file, verbose=False):
         ops_count[op] += 1
 
         if verbose:
-            print("==="*3,  op, "==="*3)
+            print("===" * 3, op, "===" * 3)
             print("device_metrics_df\n", device_metrics_df)
             print("config_df\n", config_df)
             print("calls_df\n", calls_df)
@@ -70,14 +70,14 @@ def parse_logfile(log_file, verbose=False):
 
 def normalize_calls(calls_df):
     assoc = {
-        'Percent': 'percent',
-        'Count': 'count',
-        'Device': 'string',
-        'Duration (us)': 'microseconds',
-        'Name': 'string',
-        'Argument Shapes': 'string',
-        'Duration(us)': 'microseconds',
-        'ArgumentShapes': 'string'
+        "Percent": "percent",
+        "Count": "count",
+        "Device": "string",
+        "Duration (us)": "microseconds",
+        "Name": "string",
+        "Argument Shapes": "string",
+        "Duration(us)": "microseconds",
+        "ArgumentShapes": "string",
     }
     for col in calls_df.columns:
         # print(col, calls_df[col].dtype)
@@ -88,7 +88,7 @@ def normalize_calls(calls_df):
 
 def parse_config(config_dict):
     ret_dict = {}
-    ret_dict['num_threads'] = config_dict['Number of threads']
-    ret_dict['executor'] = config_dict['Executor']['string']
+    ret_dict["num_threads"] = config_dict["Number of threads"]
+    ret_dict["executor"] = config_dict["Executor"]["string"]
 
     return ret_dict
