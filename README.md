@@ -32,9 +32,31 @@ git submodule update --init --recursive
 
 This command will checkout the latest working version for each component, recursively.
 
+### How to run
+
+The general workflow for running experiment goes as follows:
+
+1. Go to `frameworks/MLC/mlc-llm` or `frameworks/llama.cpp/llama.cpp` and compile each framework. Please see the documentation ([#1](frameworks/llama.cpp/llama.cpp/build_scripts/README.md),[#2](frameworks/MLC/mlc-llm/build_scripts/README.md)) for more.
+2. Go to `src/models` and download, convert models. Please see [this](src/models/README.md) for more.
+3. After you build the models, you need to build the apps, that are going to be installed to the phones. To do so, please follow the rest of the documentation in ([#1](frameworks/llama.cpp/llama.cpp/build_scripts/README.md),[#2](frameworks/MLC/mlc-llm/build_scripts/README.md)).
+4. Go to `batterylab/experiments/` and follow the [documentation](batterylab/experiments/README.md) there. You need to install the applications, transfer models on the local directories and then run the automated scripts.
+5. If the experiment has successfully run, you'll have `batterylab/experiment_outputs/` directory populated. You can run the `batterylab/experiments/notebooks` for analysis of the results.
+
+For running on jetson platform, you need to build each framework with the appropriate script (see ([#1](frameworks/llama.cpp/llama.cpp/build_scripts/README.md),[#2](frameworks/MLC/mlc-llm/build_scripts/README.md)). See also this [documentation](jetsonlab/README.md) for more.
+
 ### Further documentation
 
 Additional documentation on how to run is provided in each of the subdirectories, as separate README files.
+
+* PhoneLab [README](batterylab/experiments/README.md)
+* JetsonLab [README](jetsonlab/README.md)
+* llama.cpp:
+    * building [README](frameworks/llama.cpp/llama.cpp/build_scripts/README.md)
+    * running [README](frameworks/llama.cpp/llama.cpp/run_scripts/README.md)
+* MLC-LLM:
+    * building [README](frameworks/MLC/mlc-llm/build_scripts/README.md)
+    * running [README](frameworks/MLC/mlc-llm/run_scripts/README.md)
+* LLMFarm [README](frameworks/llama.cpp/LLMFarmEval/README.md)
 
 ## Supported frameworks
 
@@ -50,9 +72,9 @@ Additional documentation on how to run is provided in each of the subdirectories
 
 ## Authors/Maintainers
 
-* Stefanos Laskaridis (@stevelaskaridis)
-* Kleomenis Katevas (@minoskt)
-* Lorenzo Minto (@LorenzoMinto)
+* Stefanos Laskaridis ([@stevelaskaridis](https://github.com/stevelaskaridis))
+* Kleomenis Katevas ([@minoskt](https://github.com/minoskt))
+* Lorenzo Minto ([@LorenzoMinto](https://github.com/LorenzoMinto))
 
 ## Citation
 
