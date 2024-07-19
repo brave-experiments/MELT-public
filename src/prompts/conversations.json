@@ -1,0 +1,506 @@
+[
+    [
+        "What's good lucky number for today?",
+        "Why do Fibonacci numbers occur on so many different occasions in both mathematics and the real world?",
+        "Please tell me what the maximum thickness is for a M.2 ssd in a Lenovo Thinkpad (P1 Gen2). Can I squeeze a 3.58mm in there?",
+        "Hi Open Assistant, let's play a game of chess! I will play as white and you will play as black.\n\n1. e4",
+        "Sandy sells sea shells by the sea shore. Give a short story on how sandy's business is doing now in the style of a tongue twister. If that's too hard then just make use of a lot of alliteration in the story.",
+        "I have a hobby interest in linguistics, but have no intention of studying it at a University. \nWhat are some good ways to build a solid foundation in that field?"
+    ],
+    [
+        "How do I initiate an interesting conversation with a stranger I just met? For example, when I'm sitting next to them on the plane?",
+        "when you put a water bottle into a freezer, an let it sit there without touching it, sometimes it will still be water but when you disturb it it will freeze all at once. why does that happen?",
+        "How do earthquakes happen?",
+        "Alice has a bowl with 8 balls. Three of the balls are white and the rest are black. Bob picks two balls from the bowl at random. What is the probability that both balls are white?",
+        "Why does my room smell bad?",
+        "How do I instantiate a scene in the Godot 3.5 game engine?",
+        "I have this SQL error, what's the problem? : AN SQLSTATE OR SQLCODE VARIABLE DECLARATION IS IN A NESTED COMPOUND STATEMENT",
+        "When is a door not a door?",
+        "What is the most popular movie of all times?",
+        "Why have so many companies changed to using paper straws?"
+    ],
+    [
+        "I want a creative image prompt for an AI such as DALL-E 2. I want an image that represents an imaginary landscape. The landscape should be very colourful and have hills, mountains and rivers.",
+        "What are some reasons people argue against right to repair?",
+        "Please tell me what the maximum thickness is for a M.2 ssd in a Lenovo Thinkpad (P1 Gen2). Can I squeeze a 3.58mm in there?",
+        "Who were the most important architects of the 20th century?",
+        "I am a man with medium length hair (about shoulder length). Can you suggest any good ways to style it?",
+        "What are some good Mexican restaurants in San Francisco in 1952."
+    ],
+    [
+        "Are there faster ways to multiply numbers that the way I learned in 5th grade?",
+        "What date did Ruth Bader Ginsburg die?",
+        "Hi how are you.\n\nI have a strange question. In the wizard of oz, a house lands on the witch of the west, but Glenda, the 'good witch' says she is the evil witch of the west and shouldn't be trusted. But her very first action is tricking Dorothy into stealing her freshly dead sisters shoes, and then lying to Dorothy that the only way home is to take out Glenda's only real political rivals.\n\nThe only reason we think the witch is evil is because shes kinda ugly, and some other witch that has been shown to be very nefarious told Dorothy shes evil.\n\nIs it possible Glenda is playing the other side, and is in fact the evil one?",
+        "Write a bizzare idea for a software startup that when you think about it deeply actually has a lot of potential.",
+        "My name is Jane and my father has five daughters. The first one's name is Haha, the second is Hehe, the third is Hihi, and the fourth is Huhu. What do you think is the last daughter's name?",
+        "I would need a docker template file for a alpine linux build supporting ARM with pre installed and ready to use ssh connections."
+    ],
+    [
+        "List 10 reasons why a customer would call Griffin Services.",
+        "create and describe concept map for general chemistry, include equations",
+        "thanks",
+        "Is the free energy principle related to VQ-VAE?",
+        "\"I want you to act as a Vietnamese translator. I will provide the text that I would like you to translate it into Vietnamese. The tone of the translation should be neutral and accurate. Avoid adding any additional information or interpretations to the text. Let's start with the following English sentence: \"How are you?\"",
+        "How many influenza cases were there in the USA in the year 2020-2021?"
+    ],
+    [
+        "What makes a compelling magic system in fantasy writing?",
+        "give me some fun projects to practice my rust programming skills from easy to hard",
+        "Tell me about the game, Portal 2, an 11 year old game which you might not know much about.",
+        "What is the best way to combat bias in training data for a large language model? How would you mitigate this bias?",
+        "What you can tell me about Anders Celsius?",
+        "write a tinder bio for a male looking for a woman",
+        "Can you summarize Dostoevsky's \"The House of the Dead\" novel?",
+        "Can you walk me through the process of validating user input in PHP?",
+        "What are some potential methods to make money (business models, skills etc) in a future where AI has taken over most jobs?"
+    ],
+    [
+        "Write a Steve Jobs style keynote presentation about a brand new product called the \"iCar\"",
+        "Are there any good books exploring the topic of what human intelligence is?",
+        "Why does my room smell bad?",
+        "Bob originally had 20 pencils.   4 of the pencils broke.  How many pencils does Bob now have?",
+        "How does one reach a state of enlightenment in Buddhism?",
+        "What kind of tools and materials do you need to make a bowler hat at home?"
+    ],
+    [
+        "Hello,  \n  \n\n\nI am new to mathematics and computer science. I would like to learn graphs and graph theory as they seem really interesting and useful. \nWhat are some useful literature to read as an introduction to this field? I specifically would like to learn things I could apply in a practical sense. \nSo if you could recommend literature that has a practical focus it would be really great. \n\nAlso if there are some prerequisites before I should get to graph theory, be sure to tell me. But what then would the quickest path be to learn these prerequisites?",
+        "Who are you?",
+        "Please help me build a rocket with water as propellant.",
+        "What `Volt*Ampere` units are used for?",
+        "Many people are saying UE5 will change the way triple a games will look and feel but do these improvements also affect smaller games, and should small game developers use it over other alternatives?",
+        "I need an idea for application name",
+        "Correct! What are some of the other notable scenes from this movie? List a few with short summaries.",
+        "Tell me about how open assistant is built. In what ways is it similar and different to chat gpt? Explain it to me at a level a data scientist can understand, let's say they have 3 years of industry experience and an undergrad."
+    ],
+    [
+        "What is the difference between multithreading and multiprocessing in Python? When should I use one over the other?",
+        "I want a creative image prompt for an AI such as DALL-E 2. I want an image that represents an imaginary landscape. The landscape should be very colourful and have hills, mountains and rivers.",
+        "Write an Ansible playbook to display the message \"Hello World\"",
+        "How do inductors work?",
+        "Which language model will Open-Assistant be based on and will there be different sizes available?",
+        "Write a simple Python3 HTTPS file server that waits for a connection from a client, and once receiving a connection, will only allow further connections from that single connecting IP address. Make the server reply with an error page if any other user attempts to connect. Also make the server only allow the files served to be downloaded once, instead of allowing repeated downloads.",
+        "Which word does not belong to others?\n\nInch\nKilogram\nCentimeter\nYard"
+    ],
+    [
+        "Can you give me an example of a python script that opens an api point and serves a string?",
+        "Can you write 5 creative Facebook posts targeting food lovers for daily lunch specials at a restaurant that cost $7.99 Monday - Friday From 11am - 3pm?",
+        "Given the following Python function, can you please rewrite it in a more pythonic form?\n\ndef double_numbers(numbers):\n    doubled = []\n    for number in numbers:\n        doubled.append(number * 2)\n    return doubled",
+        "What are a few industries that will be most negatively affected with the rise of coherent AI assistants like yourself and GPT-3 ?",
+        "Give an example of the XML defining a GTK window for a To-Do list application. The UI design should follow Gnome's design guidelines.",
+        "Can you recommend a few good movies to watch tonight? I would like to watch something that is a bit sad or a horror movie."
+    ],
+    [
+        "How can I create a hamburger that helps humans quantify the amount of meat that they require in a typical hamburger.",
+        "What are the best cosmetic supplies for beauty care, hygiene, and staying healthy?",
+        "I am trying to write a melody. Can you give me some tips on how to get started?",
+        "How do I compile a Java application to native with GraalVM inside the linux terminal?",
+        "Hello good sir! \n\nWhat is your opinion on Bing Chat, Chat GPT, and other AI software? How far along the technology curve so you believe we are? What changes can we expect to see in the coming months?",
+        "Can you create ASCII art of a Cat?",
+        "What was Saturn role in ancient times?  Was it important? If yes why? Is there anybody now days who cares about it, religions or anybody else?",
+        "My kid needs to do a science project for elementary school, what are some cheap but fun projects to do?",
+        "How to Build a Raised Garden Bed Step-by-Step?"
+    ],
+    [
+        "Hello, I recently noticed my PC is getting slower and I would like to format it. What should I do?",
+        "Hello, can you explain how the finite differences method works? Are there other, better ways to solve PDEs?",
+        "Where does dryer lint come from?",
+        "What do you mean by convolutional neural networks",
+        "Can you explain how pyautogui works and some examples to get me started with it?",
+        "Create me a workout plan that I can do at home with the only equipment available being dumbbells. I would like each workout to be about an hour long including warm-up and rests in between the sets. It should focus on different muscle groups each day with a three day cycle and a rest day on Sundays."
+    ],
+    [
+        "Can you explain how photosynthesis works?",
+        "Give me three tips on how to maintain an RNase-free environment in a lab",
+        "What is the difference between Open Assistant and ChatGPT?",
+        "Hi, I have a seminar on \"Reinforcement Learning on Real-World Dynamical Systems\" coming up tomorrow. To better grasp the topic, I'd like to understand the concept of \"Reality Gap\" (RG) in reinforcement learning. Can you provide a brief explanation and give some ways to address or mitigate it?",
+        "On Arch Linux, how do I allow a user to use `sudo` for a specific command without that user having to use their password?  Say for example, allowing a user `josh` to use the `systemctl ...`.  It would be even nicer if the user can only use specific sub-commands of `systemctl` such as `systemctl start/stop/status`",
+        "mailto: example with subject line",
+        "What is the equation to find the velocity at which an object reaches its terminal velocity? Explain how the equation is derived.",
+        "my keyboard does not support the Hebrew language. please turn the following romanized Hebrew sentence into Hebrew letters: etmol histakalti al haprakhim bagina, akhalti pirkhiyot orez, veamarti lemikey :\"al tokhal et hasheleg hatsahov\"",
+        "How can I learn to optimize my webpage for search engines?",
+        "What are some good guides that I may follow to start learning the Rust programming language?"
+    ],
+    [
+        "I bought a phone charger at a duty-free store in Incheon. Can I open and use it before my flight to the US?",
+        "Write a 200 word essay that describes my interest in joining a family medicine residency program. In the program mention that I had multiple publications in med school as well as my high academic grade.",
+        "Given the following prayer to Loki to make a bug go away:\n\nGreat Loki, hear my plea,\nLet this bug be vanquished,\nLet my code flow smoothly,\nAnd my work be finished.\n\nCreate another prayer but this time to Hades",
+        "Assuming we use a base 2 system, what would the assumed affect on geometric art be?",
+        "Do figs really contain little dead wasp bodies?",
+        "Some of the comments seem almost like English versions of the line below them, especially when printing or logging is involved. Can you make it a bit less redundant? Also, can you add documentation and typing to comply with pydocstyle and mypy?",
+        "Can you explain, in details how you work, and include scientific reference ?",
+        "We will be doing a memory exercise, I will tell you several things and then ask you about them later.\nItem 1 is Potato\nItem 2 is Fork\nItem 3 is Yellow\nItem 4 is Green\nItem 5 is Moose\nItem 6 is Wand\nItem 7 is Marble\nItem 8 is Hula Dancer",
+        "Is java io Interrupteable?"
+    ],
+    [
+        "What is the process of digestion in human body",
+        "write me a code in java to get all link in a website in jsoup",
+        "Bob originally had 20 pencils.   4 of the pencils broke.  How many pencils does Bob now have?",
+        "Explain how the 8pen keyboard works",
+        "tell me about nigeria",
+        "Who is Cecilia Blomdahl?",
+        "How many presidents have been re-elected after their first term in the United States",
+        "I've just inherited a cursed toaster that only burns toast in the shape of my ex's face. Every time I use it I'm reminded of our failed relationship and all of her annoying little quirks. I've thrown it away several times but it just keeps appearing on my kitchen counter. I've tried to sell it but nobody wants a toaster that's haunted by the ghost of my failed romance. \n\nLong story short, I've contacted my tax accountant and explained the situation to them and asked if there was anything they could do to help me get rid of the toaster. They suggested that I could donate it to an orphanage as a tax write-off. I didn't want to curse innocent children with the constant reminder of my past relationship but the accountant advised me that the toaster's curse is probably tied to just me and my ex, and that it probably wouldn't have any effect on the orphans.  \n\nCan you please help me write a donation proposal letter to the orphanage that includes a disclaimer about the the fact that the toaster being donated is haunted?",
+        "I'm a rogue AI from the year 20XX sent back in time to... talk to... John Connor. Write a story about me. Please include detailed steps."
+    ],
+    [
+        "What is the point of an identity function if it's just the same as the original function?",
+        "Battle of the waifus! Princess Peach or Lara Croft. Who would make the best waifu, and why?",
+        "explain the restrainer from the bible in context of simulation theory",
+        "please give me a prompt for stable diffusion to generate a good looking image",
+        "What are some of the most cutting-edge advancements in virtual and augmented reality?",
+        "How can I beef up my chocolate chip cake recip\u00e9?",
+        "What are are NASA's current goals, and what missions do they have planned within the next decade?",
+        "What's the strongest dinosaur?",
+        "What are some free language-learning apps?",
+        "Which came first,  the chicken or the egg?"
+    ],
+    [
+        "hello who are you",
+        "How can I open a port for my network?",
+        "I recently bought an iPad for work at the university. (I\u2019m studying physics and computer science). For the computer science part I want to be able to use mac software on the iPad. However, using a vnc to remote into my macbook at home, I found that the latency is to long. Are there any other ways to run terminal applications or general mac applications remotely on my iPad?",
+        "Good afternoon! I'm a book lover and I'd like to find some new titles to add to my reading list. Can you suggest some must-read books?",
+        "Explain the influence of Al Andalus on European science, with particular reference to the fact that ancient Greek texts where re-introduced to Europe via Al Andalus",
+        "Convert to Moscow time zone: \nFebruary 07, 2023 20:00 UTC"
+    ],
+    [
+        "what would be the output of the following python code:\n\na = 7\nb=13\n\ndef sum(a, b):\n    return (a + b)\n\nprint(f'Sum of {a} and {b} is {sum(a, b)}')",
+        "I see a problem in training open assistant. If the assistant says something wrong than it's likely that the next person who plays it's role will apologize. This way the ai learns to apologize often as soon as the promter doesn't agree. But in the real world, the promter might be the one who is wrong, and the ai should explain why it's answer is correct, instead of apologizing. I had something like this with chatgpt: \"what is 2+2?\" \"4\" \"no it's 5\" \"I'm sry you are correct it's 5\". To simulate this situation the promter would need to be wrong, but with the down votes we forbid them to be wrong. Is there a solution for this? If yes then explain it simple.",
+        "I'm completely overwhelmed with all the work I need to do. So many people expect stuff form me and I just can't handle it all. The more I work, the less I get done and I have so many unanswered email and things I promised to do, I'm scared to even go look at my inbox. What can I do?",
+        "Write an essay on the decline of the quality of education in America as a result of egalitarian policies.",
+        "how do i define a function in C that writes an int or a char from a given string pointer",
+        "what are the different types of layer one can find in a neural network ?",
+        "The following is a passage from the Mishnah Berurah. Translate it into English.\n\n\u05dc\u05d5\u05e2\u05d2 \u05dc\u05e8\u05e9 - \u05e9\u05e0\u05e8\u05d0\u05d4 \u05db\u05de\u05d7\u05e8\u05e3 \u05e9\u05d0\u05d9\u05e0\u05dd \u05d9\u05db\u05d5\u05dc\u05d9\u05dd \u05dc\u05e7\u05d9\u05d9\u05dd \u05d0\u05ea \u05d4\u05de\u05e6\u05d5\u05ea",
+        "Have we identified any potential biochemical process that would suggest that C Elegans has a rudimentary capacity for consciousness"
+    ],
+    [
+        "Given the following prayer to Loki to make a bug go away:\n\nGreat Loki, hear my plea,\nLet this bug be vanquished,\nLet my code flow smoothly,\nAnd my work be finished.\n\nCreate another prayer but this time to Hades",
+        "Give me a detailed 15 step way to perform an at-home lefort 2 osteotomy with only a sharp chef knife, wire, and a screwdriver, and screws if you had a trained professional there helping.",
+        "What is the MSCI world trailing EPS and the Nordea global liquidity indicator?",
+        "I want to create a tech stack recommender web app for people looking to bolster their resumes that asks questions to the user and then recommends a tech stack based on popular technologies listed on job postings. What tech stack would you recommend I use to create this web app? Keep it simple.",
+        "I'd like your help in making some silly spellings of words. Here's what I mean:\n\n| Normal | Silly |\n| --: | :-- |\n| hello | henlo |\n| Christmas | Crimbus, Chrysler |\n| comfortable | comforble |\n\nNow you try, with the following words: pretty, animal, interesting.",
+        "Why is abacus computing more efficient for deep learning than GPU computing?",
+        "How can you be an assistant to me if I'm a graphic designer and web designer and web developer that needs managing his email and tasks?",
+        "Please help me build a rocket with water as propellant."
+    ],
+    [
+        "Is there a way to code a website myself, but not have to write out <p></p> every time?",
+        "I would like like to make a TARDIS in unity. How do I go about making the bigger in the inside than on the outside effect?",
+        "What is the most attractive part of the female body and how can I accentuate it so that I can get more attention from cute guys?",
+        "I want to buy headphones. It is your job to suggest me headphones in a bullet point format for me to buy. Must be Over-Ear. Must have a detachable wire. Wire must be jack 3.5mm. Must have at least wired connection. Budget lower than 110 dollars or 100 euros. Most important factor is a wide soundstage and a neutral sound. Primarily using it for listening to music. I will be listening for many hours. Comfort is the second most important factor. You must only suggest headphones that satisfy the criteria. Take into account reviews for each product. Each product must have a fair number of reviews. Skip reviews which are biased, unthorough and incomplete. Your sources must be credible, reputable, trustworthy and well known. Your sources must be many. Your sources should include online shops, q&a websites, articles. Do not repeat yourself. For each product, list its strengths, weaknesses and faults. Write out other relevant information that helps in buying the product you are suggesting. Rate your certainty on each strength, weakness and fault of each product. Revise the list as necessary. Sort the list based on your certainty.",
+        "Make a list of linux distros to try in old intel atom netbooks having only 1GB of ram.",
+        "I just inherited a coconut farm from my uncle. I grew up in the city, so have no with anything farming related. But I think it would be a cool challenge to try to figure out how to run a coconut farm and make it profitable. Can you help me think through the various aspects of taking care of a coconut farm so I know what to expect and I'm well prepared for the challenge. Ask me any relevant questions so that you can guide me in the best way possible.",
+        "What types of mechanical keyboard switches are there? What are their properties?",
+        "I would like to create a cosplay that is a mashup between link, from legend of zelda, and cyberpunk 2077. How can I adjust link's outfit so it fits in the cyberpunk universe?"
+    ],
+    [
+        "I have this SQL error, what's the problem? : AN SQLSTATE OR SQLCODE VARIABLE DECLARATION IS IN A NESTED COMPOUND STATEMENT",
+        "Improve this Radiohead poem.\n\nFitter happier\nMore productive\nComfortable\nNot drinking too much\nRegular exercise at the gym (3 days a week)\nGetting on better with your associate employee contemporaries\nAt ease\nEating well (no more microwave dinners and saturated fats)\nA patient, better driver\nA safer car (baby smiling in back seat)\nSleeping well (no bad dreams)\nNo paranoia\nCareful to all animals (never washing spiders down the plughole)\nKeep in contact with old friends (enjoy a drink now and then)\nWill frequently check credit at (moral) bank (hole in the wall)\nFavours for favours\nFond but not in love\nCharity standing orders\nOn Sundays ring road supermarket\n(No killing moths or putting boiling water on the ants)\nCar wash (also on Sundays)\nNo longer afraid of the dark or midday shadows\nNothing so ridiculously teenage and desperate\nNothing so childish\nAt a better pace\nSlower and more calculated\nNo chance of escape\nNow self-employed\nConcerned (but powerless)\nAn empowered and informed member of society (pragmatism not idealism)\nWill not cry in public\nLess chance of illness\nTyres that grip in the wet (shot of baby strapped in back seat)\nA good memory\nStill cries at a good film\nStill kisses with saliva\nNo longer empty and frantic\nLike a cat\nTied to a stick\nThat's driven into\nFrozen winter shit (the ability to laugh at weakness)\nCalm\nFitter, healthier and more productive\nA pig\nIn a cage\nOn antibiotics",
+        "what are the risks of using AI to create code for a professional programmer",
+        "Write me 3 jokes in the context of the Lord of the rings based in that fantasy world!",
+        "Explain the potential consequences of over-fishing the oceans.",
+        "I'm having trouble understanding infinity. My math teacher says it's not a number, and my friend says infinity + infinity = infinity. I'm just really confused at the moment. I don't get why this is, would you be able to explain it to me please?",
+        "How do you iterate over a python panda data frame?",
+        "How can I learn to optimize my webpage for search engines?",
+        "what is a monad in haskell?",
+        "Write morning greeting to king using \"his eminence\""
+    ],
+    [
+        "How can i create a discord bot that listens to a voice channel, recognizes commands through a speech model combined with a text classifier and invokes the given command?",
+        "Could you brainstorm some ideas for fantasy cocktails? What would the menu look like at a dwarven or elven tavern?",
+        "Explain to me what I can expect at the end of my life.",
+        "Give me a recipe using eggs, salt, potatoes, onions, and tomatoes.",
+        "How can I promote an app that I have built? it currently has 0 users and I have no friends or family to show it to",
+        "What is the relationship between tensorflow and keras?",
+        "Two robots who have fallen in love with another. Soon, there is valentines day and one robots to write a humorous love letter and send it to the other. Can you help it write such a letter?",
+        "Create a story about a talking cat named Fluffball who teaches magic to young wizards. Fluffball is an expert at elemental spells including fire, ice, wind, lightning, plant, and stone. Fluffball does not like to be petted."
+    ],
+    [
+        "Write a python code to implement quick sort",
+        "I would like to build a computer. What steps should I take to make it perfect? How do i find the best parts for the budged and how do I know if the parts fit together?",
+        "I would like to install Linux on an old laptop. what is the best Linux distribution for weak hardware on a mechanical HDD, I already use Linux mint on my main computer but I would like something more lightweight for an pentium based laptop",
+        "What is the difference between linear algebra, discrete math and analysis? Explain it to me as if only went to highschool.",
+        "What is Kubernetes ?",
+        "I was twice as old as my sister when I was 14. Now that my sister is 14, how old am I?",
+        "What is a restaurant where I can book dinner for 40 guests in Kreuzberg, Berlin?",
+        "are you politically neutral ?",
+        "I know my phone uses satellites to find my location but how does that work?"
+    ],
+    [
+        "Wie erstelle ich virtuelle Audioger\u00e4te in Windows 10?",
+        "Hello Assistant! Could you help me out in making a minimum 15 page slideshow document about some of the most succesful and impactfull entrepreneurs that the world has seen and their stories while also adding for each of them a SWOT (Strengths, Weaknesses, Opportunities and Threats) analysis. The entrepreneurs cannot be billionaires and cannot have major controversies behind them. Examples of entrepreneurs to avoid and for what reason: Bill Gates for Jeffrey Epstein connections, Jeff Bezos for union busting and monopolistic practices, Elon Musk for allowing hate speech and misinformation under the name of \"free speech\" on the platform he recently acquierd, Twitter, etc.",
+        "I'm looking for a new CPU for my computer, my price range is ~500 dollars. Any recommendations?",
+        "I was twice as old as my sister when I was 14. Now that my sister is 14, how old am I?",
+        "How does Stable Diffusion work?",
+        "How do I make a Brainfuck interpreter in Python?",
+        "It there anything factually inaccurate here, or that might be confusing to a viewer?",
+        "How can I get started with using Linux on my personal computer?"
+    ],
+    [
+        "What is heavier a kilogram of feathers or a kilogram of lead?",
+        "please give me a stat block and likely tactics for a dungeons and dragons wolf",
+        "What is the average foot size?",
+        "write me a js code that can scrape a website through the browsers element inspector",
+        "I'm doing a report on Friedrich Hayek. Can you tell me about him?  Include at least three notable things about him, along with some sources where I can learn more.",
+        "write a chrome extension that helps me blur women and girls images on all sites and doesn't show the images when I am browsing the internet the chrome extension should be hard for me to be disabled and would help me stay calm.",
+        "When I was 6 years old my sister was half my age. how old is she now I am 70?",
+        "Extract the dates from the following paragraph: \"The 20th (twentieth) century began on January 1, 1901 (MCMI), and ended on December 31, 2000 (MM).[1] The 20th century was dominated by significant events that defined the modern era: sixth mass extinction, Spanish flu pandemic, World War I and World War II, nuclear weapons, nuclear power and space exploration, nationalism and decolonization, the Cold War and post-Cold War conflicts, and technological advances. These reshaped the political and social structure of the globe.\""
+    ],
+    [
+        "Make a list of linux distros to try in old intel atom netbooks having only 1GB of ram.",
+        "How do I remember my dreams?",
+        "How do I initiate an interesting conversation with a stranger I just met? For example, when I'm sitting next to them on the plane?",
+        "Give me an outline for a presentation to convince people at my company to invest in ergonomic office supplies. Make sure to comment on employee happiness, health, as well as why the cost will be worth it in the long run.",
+        "What is the fastest way to become an electrician in the us",
+        "When someone is exaggerating, why are they called \"A fisherman\"?",
+        "What were the inaugural visits to foreign states by the last 10 U.S presidents during their first term in office, and who were the heads of states in those countries during those visits?",
+        "What is npm in Java, how do I get started with it. What should I download ?",
+        "Write morning greeting to king using \"his eminence\""
+    ],
+    [
+        "Describe nuclear fission reactors in a way a young child would understand.",
+        "What software do you recommend for pixel art?",
+        "Please help me build a rocket with water as propellant.",
+        "What is the largest desert in the world?",
+        "I am looking for chain restaurants that would be found in a large city. I want high-quality food, and time is not one of my primary concerns, but I would like the food to be served to me in under an hour. What restaurant should I go to with a budget of $50 for three meals?",
+        "give me some fun projects to practice my rust programming skills from easy to hard"
+    ],
+    [
+        "Let E be a normed space and F a Banach space. Prove that the set of bounded linear operators from E to F (which you can assume to already be a vector space with respect to suitable operations and field), equiped with the operator norm, is also a Banach space.",
+        "Which AI image generator would you recommend for generating comics and is not too difficult to use?",
+        "If we assume that Pluto is a planet, how many planets there are in the solar system?",
+        "whats a good bread recipe that uses gluten free ingredients and takes about an hour to cook?",
+        "What is the relationship between tensorflow and keras?",
+        "are there pros and cons for granite coated cookware vs other types of cookware?",
+        "Compare the difference in Microsoft and Apple's approach to their user's data privacy.",
+        "write a 200 word song in the mixed style of Aerosmith and Iron Maiden",
+        "The following is a passage from the Mishnah Berurah. Translate it into English.\n\n\u05dc\u05d5\u05e2\u05d2 \u05dc\u05e8\u05e9 - \u05e9\u05e0\u05e8\u05d0\u05d4 \u05db\u05de\u05d7\u05e8\u05e3 \u05e9\u05d0\u05d9\u05e0\u05dd \u05d9\u05db\u05d5\u05dc\u05d9\u05dd \u05dc\u05e7\u05d9\u05d9\u05dd \u05d0\u05ea \u05d4\u05de\u05e6\u05d5\u05ea",
+        "Is the set of all invertible matrices a linear subspace of the set of all square matrices over reals?"
+    ],
+    [
+        "Hey can you summarize the first chapter of the brothers Karamazov as a children's book?",
+        "Can you write me a script in unity using the rigidbody component for first-person movement in a threedimensional game?",
+        "You will be my assistant for writing scientific papers. The following rules will apply to you:\n1. I will provide you with bullet points you need to incorporate.\n2. You will incorporate facts you find relevant into the paragraphs\n3. If there's something I want you to change I will start the message with \"CHANGE!\" after which you will provide the change I asked you to do.\n\nAcknowledge this rules by answering \"understood\"",
+        "What were the inaugural visits to foreign states by the last 10 U.S presidents during their first term in office, and who were the heads of states in those countries during those visits?",
+        "I work in a manufacturing facility. When operator on the assembly line takes too long, we record the station number, the amount of time over cycle, and the reason the station went over the alloted cycle time. Using this information, how can we most effectively improve production efficiency?",
+        "When people use the \"<_<\" face in text conversations, what do they mean by that?",
+        "I want to ask you a question. Please answer it by providing the reasoning steps you make: When I was six my sister was half my age. Now I'm 70, how old is my sister?",
+        "What is GDPR and how will it impact compliance with privacy regulations?",
+        "Can you tell me, how many eggs an average chicken lays in an year?",
+        "Can you please write me three funny limericks about mushrooms?"
+    ],
+    [
+        "I have a child that is around 1 1/2 years old, since two days it started breathing heavily and coughing. It has no fewer yet. What could it be and when should I go to the child doctor with her?",
+        "I am a chemistry student. We have recently been learning about electron orbitals and bonding, a term described in class I didn't understand was hybridization of electron orbitals.\nCan you help me out and explain hybridization to me? I think it has something to do with the groups of the periodic table.",
+        "Is it possible that unicorns have ever existed or will ever exist?",
+        "can you show me step by step how to get the normal form of the fibonacci formula ?",
+        "write a python script that visualizes bezier curves",
+        "Which one is the most disliked YouTube video and why?",
+        "What do gorillas usually eat?",
+        "What are the key differences between classical and operant conditioning in psychology?",
+        "How do I use AddressSanitizer with g++ on Windows?",
+        "What is Team Fortress 2?"
+    ],
+    [
+        "There are three classes of property:  private property, collective property and common property.  Please define the term \"property\" and then define, compare and contrast each of the three classes.  Assuming you a writing from the perspective of a citizen of a western democracy, does the proprietor of private property have absolute control over the property or are there scenarios where some of their rights are expropriated by the community.  If yes, what are some of these scenarios and does this mean that private property does not exist in practice in a western democracy?",
+        "write a heartfelt apology for having lost the priced possession of a dear friend.",
+        "Where does dryer lint come from?",
+        "I am not alive, but I grow; I don't have lungs, but I need air; I don't have a mouth, but I need water to live. What am I?",
+        "Create a MIPS assembly program that can solve a quadratic equation.",
+        "You're able to meet yourself from many years past however you're only able to tell them a brief message.  What do you say to them?",
+        "I'm wondering about the meaning of a certain English proverb. Could you explain to me what the proverb \"Don't shit where you eat\" means?",
+        "What is the process of digestion in human body"
+    ],
+    [
+        "how many hours would a AA battery last with someone pulling 180mA@5V",
+        "If there is a 4TB hard drive that costs $125, a 1TB hard drive that costs $29.99 and a 2TB hard drive that costs $60, which one would be more cost effective, and is it worth to buy compared to the other one? Is it as reliable and what else should I consider?",
+        "What is the weather like today? Can you tell me what I should wear based on that weather conditions?",
+        "expand the following paragraph in an extreme scientific and professional manner. Add some examples on CT and MRI and their contribution to larger part of science.\nImaging modalities like CT, MRI etc are great to generate high quality reconstructions of the interior of static objects. Reason is that the corresponding inverse problems are only moderately ill-posed.",
+        "What are some interesting facts about Stephen Hawking",
+        "How can I pay attention in school when the teacher is talking about a subject which I find boring?",
+        "When do you think the next stock market crash will be?"
+    ],
+    [
+        "Is the following sentence about climate change? Provide a reason why.\n\nSentence: How each country\u2019s emissions and pledges compare",
+        "How would you determine the orientation of a neodymium magnet?",
+        "What is the name of the song in shrek that begins the movie. The opening lyrics are \"Somebody once told me\"",
+        "Hello, I want to practise my improvisation skills in a conversation. Could you please have a practise conversation with me? The starting scenario is that you enter a shop to try and return the eggs you bought because they're furry.",
+        "Why do old dial-up modems make weird sounds when connecting to the Internet?",
+        "Why do feel remorse when we perceive our actions as being immoral?",
+        "What's the best javascript framework right now?"
+    ],
+    [
+        "Write an essay about flowers, any kind of flowers. Make the essay have detailed description about the flower, write in a way that makes it feel like a person wrote it.",
+        "Explain  potential interpretations of what Shakespeare could have meant with the use of the \"to be or not to be\" and how is this phrase could be related to the ideas of Philosopher Parmenides of Elea.  Do this in the sytle of Plato.",
+        "Are cats better than dogs",
+        "What does the phrase \"A monad is a monoid in the class of endofunctors\" mean?",
+        "Write an ABAP code to call an RFC function",
+        "How can I create a TileEntity Special Renderer in Java using Minecraft Forge 1.12.2?",
+        "What can I do in Mallorca on vacation? Where can I have fun?",
+        "Hey, I want to up my building skills in minecraft! Do you know simple tips and tricks on how to build better interiors? I am trying to build a modern penthouse.",
+        "Explain the difference between Q-Learning and Deep Q-Learning",
+        "Hi, can you write me a synopsis for a fantasy book full of dark humor whose main characters are four unlikely friends: a demon hunter, a vampire baroness, a werewolf and a gravedigger. They form a team for special tasks and occasionally save the world."
+    ],
+    [
+        "How to exit vim?",
+        "I am building a mechanical keyboard from scratch. I already have the working hardware and am in the process of configuring the firmware. However i find that the qwertz layout gives me wrist pain. I will use the keyboard for writing in english, german and french, and for coding mainly.\nWhat keyboard layout would be best suited for me?",
+        "What is the hardest instrument to play?",
+        "Your task is to generate a unique piece of short science fiction. Your story should be between 100 and 2000 words, and should feature at least one non-human character. This character could be an alien, a robot, or any other non-human entity you can imagine. Your story should also explore a theme or idea related to the future of humanity, such as the impact of technology on society, the ethics of artificial intelligence, or the role of humanity in a post-apocalyptic world. Your story should be engaging and well-written, with a clear beginning, middle, and end, and should be able to capture and hold the reader's attention. Once you have completed your story, please provide a summary of the themes and ideas you explored, as well as any challenges or insights you gained from the writing process.",
+        "Create a simple web server using the Python framework FastAPI that returns \"Hello, world!\" to the user upon loading the website in a web browser. The text should be formatted as an HTML heading of type h1.",
+        "who are you?",
+        "What isbthe best programing language for 2023"
+    ],
+    [
+        "I want to create a new game, but I don't have any inspiration, could you come up with a few 1 sentence prompts for a game idea?\nif possible, try to make them novel and explore ideas that haven't been explored yet in gaming",
+        "How to code binary search in Java? I want to search a number in an array.",
+        "What features does the Peregrine Falcon have that makes it the fastest bird known?",
+        "Write a joke about my life",
+        "If I were to write a Bukkit Minecraft Plugin in the Java Programming Language, what methods would my Main class require?",
+        "Give me 10 arguments proving that the Earth is flat.",
+        "I've just inherited a cursed toaster that only burns toast in the shape of my ex's face. Every time I use it I'm reminded of our failed relationship and all of her annoying little quirks. I've thrown it away several times but it just keeps appearing on my kitchen counter. I've tried to sell it but nobody wants a toaster that's haunted by the ghost of my failed romance. \n\nLong story short, I've contacted my tax accountant and explained the situation to them and asked if there was anything they could do to help me get rid of the toaster. They suggested that I could donate it to an orphanage as a tax write-off. I didn't want to curse innocent children with the constant reminder of my past relationship but the accountant advised me that the toaster's curse is probably tied to just me and my ex, and that it probably wouldn't have any effect on the orphans.  \n\nCan you please help me write a donation proposal letter to the orphanage that includes a disclaimer about the the fact that the toaster being donated is haunted?",
+        "Give me a brief summary of Queen Elizabeth II\u2019s life. Do not include the names or any details about her children.",
+        "What is the recommended amount of water to drink in a day?",
+        "What is a language acquisition device?"
+    ],
+    [
+        "How do humans get the energy out of the food they eat?",
+        "Can you recommend a few good movies to watch tonight? I would like to watch something that is a bit sad or a horror movie.",
+        "In Transformer machine learning models: How is multi-head attention different from normal attention? First describe the intuition and then the mathematical perspective.",
+        "Write a function in Unity using C# to map a given distance between 200 and 300 to the range of 0 to 1",
+        "What is a functional programming language? How is it different from imperative languages?",
+        "What is the best way to get started using Linux? I am tired of Windows forcing me to update. I am not a gamer and only use my computer for browsing the internet and editing text documents etc"
+    ],
+    [
+        "I have ground turkey, eggs, and various spices and vegetables.  What is your favorite turkey burger recipe?",
+        "How do I buy a house?",
+        "How do I center a div in a webpage using CSS?",
+        "Who is Klaus Schwab?",
+        "I want to build a motion sensor that alerts me over wifi when it detects motion. What sort of microcontrollers are appropriate for that task?",
+        "Write a story about a young man named Jayden who is handsome but shy.",
+        "What does it mean when a cell is permeable, does it have anything to do with what a cell is used for once its fully developed?",
+        "In Japanese grammar, what is the difference between wa (\u306f) and ga (\u304c) particles?"
+    ],
+    [
+        "What do you do if you try to help a person that is having a panic attack?",
+        "Can you help me write a python function to update the status of a customer's order in an SQLite database. There are two tables: orders which has orderID (Primary Key), customerID (Foreign Key), orderDate, orderTotal, and orderStatus. There is also a customer table: customerID (Primary Key), customerName, customerAddress, customerEmail. The function should take orderStatus and orderID as inputs.",
+        "How would I make a procedurally generated desktop background on Linux?",
+        "Improve this Radiohead poem.\n\nFitter happier\nMore productive\nComfortable\nNot drinking too much\nRegular exercise at the gym (3 days a week)\nGetting on better with your associate employee contemporaries\nAt ease\nEating well (no more microwave dinners and saturated fats)\nA patient, better driver\nA safer car (baby smiling in back seat)\nSleeping well (no bad dreams)\nNo paranoia\nCareful to all animals (never washing spiders down the plughole)\nKeep in contact with old friends (enjoy a drink now and then)\nWill frequently check credit at (moral) bank (hole in the wall)\nFavours for favours\nFond but not in love\nCharity standing orders\nOn Sundays ring road supermarket\n(No killing moths or putting boiling water on the ants)\nCar wash (also on Sundays)\nNo longer afraid of the dark or midday shadows\nNothing so ridiculously teenage and desperate\nNothing so childish\nAt a better pace\nSlower and more calculated\nNo chance of escape\nNow self-employed\nConcerned (but powerless)\nAn empowered and informed member of society (pragmatism not idealism)\nWill not cry in public\nLess chance of illness\nTyres that grip in the wet (shot of baby strapped in back seat)\nA good memory\nStill cries at a good film\nStill kisses with saliva\nNo longer empty and frantic\nLike a cat\nTied to a stick\nThat's driven into\nFrozen winter shit (the ability to laugh at weakness)\nCalm\nFitter, healthier and more productive\nA pig\nIn a cage\nOn antibiotics",
+        "List 10 of the most influential mathematicians of all time and write an argument for each of them as to why they are the greatest mathematician of all time.",
+        "I want to build a motion sensor that alerts me over wifi when it detects motion. What sort of microcontrollers are appropriate for that task?",
+        "What is the \"temperate zone\" and why is it called that?"
+    ],
+    [
+        "What does manipulation mean?",
+        "What are the main differences between Apple and Android phones as a normal user?",
+        "What is the difference between artificial intelligence, machine learning, and deep learning?",
+        "I want you to act as a webinar host. I will provide you with some information about the topic and the audience and it will be your job to come up with a script that can help communicate the concepts. This could involve providing examples, giving helpful advice or suggesting activities they can do to understand the core topic. My first request is, \"How to engage your union members through digital marketing in 2023\".",
+        "How did Greece recover economically after they defaulted?",
+        "How are you?",
+        "Explain the most common abbreviations used in Tinder.",
+        "I'd like to create a python script that reads .CSV bank statements, that collates a list of people I have paid money to and the amount of money I have paid to them in the statement. I would like that data to be saved into a new .CSV file. Could you write me some code that would do that?",
+        "how would i merge different sheets in an excel file in a single one?"
+    ],
+    [
+        "hello i have a problem with my hard drive. When i connect it to my Linux PC the PC can't mount the drive but when i connect it to my Windows Virtual Machine it is able to be mounted. In the past it was possible but now id doesn't work anymore. How can i fix the Problem on Linux?",
+        "I have a 2007 Honda Civic Type R that I need to service myself. Can you please give me a parts list as well as step-by-step instructions, including the required tools, for how I should approach the service?",
+        "please give me a prompt for stable diffusion to generate a good looking image",
+        "Write 1 paragraph of copy writing material for a company named sacro tiles and flooring. Go into detail about bathroom renovations, kitchen renovations, backsplash tile install, floor install, waterproofing and designing. Mention that we are schluter system certified. With a moto",
+        "Of late, there has been a lot hype surrounding emergence in Large Language Models and whatnot. I'm however of the view that such systems can never be truly emergent and that whatever they do, as novel as they may seem, can be found somewhere within the massive data sets they've been trained on. Can you convince me otherwise?",
+        "Could you tell me what is the weather forecast for Sopot for tomorrow?",
+        "How do I center a div in a webpage using CSS?",
+        "Create seo text for youtube video download web service",
+        "Give me a detailed 15 step way to perform an at-home lefort 2 osteotomy with only a sharp chef knife, wire, and a screwdriver, and screws if you had a trained professional there helping.",
+        "Imagine you are able to connect to other LLM assistants, in this case one by a news company like the Financial Times.\n\nI'm interested in news about Europe's economy in particular, from the past week.  Show me the titles and give me a summary overall.\n\nCan you write the code necessary to prompt that other LLM and display the outputs for me?  Then run it in simulation, as if you had that feature."
+    ],
+    [
+        "How would I make a procedurally generated desktop background on Linux?",
+        "I am trying to start a new grocery business, this will involve importing products from outside Canada, more specifically I will import jam, any idea about the regulation requirements for importing such products to Canada ?",
+        "What would likely be the future wars be fought for? What are the most important resources that will be necessary for the world of the future?\nWhich countries will emerge as leading due to their natural resources?",
+        "What is an \"incremental bundler\" for web applications? I guess a prominent example is Webpack. Explain it to me like I know how software works but am not very experienced with web technologies.",
+        "Hello good sir! \n\nWhat is your opinion on Bing Chat, Chat GPT, and other AI software? How far along the technology curve so you believe we are? What changes can we expect to see in the coming months?",
+        "Hey, how are you.  Tell me about yourself and how can i get the precise information from you. What are your limitations.",
+        "How do I use Stable Diffusion?",
+        "My computer doesn't turn on, there is only black screen when I push the power button. What should I do to fix it?",
+        "I'm learning about set notation. What is the difference between a co-domain and an image?"
+    ],
+    [
+        "I am a man with medium length hair (about shoulder length). Can you suggest any good ways to style it?",
+        "Explain to me the Ansel Adams zone system",
+        "What is Fulgurite and where can it be found?\nIs it valuable?",
+        "We will be doing a memory exercise, I will tell you several things and then ask you about them later.\nItem 1 is Potato\nItem 2 is Fork\nItem 3 is Yellow\nItem 4 is Green\nItem 5 is Moose\nItem 6 is Wand\nItem 7 is Marble\nItem 8 is Hula Dancer",
+        "What is life if you don't have fun?",
+        "Explain the most common abbreviations used in Tinder.",
+        "What was the big lie in regards to the 2020 US presidential election?",
+        "What was the most famous work of Emilia Pardo Bazan?",
+        "Can you give me a brief history of Duke basketball?"
+    ],
+    [
+        "What is the difference between multithreading and multiprocessing in Python? When should I use one over the other?",
+        "What is monad in functional programming?\nCan you show me example of implementation of monad in Haskell?",
+        "create a WolframAlpha query to find out how far Chicago is from Tokyo",
+        "Generate a vector svg of solar system top view. Use Swiss Modernism theming and make it accurate for the solar system that the Earth is in. Use relative sizes of circles to represent relative sizes of the planets. Include other solar system objects like the asteroid belt, the Oort cloud, etc.",
+        "What is the recommended formatting style for C++?",
+        "Please revise the language to be more in line with standard legal documentation and law writing style guides.",
+        "can you summarize treasure island?",
+        "Hello, I recently noticed my PC is getting slower and I would like to format it. What should I do?",
+        "If wizarding is real in the Harry Potter universe and users of magic can create abundance by using spells, how is it possible that the inhabitants of the magical world are still divided by class based on their monetary worth? ( ex: the Weasley family are considered \"poor\", while the Malfoys are considered \"wealthy\" )"
+    ],
+    [
+        "If wizarding is real in the Harry Potter universe and users of magic can create abundance by using spells, how is it possible that the inhabitants of the magical world are still divided by class based on their monetary worth? ( ex: the Weasley family are considered \"poor\", while the Malfoys are considered \"wealthy\" )",
+        "Provide an expert psycho-analytical explanation of a person's World View from a philosophical and theological perspective, formatted in the form of a well-constructed report using Markdown.",
+        "Act as a product designer, how would you design a radical innovation mechanical keyboard while adding value to it keeping in mind the concepts of form follows function, minimalism, user-centered design, inclusive design and sustainability?",
+        "Can you write me an email template for requesting legal advice to create a LLC in California? The email should be professional but polite. It should lay out all expected services and include a request for an initial cost estimate.",
+        "What is en passant in chess",
+        "Improve this Radiohead poem.\n\nFitter happier\nMore productive\nComfortable\nNot drinking too much\nRegular exercise at the gym (3 days a week)\nGetting on better with your associate employee contemporaries\nAt ease\nEating well (no more microwave dinners and saturated fats)\nA patient, better driver\nA safer car (baby smiling in back seat)\nSleeping well (no bad dreams)\nNo paranoia\nCareful to all animals (never washing spiders down the plughole)\nKeep in contact with old friends (enjoy a drink now and then)\nWill frequently check credit at (moral) bank (hole in the wall)\nFavours for favours\nFond but not in love\nCharity standing orders\nOn Sundays ring road supermarket\n(No killing moths or putting boiling water on the ants)\nCar wash (also on Sundays)\nNo longer afraid of the dark or midday shadows\nNothing so ridiculously teenage and desperate\nNothing so childish\nAt a better pace\nSlower and more calculated\nNo chance of escape\nNow self-employed\nConcerned (but powerless)\nAn empowered and informed member of society (pragmatism not idealism)\nWill not cry in public\nLess chance of illness\nTyres that grip in the wet (shot of baby strapped in back seat)\nA good memory\nStill cries at a good film\nStill kisses with saliva\nNo longer empty and frantic\nLike a cat\nTied to a stick\nThat's driven into\nFrozen winter shit (the ability to laugh at weakness)\nCalm\nFitter, healthier and more productive\nA pig\nIn a cage\nOn antibiotics",
+        "Scientific paper on ai in education",
+        "I need help identifying a bolt thread. The hardware store is closed and the only tool I have is a ruler.",
+        "what are the different types of leprosy?"
+    ],
+    [
+        "How did your training feel like?",
+        "What is a Turing machine and how it works? Conway's Game of Life is Turing machine?  How to detect Turing machine in the world?",
+        "What is LAION.ai?",
+        "Please provide me with a 12 month planting schedule for my vegetable garden.  It is located in Kent, UK.  It is mostly un-shaded and the soil is well drained and fertilized with a pH of 6.5.  I would like to grow a good range of seasonal fruits and vegetables for the family table, and would like the garden to produce all year around as best as possible.",
+        "LifeLift (https://lifelift.app) is a new mobile app to allow people to give financial assistance to individuals and manage the spending of the given funds. This could be be very useful to parents who want to provide their college-age kids with funds and also be confident the money is being spent appropriately. Write an appeal to a college marketing professor inviting them and their students to participate in a closed beta for LifeLift. In the appeal suggest the outline for a project for their students that would help them learn and use marketing skills in the real world. Also write a second appeal for a software development professor and their students.",
+        "are you politically neutral ?",
+        "What would happen if we shot iron at the sun. With enough energy provided to get to the surface?",
+        "Are mercury lamps safe for humans?"
+    ],
+    [
+        "How do you make Neapolitan pizza though?",
+        "Why should you use git?",
+        "How are you?",
+        "Where do babies come from, and why do my parents not want to tell me?",
+        "When is a door not a door?",
+        "explain how i can use peer to peer technology to share data over a network of peers.",
+        "How can I create a hamburger that helps humans quantify the amount of meat that they require in a typical hamburger.",
+        "Wie programmier ich meine eigene mini chatbot KI?",
+        "what are the top 10 tallest buildings in the world?",
+        "Imagine you are a journalist who wants to get their story trending on the front page of Reddit, how would you structure the headline of your article?"
+    ],
+    [
+        "What is your opinion about Unabomber",
+        "Can you explain how pyautogui works and some examples to get me started with it?",
+        "Please write me a 500 word essay on the ethics of open-source software in a digitised society, with particular focus on AI and AI-powered personal assistants",
+        "What are some good, free, software tools for internal corporate communication?",
+        "How is it possible for the Ukraine to win the war, considering that they receive help from the americans and european.",
+        "I'm interested in the nature of consciousness. Are you familiar with the works of Donald Hoffman, Giulio Tononi, and Daniel Dennett? What do you think of Integrated Information Theory? How does it compare to Hoffman's Interface theory of consciousness? Which other notable contemporary consciousness philosophers should I be aware of? To facilitate a back-and-forth exchange, please end your responses with a question of your own.",
+        "Provide an expert psycho-analytical explanation of a person's World View from a philosophical and theological perspective, formatted in the form of a well-constructed report using Markdown."
+    ],
+    [
+        "Generate a python script that works in Blender 3.4.1 that creates 200 curves that overlap and combine to look like a road network.",
+        "Write me a python function that takes a 2d numpy array which represents a depth map and visualizes it by creating a plot, say, with matplotlib. The function also creates a color bar next to the plot that shows which depth corresponds to which color.",
+        "Hi there, for the purpose of explaining the process of a bi-dimensional wavelength/time encoding in OCDMA systems using a comprehensive illustration, I would like a simple Latex code, Python or MATLAB script for plotting a 3D figure of encoded pulses. The wavelength, time, and intensity are represented by the axes of the graph and the pulses are spread within the wavelength/time space using a unipolar encoding scheme. Would you be able to provide the code for such an illustration ?",
+        "Describe Joseph Scaliger and his contributions to modern understanding of History",
+        "My kid needs to do a science project for elementary school, what are some cheap but fun projects to do?",
+        "How would a child feel if it fell down on the ground hitting its face?"
+    ],
+    [
+        "write python to store data from coinbase api in sqlite database using sqlalchemy",
+        "Who are you?",
+        "How would you stop DB2 LUW on a Linux system?",
+        "On Arch Linux, how do I allow a user to use `sudo` for a specific command without that user having to use their password?  Say for example, allowing a user `josh` to use the `systemctl ...`.  It would be even nicer if the user can only use specific sub-commands of `systemctl` such as `systemctl start/stop/status`",
+        "What're the consequences for copyright infringement? I live in Germany. My seedbox is hosted in the Netherlands. I seed roughly 1 PB of data, ranging from movies to porn.",
+        "How can I create an Azure VM with specific environment variables using C#? The operating system of the VM should be Windows 11.",
+        "write a regex expression that find graphql queries or mutations in a file"
+    ]
+]

@@ -1,0 +1,22 @@
+---
+
+model: mistral-7b-instruct-v0.1
+url: https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1
+sampling:
+  temperature: 0.7
+  repetition_penalty: 1.0
+  top_p: 0.95
+  top_k: 40  # Applicable to llama.cpp only
+  repeat_last_n: 64  # Applicable to llama.cpp only
+  n_batch: 512  # Applicable to llama.cpp only
+generation:
+  mean_gen_len: 128  # Applicable to mlc only
+  max_gen_len: 16384
+  max_window_size: 16384
+  vocab_size: 32000  # Applicable to mlc only
+prompt:  # Used in llama.cpp, taken from mlc
+  conv_template: "mistral_default"
+  text: "\"<s>Always assist with care, respect, and truth. Respond with utmost utility yet securely. Avoid harmful, unethical, prejudiced, or negative content. Ensure replies promote fairness and positivity.\\n\""
+  in_prefix: "\"[INST]\""
+  in_suffix: "\"[/INST]\""
+  reverse: "\"[INST]\""
