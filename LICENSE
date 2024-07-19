@@ -19,3 +19,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+====
+
+Individual submodules are either provided through chained checkout (e.g. llama.cpp, mlc, tvm dependencies) or as modified direct submodules (github.com/brave-experiments/mlc-llm-public, github.com/brave-experiments/tvm-public, github.com/brave-experiments/LLMFarmEval). Initial authors reserve the rights of their work.
