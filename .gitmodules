@@ -7,12 +7,12 @@
 [submodule "frameworks/llama.cpp/llama.cpp"]
 	path = frameworks/llama.cpp/llama.cpp
 	url = git@github.com:brave-experiments/llama.cpp.git
-[submodule "batterylab"]
-	path = batterylab
-	url = git@github.com:brave-experiments/batterylab.git
 [submodule "frameworks/llama.cpp/LLMFarmEval"]
 	path = frameworks/llama.cpp/LLMFarmEval
 	url = git@github.com:brave-experiments/LLMFarmEval
 [submodule "jetsonlab"]
 	path = jetsonlab
 	url = git@github.com:brave-experiments/jetsonlab.git
+[submodule "blade"]
+	path = blade
+	url = git@github.com:brave-experiments/blade
