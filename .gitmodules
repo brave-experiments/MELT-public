@@ -1,18 +1,18 @@
 [submodule "frameworks/MLC/tvm-unity"]
 	path = frameworks/MLC/tvm-unity
-	url = git@github.com:brave-experiments/tvm.git
+	url = git@github.com:brave-experiments/tvm-public
 [submodule "frameworks/MLC/mlc-llm"]
 	path = frameworks/MLC/mlc-llm
-	url = git@github.com:brave-experiments/mlc-llm.git
+	url = git@github.com:brave-experiments/mlc-llm-public
 [submodule "frameworks/llama.cpp/llama.cpp"]
 	path = frameworks/llama.cpp/llama.cpp
-	url = git@github.com:brave-experiments/llama.cpp.git
+	url = git@github.com:brave-experiments/llama.cpp-public
 [submodule "frameworks/llama.cpp/LLMFarmEval"]
 	path = frameworks/llama.cpp/LLMFarmEval
-	url = git@github.com:brave-experiments/LLMFarmEval
+	url = git@github.com:brave-experiments/LLMFarmEval-public
 [submodule "jetsonlab"]
 	path = jetsonlab
-	url = git@github.com:brave-experiments/jetsonlab.git
+	url = git@github.com:brave-experiments/jetsonlab-public
 [submodule "blade"]
 	path = blade
-	url = git@github.com:brave-experiments/blade
+	url = git@github.com:brave-experiments/blade-public
