@@ -8,7 +8,7 @@ This is the catch-all repository for the codebase of our on-device evaluation of
 
 ```bash
 ├── README.md
-├── batterylab/  # PhoneLab infrastructure for automated evaluation
+├── blade/  # PhoneLab infrastructure for automated evaluation
 ├── frameworks/  # LLM frameworks supported by MELT
 ├── jetsonlab/   # JetsonLab infrastructure for
 ├── melt_models/ # HF models
@@ -39,8 +39,8 @@ The general workflow for running experiment goes as follows:
 1. Go to `frameworks/MLC/mlc-llm` or `frameworks/llama.cpp/llama.cpp` and compile each framework. Please see the documentation ([#1](frameworks/llama.cpp/llama.cpp/build_scripts/README.md),[#2](frameworks/MLC/mlc-llm/build_scripts/README.md)) for more.
 2. Go to `src/models` and download, convert models. Please see [this](src/models/README.md) for more.
 3. After you build the models, you need to build the apps, that are going to be installed to the phones. To do so, please follow the rest of the documentation in ([#1](frameworks/llama.cpp/llama.cpp/build_scripts/README.md),[#2](frameworks/MLC/mlc-llm/build_scripts/README.md)).
-4. Go to `batterylab/experiments/` and follow the [documentation](batterylab/experiments/README.md) there. You need to install the applications, transfer models on the local directories and then run the automated scripts.
-5. If the experiment has successfully run, you'll have `batterylab/experiment_outputs/` directory populated. You can run the `batterylab/experiments/notebooks` for analysis of the results.
+4. Go to `blade/experiments/` and follow the [documentation](blade/experiments/README.md) there. You need to install the applications, transfer models on the local directories and then run the automated scripts.
+5. If the experiment has successfully run, you'll have `blade/experiment_outputs/` directory populated. You can run the `blade/experiments/notebooks` for analysis of the results.
 
 For running on jetson platform, you need to build each framework with the appropriate script (see ([#1](frameworks/llama.cpp/llama.cpp/build_scripts/README.md),[#2](frameworks/MLC/mlc-llm/build_scripts/README.md)). See also this [documentation](jetsonlab/README.md) for more.
 
@@ -48,7 +48,7 @@ For running on jetson platform, you need to build each framework with the approp
 
 Additional documentation on how to run is provided in each of the subdirectories, as separate README files.
 
-* PhoneLab [README](batterylab/experiments/README.md)
+* PhoneLab [README](blade/experiments/README.md)
 * JetsonLab [README](jetsonlab/README.md)
 * llama.cpp:
     * building [README](frameworks/llama.cpp/llama.cpp/build_scripts/README.md)
@@ -68,7 +68,7 @@ Additional documentation on how to run is provided in each of the subdirectories
 ## Supported infrastructure backends
 
 * [JetsonLab](https://github.com/brave-experiments/jetsonlab)
-* [PhoneLab](https://github.com/brave-experiments/batterylab)
+* [PhoneLab](https://github.com/brave-experiments/blade)
 
 ## Authors/Maintainers
 
